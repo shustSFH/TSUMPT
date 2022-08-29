@@ -3955,7 +3955,7 @@
 
       markerArr.splice(0, markerArr.length);
       loadTable(), TimeDisp(), EventsWrite(), createM(), startLoadTable('Non'), loadBottomTable(arrMImo), startDrawGeoJsonGradient(), DrawGeoJsonGradient(arrMImo, personData[numByImo].LAT, personData[numByImo].LON)
-
+      map.setView([personData[numByImo].LAT, personData[numByImo].LON], 16)
       arrImo.splice(0, arrImo.length - 1)
       arrLat.splice(0, arrLat.length - 1)
 
