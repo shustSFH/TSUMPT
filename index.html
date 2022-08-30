@@ -2726,11 +2726,9 @@
         <span>${openCD[0].typeOfVessel}</span>
         </span>
         <hr style="position: relative; top: -4vh;">`
-        if (card.Wave !== null && hash == '#ru') { mWaveHtml = `${card.Wave} м` } else { mWaveHtml = `N/A` }
-        if (card.WindSpeed !== null && hash == '#ru') { mSpeedHtml = `${card.WindSpeed} м/с` } else { mSpeedHtml = `N/A` }
 
-        if (card.Wave !== null && hash == '#en') { mWaveHtml = `${card.Wave} m` } else { mWaveHtml = `N/A` }
-        if (card.WindSpeed !== null && hash == '#en') { mSpeedHtml = `${card.WindSpeed} m/s` } else { mSpeedHtml = `N/A` }
+        if (card.Wave !== null && hash == '#ru') { mWaveHtml = `${card.Wave} м` } else if (card.Wave !== null && hash == '#en') { mWaveHtml = `${card.Wave} m` } else { mWaveHtml = `N/A` }
+        if (card.WindSpeed !== null && hash == '#ru') { mSpeedHtml = `${card.WindSpeed} м/с` } else if (card.WindSpeed !== null && hash == '#en') { mSpeedHtml = `${card.WindSpeed} m/s` } else { mSpeedHtml = `N/A` }
 
         if (card.Temp !== null) { mTempHtml = `${card.Temp} °C` } else { mTempHtml = `N/A` }
 
@@ -2786,9 +2784,6 @@
         FirstHtmlRu = `<th class="shrift">Курс: <br/><span class="spanTable">${card.Course}</span></th><th class="shrift">Скорость, кн: <br/><span class="spanTable">${card.Speed}</span></th><th class="shrift">Осадка: <br/><span class="spanTable">${card.Draught}</span></th>`
         SecondHtmlRu = `<th class="shrift">Температура, °C: <br/><span class="spanTable">${card.Temp}</span></th><th class="shrift">Ветер, м/с: <br/><span class="spanTable">${card.Wind} ${card.WindSpeed}</span></th><th class="shrift">Волна, м: <br/><span class="spanTable">${card.Wave}</span></th>`
         imgShipHtmlRu = `<img class="ImageofShip" width="100%" height="100%" src = "data:image/png;base64,${card.Picture}">`
-        if (card.Wave !== null) { mWaveHtmlRu = `${card.Wave} м` } else { mWaveHtmlRu = `N/A` }
-        if (card.WindSpeed !== null) { mSpeedHtmlRu = `${card.WindSpeed} м/с` } else { mSpeedHtmlRu = `N/A` }
-        if (card.Temp !== null) { mTempHtmlRu = `${card.Temp} °C` } else { mTempHtmlRu = `N/A` }
 
         /* console.log(person.SHIP) */
       }
@@ -2797,16 +2792,15 @@
       TemperatureTab.innerHTML = TemperatureTabHtml;
       WindSpeed.innerHTML = WindSpeedHtml;
       WaveTab.innerHTML = WaveTabHtml;
+      mWave.innerHTML = mWaveHtml;
+      mSpeed.innerHTML = mSpeedHtml;
+      mTemp.innerHTML = mTempHtml;
 
       if (hash == '#en') {
 
         Head.innerHTML = HeadHtml;
         First.innerHTML = FirstHtml;
-        //Second.innerHTML = SecondHtml;
         ImgShip.innerHTML = imgShipHtml;
-        mWave.innerHTML = mWaveHtml;
-        mSpeed.innerHTML = mSpeedHtml;
-        mTemp.innerHTML = mTempHtml;
 
 
       }
@@ -2814,11 +2808,7 @@
 
         Head.innerHTML = HeadHtmlRu;
         First.innerHTML = FirstHtmlRu;
-        //Second.innerHTML = SecondHtmlRu;
         ImgShip.innerHTML = imgShipHtmlRu;
-        mWave.innerHTML = mWaveHtmlRu;
-        mSpeed.innerHTML = mSpeedHtmlRu;
-        mTemp.innerHTML = mTempHtmlRu;
 
       }
 
@@ -2895,11 +2885,10 @@
         <span>${openCD[0].typeOfVessel}</span>
         </span>
         <hr style="position: relative; top: -4vh;">`
-        if (card.Wave !== null && hash == '#ru') { mWaveHtml = `${card.Wave} м` } else { mWaveHtml = `N/A` }
-        if (card.WindSpeed !== null && hash == '#ru') { mSpeedHtml = `${card.WindSpeed} м/с` } else { mSpeedHtml = `N/A` }
 
-        if (card.Wave !== null && hash == '#en') { mWaveHtml = `${card.Wave} m` } else { mWaveHtml = `N/A` }
-        if (card.WindSpeed !== null && hash == '#en') { mSpeedHtml = `${card.WindSpeed} m/s` } else { mSpeedHtml = `N/A` }
+
+        if (card.Wave !== null && hash == '#ru') { mWaveHtml = `${card.Wave} м` } else if (card.Wave !== null && hash == '#en') { mWaveHtml = `${card.Wave} m` } else { mWaveHtml = `N/A` }
+        if (card.WindSpeed !== null && hash == '#ru') { mSpeedHtml = `${card.WindSpeed} м/с` } else if (card.WindSpeed !== null && hash == '#en') { mSpeedHtml = `${card.WindSpeed} m/s` } else { mSpeedHtml = `N/A` }
 
         if (card.Temp !== null) { mTempHtml = `${card.Temp} °C` } else { mTempHtml = `N/A` }
 
@@ -2955,9 +2944,6 @@
         FirstHtmlRu = `<th class="shrift">Курс: <br/><span class="spanTable">${card.Course}</span></th><th class="shrift">Скорость, кн: <br/><span class="spanTable">${card.Speed}</span></th><th class="shrift">Осадка: <br/><span class="spanTable">${card.Draught}</span></th>`
         SecondHtmlRu = `<th class="shrift">Температура, °C: <br/><span class="spanTable">${card.Temp}</span></th><th class="shrift">Ветер, м/с: <br/><span class="spanTable">${card.Wind} ${card.WindSpeed}</span></th><th class="shrift">Волна, м: <br/><span class="spanTable">${card.Wave}</span></th>`
         imgShipHtmlRu = `<img class="ImageofShip" width="100%" height="100%" src = "data:image/png;base64,${card.Picture}">`
-        if (card.Wave !== null) { mWaveHtmlRu = `${card.Wave} м` } else { mWaveHtmlRu = `N/A` }
-        if (card.WindSpeed !== null) { mSpeedHtmlRu = `${card.WindSpeed} м/с` } else { mSpeedHtmlRu = `N/A` }
-        if (card.Temp !== null) { mTempHtmlRu = `${card.Temp} °C` } else { mSpeedHtmlRu = `N/A` }
 
         /* console.log(person.SHIP) */
       }
@@ -2966,27 +2952,22 @@
       TemperatureTab.innerHTML = TemperatureTabHtml;
       WindSpeed.innerHTML = WindSpeedHtml;
       WaveTab.innerHTML = WaveTabHtml;
+      mWave.innerHTML = mWaveHtml;
+      mSpeed.innerHTML = mSpeedHtml;
+      mTemp.innerHTML = mTempHtml;
 
       if (hash == '#en') {
 
         Head.innerHTML = HeadHtml;
         First.innerHTML = FirstHtml;
-        //Second.innerHTML = SecondHtml;
         ImgShip.innerHTML = imgShipHtml;
-        mWave.innerHTML = mWaveHtml;
-        mSpeed.innerHTML = mSpeedHtml;
-        mTemp.innerHTML = mTempHtml;
 
       }
       if (hash == '#ru') {
 
         Head.innerHTML = HeadHtmlRu;
         First.innerHTML = FirstHtmlRu;
-        //Second.innerHTML = SecondHtmlRu;
         ImgShip.innerHTML = imgShipHtmlRu;
-        mWave.innerHTML = mWaveHtmlRu;
-        mSpeed.innerHTML = mSpeedHtmlRu;
-        mTemp.innerHTML = mTempHtmlRu;
       }
 
 
@@ -3344,6 +3325,7 @@
       const PortFlagSpan = document.getElementById('PortFlagSpan')
       let hash = window.location.hash;
 
+      console.log(CODE)
 
       let CardPortsHtml = '';
       let ModalContHtml = '';
@@ -3375,11 +3357,9 @@
         }
 
 
-        if (portC.Wave !== null && hash == '#ru') { PWaveHtml = `${portC.Wave} м` } else { PWaveHtml = `N/A` }
-        if (portC.WindSpeed !== null && hash == '#ru') { PWindHtml = `${portC.WindSpeed} м/с` } else { PWindHtml = `N/A` }
+        if (portC.Wave !== null && hash == '#ru') { PWaveHtml = `${portC.Wave} м` } else if (portC.Wave !== null && hash == '#en') { PWaveHtml = `${portC.Wave} m` } else { PWaveHtml = `N/A` }
+        if (portC.WindSpeed !== null && hash == '#ru') { PWindHtml = `${portC.WindSpeed} м/с` } else if (portC.WindSpeed !== null && hash == '#en') { PWindHtml = `${portC.WindSpeed} m/s` } else { PWindHtml = `N/A` }
 
-        if (portC.Wave !== null && hash == '#en') { PWaveHtml = `${portC.Wave} m` } else { PWaveHtml = `N/A` }
-        if (portC.WindSpeed !== null && hash == '#en') { PWindHtml = `${portC.WindSpeed} m/s` } else { PWindHtml = `N/A` }
 
         if (portC.Temp !== null) { PTempHtml = `${portC.Temp} °C` } else { PTempHtml = `N/A` }
 
@@ -3955,12 +3935,12 @@
       let numByImo = personData.findIndex(i => i.IMO == `${arrMImo}`)
 
       markerArr.splice(0, markerArr.length);
-      loadTable(), TimeDisp(), EventsWrite(), createM(), startLoadTable('Non'), loadBottomTable(arrMImo), startDrawGeoJsonGradient(), DrawGeoJsonGradient(arrMImo, personData[numByImo].LAT, personData[numByImo].LON)
+      loadTable(), TimeDisp(), EventsWrite(), createM(), startLoadTable('Non'), loadBottomTable(arrMImo), DrawGeoOjectFromgjsonLineHistoryMove(arrMImo), startDrawGeoJsonGradient(), DrawGeoJsonGradient(arrMImo, personData[numByImo].LAT, personData[numByImo].LON)
       map.setView([personData[numByImo].LAT, personData[numByImo].LON], 16)
       arrImo.splice(0, arrImo.length - 1)
       arrLat.splice(0, arrLat.length - 1)
 
-      
+
 
     }, 300000);
 
