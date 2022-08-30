@@ -1687,9 +1687,6 @@
   <aside class="object js-object ">
     <button class="object__close js-object-close"></button>
     <div class="object__title js-object-title lng-eventsName" style="text-align: center;"></div>
-    <!-- <div class="object__img">
-      <img src="ShipBorder.png" alt="Озеро Мазарское" class="img-absolute js-object-img">
-    </div> -->
     <div class="object__descr" id="eHead"></div>
 
   </aside>
@@ -1849,9 +1846,6 @@
     }
 
     var overlaysRu = {
-      //"Кадастр": wmsLayer,
-      //"Слой рисунков":drawnItems,
-      //"Моя карта":mylayer,
       "Погода (ветер)": OWMlayerWind,
       "Погода (облачность)": OWMlayerClouds,
       "Погода (осадки)": OWMlayerPrecipitation,
@@ -1860,9 +1854,6 @@
     };
 
     var overlays = {
-      //"Кадастр": wmsLayer,
-      //"Слой рисунков":drawnItems,
-      //"Моя карта":mylayer,
       "Weather (wind)": OWMlayerWind,
       "Weather (cloud)": OWMlayerClouds,
       "Weather (precipitation)": OWMlayerPrecipitation,
@@ -2106,13 +2097,13 @@
 
 
     function Get(yourUrl) {
-      var Httpreq = new XMLHttpRequest(); // a new request
+      var Httpreq = new XMLHttpRequest();
       Httpreq.open("GET", yourUrl, false);
 
       Httpreq.onload = function () {
-        if (Httpreq.status != 200) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
-          alert(`Ошибка ${Httpreq.status}: ${Httpreq.statusText}`); // Например, 404: Not Found
-        } else { // если всё прошло гладко, выводим результат
+        if (Httpreq.status != 200) {
+          alert(`Ошибка ${Httpreq.status}: ${Httpreq.statusText}`);
+        } else {
 
         }
       };
@@ -2256,9 +2247,6 @@
         var BorderIcon = new BorderLeaf({ iconUrl: "КорабликРамкаКра.png" });
 
 
-        /* marker.on('click', () => console.log(person.SHIP)) */
-
-
       }
 
     }
@@ -2304,7 +2292,6 @@
           markers[Imo].on('popupopen', function (evt) {
             markers[Imo].setIcon(ShipBorderIcon);
           });
-          /*  console.log(markerdata[i]) */
 
         };
         i++
@@ -2384,28 +2371,18 @@
       switching = true;
 
       while (switching) {
-        //start by saying: no switching is done:
         switching = false;
         rows = table.rows;
-        /*Loop through all table rows (except the
-        first, which contains table headers):*/
         for (i = 1; i < (rows.length - 1); i++) {
-          //start by saying there should be no switching:
           shouldSwitch = false;
-          /*Get the two elements you want to compare,
-          one from current row and one from the next:*/
           x = rows[i].getElementsByTagName("td")[0];
           y = rows[i + 1].getElementsByTagName("td")[0];
-          //check if the two rows should switch place:
           if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-            //if so, mark as a switch and break the loop:
             shouldSwitch = true;
             break;
           }
         }
         if (shouldSwitch) {
-          /*If a switch has been marked, make the switch
-          and mark that a switch has been done:*/
           rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
           switching = true;
         }
@@ -2420,7 +2397,6 @@
     function tableSearch() {
       let input, filter, table, tr, td, txtValue;
 
-      //Intialising Variables
       input = document.getElementById("myInput");
       filter = input.value.toUpperCase();
       table = document.getElementById("TableFlot");
@@ -2479,19 +2455,6 @@
 
       } while (e < tr.length)
 
-
-
-      /*   do {
-          if (TableFlot.rows[e] != null) { TableFlot.rows[e].className = '' };
-          console.log(TableFlot.rows[e])
-          
-          if (TableFlot.rows[e].cells[0].innerHTML === (mShip + `<div style="display: none;">${IMO}</div>`)) {
-            console.log((mShip + `<div style="display: none;">${IMO}</div>`))
-            TableFlot.rows[e].className = 'selected';
-            TableFlot.rows[e].scrollIntoView({ block: "center", behavior: "smooth" });
-          };
-          e++
-        } while (e < TableFlot.rows.length) */
     }
 
 
@@ -2503,7 +2466,7 @@
 
   </script>
 
-  <!-- Координаты -->
+  <!-- Координаты приближения/отдаления -->
   <script>
 
     L.control.scale().addTo(map);
@@ -2588,11 +2551,13 @@
 
   </script>
 
-  <!-- Время -->
+
   <script>
     window.onload = () => {
       TimeDisp(), startLoadTable(), startloadCardTable(), startDrawGeoOjectFromgjsonLineHistoryMove(), startDrawGeoJsonGradient(), ObjectAs()
     }
+
+    // Время 
 
     function TimeDisp() {
       var
@@ -2654,7 +2619,6 @@
         var personData = DatePers.Vessels
       }
 
-      /* Функция для определения первого IMO судна в таблице */
       let database = [];
       let openCD = [];
 
@@ -2665,7 +2629,7 @@
       if (checkV !== 'Non') {
         map.setView([database[0].LAT, database[0].LON], 16)
       }
-      /* Функция для определения первого IMO судна в таблице */
+      
 
 
       let cardData = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/vessel_info/${database[0].IMO}`), { fetcher });
@@ -2979,8 +2943,6 @@
   <!-- Открывающаяся карточка судна -->
   <script>
 
-    /* window.onload(loadCardTable(9338230)) */
-
     function loadCardTable(OpenImo) {
 
       let openCardData = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/vessel_card/${OpenImo}`), { fetcher });
@@ -3194,8 +3156,6 @@
 
   <!-- GeoJson точки -->
   <script>
-
-    /* var Line; */
 
 
     function onSetStyleShip(feature) {
@@ -3539,8 +3499,6 @@
       }
 
 
-      /*  console.log(cordSpeed) */
-
       hotlineLayer = L.hotline(cordSpeed, {
         min: 0,
         max: 30,
@@ -3744,16 +3702,15 @@
       "PortInfo": {
         "ru": "Информация о порте",
         "en": "Port information",
-      },
-      /* "IModal-3": {
-        "ru": "Прибытие в порт & Отправка & Информация",
-        "en": "Port Arrivals & Departures & Info",
-      } */
+      }
 
 
     }
 
   </script>
+
+  <!-- Смена языка -->
+
   <script>
 
 
@@ -3901,8 +3858,8 @@
 
   </script>
 
+<!-- Перерисовка элементов кода -->
   <script>
-    var time = new Date().getTime();
 
     let database = []
 
@@ -3913,11 +3870,9 @@
     arrImo.push(database[0].IMO)
     arrLat.push(latlngvar)
 
-    $(document.body).bind("mousemove keypress", function (e) {
-      time = new Date().getTime();
-    });
 
-    /* Перерисовка маркеров */
+    /* Перерисовка элементов */
+
     setInterval(function () {
 
       let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${variables['username']}/${variables['pass']}`), { fetcher });
