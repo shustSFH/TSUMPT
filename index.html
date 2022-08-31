@@ -3407,9 +3407,9 @@
         var img = portC.Flag;
         var newImg = img.replace(re, '');
 
-        CardPortsHtml += `<td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${img}"> ${portC.SHIP}</td>
+        CardPortsHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${img}"> ${portC.SHIP}</td>
         <td>${portC.Arrival}</td>
-        <td>${portC.Departure}</td>`
+        <td>${portC.Departure}</td></tr>`
       }
 
 
