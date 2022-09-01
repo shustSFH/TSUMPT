@@ -2147,14 +2147,22 @@
         iconAnchor: [25 / 2, 30 / 2]
       }
     });
-    /* console.log(personData.length) */
+    
+    var LeafCircleIcon = L.Icon.extend({
+      options: {
+        iconSize: [19, 19],
+        iconAnchor: [19 / 2, 19 / 2]
+      }
+    });
 
     var Ship = new LeafIcon({
       iconUrl: 'КорабликТ2.png'
 
     })
 
-
+    var CircleShip = new LeafCircleIcon({
+      iconUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAADLUlEQVRIic3XTW8TRxgH8P/MjtfJJgHbC45qRyIciGiUoFjikgDGF6CySyRaFAkhEHwBKs7NDT5AEWekckBIe0M4EeRkXgoXpESpASk9ECRilJdNHEG83teHQ+sl5A0TvND/bUYz89NotDvPAN8prN6B/dqJmMTwMxilmYcfiLEOAGBEb4jjLQMvkCmNPD47stQQeEA71scZv8Ijy1k5Mc9Fuw7eYoCHLQCAV5VBlWbYsyrsUtzzyjvyjKThh0Ojf28LPnRnsI1b1nWhLp4L9/7Dxa66NgJ3cSeqxX2ePaf+Kcj8rTBUeF83nNaO7/VCXl5JveiW95TqAtfGmk6iMv5jUZjiZOHMvenPwmnt+F40m89aBiZiUmx5W2gtjh5B5WlK5+/DB9fifHXj0J3BNi/k5ZUGoAAg1DKU/nHVCTt3M1qmdVOYW9Z1JfWiWzQA/QRPvexxWPjahvCAdqyPx/Vz2z3TrSJ3zkDavXQhrWV718Gc8ytKzxTfeOrXp7lnihNzr34C92snYnzncrYR57pZhFoGj7zLHb6Vi/ow53RSTs4HtttaQolZiYXdnA8z4IiI60G7EO06iCjtwyCW5C1G4DBXqmBESR9mDInavzdQuMkE4yzhwwAocPUjRD5MhBJV5cBRzwiDCKWPMDDjVZq/AdwEYBXMCA/tWTVw2JndBRAKPgxb5J237W7QsF2KuyJkjvrw47MjS87ijlFHjwSGOnoETrktXzhVKPswADCOYbPY5QUFG8UujyQarrV9+NHpe5P2fPSmNZ1sOGq96oA7H73x5Jex4joYAASZlyrj3c/dhWjDUFePwJjYP6kYdHl1/7rSJ3P7p06v1Xym9I+rQi1/FeroEaw87VtwLeXgk19HX28J13An7NxVUi975M6ZbaHWqw4YE/snXZIH16KbwgCQ0TKtDpf/kKLLF5UDU1z6gvK2Uuzy3LnYDcWgy2Pnx1Y2GvfZgj6tZXuJuVd55F0ulJiTRPsCJMUAa/r3UqGqDHdFgTOnwi7FXafclgfD73+dvv98q3XrfsIcvpWLkmxnGdhRAAkQOv5b4Q2AEoEehIQ1UvtO/7f5AMnaRGz3HdljAAAAAElFTkSuQmCC'
+    })
 
     window.onload = () => {
       loadTable(),
@@ -2162,6 +2170,8 @@
         EventsWrite(),
         start_select_row()
     }
+
+    var markerOptions;
 
     window.onload(createM())
 
@@ -2178,15 +2188,29 @@
 
       let hash = window.location.hash;
 
+
       for (let person of personData) {
 
-        var markerOptions = {
+
+        if(person.SPEED !== 0){
+
+          markerOptions = {
           title: [person.SHIP],
           icon: Ship,
           rotationAngle: person.COURSE,
           id: person.IMO,
         }
 
+        } else {
+
+          markerOptions = {
+          title: [person.SHIP],
+          icon: CircleShip,
+          rotationAngle: person.COURSE,
+          id: person.IMO,
+        }
+
+        }
 
         if (hash == '#en') {
           marker = new L.marker([person.LAT, person.LON], markerOptions).bindPopup([person.SHIP] + `<br/>` + 'LAT:' + ' ' + [person.LON] + `<br/>` + 'LON:' + ' ' + [person.LAT] + `<br/>` + 'Date:' + ' ' + [person.PERIOD]).openPopup();
@@ -2232,18 +2256,33 @@
           }
         });
 
+        console.log(marker.options.icon.options)
 
-        markers[person.IMO].on('mouseover', function (e) {
+        if(marker.options.icon.options.iconUrl === 'КорабликТ2.png') {
+
+          markers[person.IMO].on('mouseover', function (e) {
           e.target.setIcon(ShipBorderIcon);
         })
         markers[person.IMO].on('mouseout', function (e) {
           e.target.setIcon(ShipIcon);
         })
 
+        } else {
+
+          markers[person.IMO].on('mouseover', function (e) {
+          e.target.setIcon(CircleBorderIcon);
+        })
+        markers[person.IMO].on('mouseout', function (e) {
+          e.target.setIcon(CircleShip);
+        })
+
+        }
+
 
 
         var ShipIcon = new LeafIcon({ iconUrl: "КорабликТ2.png" })
         var ShipBorderIcon = new BorderLeaf({ iconUrl: "РамкаК.png" });
+        var CircleBorderIcon = new LeafCircleIcon({ iconUrl: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAGYktHRAD/AP8A/6C9p5MAAAMlSURBVEhLvZfrS1NhHMe/Xmduc5r3u6SoXQiCoEyxaTYzXyyCXkgX6H+QKEikyOhF/gnVGy9BEBKVzls3L1gvogIhNMq06cxwc2e2ee35/XacM9205vHDGM/5HTgf9jzP+T3fBS0D4rPzuMXLm7unnVaYhrvRN/oWE9IkzNI411M0yUjSJKAo4ygM2SWIjtBx3S9BQZuLP1kGUfemHv0OE6JzHIjJ+g2VbgFhkUt8f342GC5bKKa/7oJ1WI1CbQWuF1djX3we398Qf2JpzoErHbV4Pv0QmfopRKW55Dv+kcZVGHkZi0rdBdwpq4U6PFK+44Uv8Yh1FFUtl7F4eAAJByS5+m9YPmoQ/r4ATWfuI0OXJldlNhKT9NSj00iqHIImZWu/0hf2HypYWvNgOvdsrfxvMU2vocmIcEMPtAFKVyD5QmcxTFUtq9MuxMHukRtaU5re7ZIS2lQX5g7142rnDbnixiOm3dtqa/7vNfVH4kEJT6cbMPjzs1zxEtf11CNL/0u+2n4yxbNvvb4rX8liag79kingzeQPmvJeexusThtfs7htqAsxojkoTXSOhPYvL3jM4v6xd4gWHUlpyNE3OsBjFpvtE9wGlYYcZruFxyy2OCyi9y5yQUnC1YvsIlgs+gh/Kw+Z3B4WJ6oTMe/goaLMSSHsItiWok2EayaUC0rimglBsjaBxyw+ln6Ez1OlsQoHBQaCxeU5pbANa7igJFbhOLmnhMcsprhSoCnnk0QpZsZUKIqqgC4iiq89O4riCiUHpfj+Ko4dK3jE+xPyURlznpPDdjPxQQtj7EXsjc+VK+LF8g4CjrlZGBqNCC3rQVS6k2uBQsu31KVHW9VjRIb5CAKUEJrPPsCkKXdb1pvW1dKaj0bjvVWpzBoxQdmIMhLFlUCmnaZ3uVuPdvGsdF2qXF3FZ7ylab/WdRNPphr4EN/q1EtmFb6JTWrcfQm3T9Ss+6WMr3jrDcUVSg50iNN5SkdbBAV6tRzoRat12sJEc4jg95RemZrj1ciPW91I69iKeAVKDh3iEO8V5+m4fe1fGGqDhaL7GbJLPe+pXzziHQf4A0ByQgP77N0XAAAAAElFTkSuQmCC" });
         var BorderIcon = new BorderLeaf({ iconUrl: "КорабликРамкаКра.png" });
 
 
@@ -2834,6 +2873,10 @@
 
       for (let card of cardData) {
 
+        if(card.Speed == 0){
+          console.log('Скорость 0')
+        }
+
         var re = /\r\n/gi;
         var img = card.FLAG;
         var newImg = img.replace(re, '');
@@ -2909,7 +2952,7 @@
         SecondHtmlRu = `<th class="shrift">Температура, °C: <br/><span class="spanTable">${card.Temp}</span></th><th class="shrift">Ветер, м/с: <br/><span class="spanTable">${card.Wind} ${card.WindSpeed}</span></th><th class="shrift">Волна, м: <br/><span class="spanTable">${card.Wave}</span></th>`
         imgShipHtmlRu = `<img class="ImageofShip" width="100%" height="100%" src = "data:image/png;base64,${card.Picture}">`
 
-        /* console.log(person.SHIP) */
+        
       }
 
       FlagName.innerHTML = FlagNameHtml;
