@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -1300,67 +1299,27 @@
                 <hr>
               </div>
 
-              <!-- </div>
+            </div>
             <div class="tabef">
               <input id="tabef-two" type="checkbox" name="tabsef">
               <label for="tabef-two" class="lng-PortInfo"></label>
               <div class="tabef-content">
-                <div class="select-btn">
-                  <span class="btn-text">Select Language</span>
-                  <span class="arrow-dwn">
-                      <i class="fa-solid fa-chevron-down"></i>
-                  </span>
+                <div style="max-height: 30vh; overflow: auto; ">
+                <table class="table" cellspacing="0" cellpadding="0">
+                  <thead class="head-ves" style="position: sticky; top: 0;">
+                    <tr>
+                      <th class="lng-PortTabEf">Port</th>
+                      <th class="lng-ArrivedTabEf">Arrived</th>
+                    </tr>
+                  </thead>
+                  <tbody id="PortCallCard">
+
+                  </tbody>
+                </table>
               </div>
-          
-              <ul class="list-items">
-          
-                <li class="item" onclick="toggle(this)">
-                  <span class="checkbox">
-                      <i class="fa-solid fa-check check-icon"></i>
-                  </span>
-                  <span class="item-text">Toggle All</span>
-              </li>
-          
-                  <li class="item" name="foo">
-                      <span class="checkbox">
-                          <i class="fa-solid fa-check check-icon"></i>
-                      </span>
-                      <span class="item-text">HTML & CSS</span>
-                  </li>
-                  <li class="item" name="foo">
-                      <span class="checkbox">
-                          <i class="fa-solid fa-check check-icon"></i>
-                      </span>
-                      <span class="item-text">Bootstrap</span>
-                  </li>
-                  <li class="item" name="foo">
-                      <span class="checkbox">
-                          <i class="fa-solid fa-check check-icon"></i>
-                      </span>
-                      <span class="item-text">JavaScript</span>
-                  </li>
-                  <li class="item" name="foo">
-                      <span class="checkbox">
-                          <i class="fa-solid fa-check check-icon"></i>
-                      </span>
-                      <span class="item-text">Node.Js</span>
-                  </li>
-                  <li class="item" name="foo">
-                      <span class="checkbox">
-                          <i class="fa-solid fa-check check-icon"></i>
-                      </span>
-                      <span class="item-text">React JS</span>
-                  </li>
-                  <li class="item" name="foo">
-                      <span class="checkbox">
-                          <i class="fa-solid fa-check check-icon"></i>
-                      </span>
-                      <span class="item-text">Mango DB</span>
-                  </li>
-              </ul>
               </div>
-            </div> -->
-              <!-- <div class="tabef">
+            </div>
+            <!-- <div class="tabef">
               <input id="tabef-three" type="checkbox" name="tabsef">
               <label for="tabef-three">Label Three</label>
               <div class="tabef-content">
@@ -1369,9 +1328,9 @@
                   adipisci eum? Saepe, itaque.</p>
               </div>
             </div> -->
-            </div>
-
           </div>
+
+        </div>
 
       </section>
     </div>
@@ -2147,7 +2106,7 @@
         iconAnchor: [25 / 2, 30 / 2]
       }
     });
-    
+
     var LeafCircleIcon = L.Icon.extend({
       options: {
         iconSize: [19, 19],
@@ -2192,23 +2151,23 @@
       for (let person of personData) {
 
 
-        if(person.SPEED !== 0){
+        if (person.SPEED !== 0) {
 
           markerOptions = {
-          title: [person.SHIP],
-          icon: Ship,
-          rotationAngle: person.COURSE,
-          id: person.IMO,
-        }
+            title: [person.SHIP],
+            icon: Ship,
+            rotationAngle: person.COURSE,
+            id: person.IMO,
+          }
 
         } else {
 
           markerOptions = {
-          title: [person.SHIP],
-          icon: CircleShip,
-          rotationAngle: person.COURSE,
-          id: person.IMO,
-        }
+            title: [person.SHIP],
+            icon: CircleShip,
+            rotationAngle: person.COURSE,
+            id: person.IMO,
+          }
 
         }
 
@@ -2258,23 +2217,23 @@
 
         console.log(marker.options.icon.options)
 
-        if(marker.options.icon.options.iconUrl === 'КорабликТ2.png') {
+        if (marker.options.icon.options.iconUrl === 'КорабликТ2.png') {
 
           markers[person.IMO].on('mouseover', function (e) {
-          e.target.setIcon(ShipBorderIcon);
-        })
-        markers[person.IMO].on('mouseout', function (e) {
-          e.target.setIcon(ShipIcon);
-        })
+            e.target.setIcon(ShipBorderIcon);
+          })
+          markers[person.IMO].on('mouseout', function (e) {
+            e.target.setIcon(ShipIcon);
+          })
 
         } else {
 
           markers[person.IMO].on('mouseover', function (e) {
-          e.target.setIcon(CircleBorderIcon);
-        })
-        markers[person.IMO].on('mouseout', function (e) {
-          e.target.setIcon(CircleShip);
-        })
+            e.target.setIcon(CircleBorderIcon);
+          })
+          markers[person.IMO].on('mouseout', function (e) {
+            e.target.setIcon(CircleShip);
+          })
 
         }
 
@@ -2668,7 +2627,7 @@
       if (checkV !== 'Non') {
         map.setView([database[0].LAT, database[0].LON], 16)
       }
-      
+
 
 
       let cardData = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/vessel_info/${database[0].IMO}`), { fetcher });
@@ -2690,6 +2649,7 @@
       const WindSpeed = document.getElementById('WindSpeed');
       const WaveTab = document.getElementById('WaveTab');
       const TemperatureTab = document.getElementById('TemperatureTab')
+      const PortCallCard = document.getElementById('PortCallCard')
 
       let HeadHtml = '';
       let FirstHtml = '';
@@ -2709,6 +2669,7 @@
       let WaveTabHtml = '';
       let WindSpeedHtml = '';
       let TemperatureTabHtml = '';
+      let PortCallCardHtml = '';
       let hash = window.location.hash;
 
       for (let card of cardData) {
@@ -2718,6 +2679,12 @@
         var newImg = img.replace(re, '');
         let SpeedCalc = card.WindSpeed * 1.94384
 
+        for (let cardPort of card.CallInPort) {
+          var imgPort = cardPort.FLAG
+          var newImgPort = imgPort.replace(re, '');
+         
+          PortCallCardHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${imgPort}"> ${cardPort.PORT}</td><td>${cardPort.ARRIVAL}</td></tr>`
+        }
 
         HeadHtml = `<th id="lef">Position</th><th></th><th id="rig">${card.Actuallity}</th>`;
         FirstHtml = `<th class="shrift">Course: <br/><span class="spanTable">${card.Course}</span></th><th class="shrift">Speed, kn: <br/><span class="spanTable">${card.Speed}</span></th><th class="shrift">Draught: <br/><span class="spanTable">${card.Draught}</span></th>`
@@ -2798,6 +2765,7 @@
       mWave.innerHTML = mWaveHtml;
       mSpeed.innerHTML = mSpeedHtml;
       mTemp.innerHTML = mTempHtml;
+      PortCallCard.innerHTML = PortCallCardHtml;
 
       if (hash == '#en') {
 
@@ -2849,9 +2817,11 @@
       const WindSpeed = document.getElementById('WindSpeed');
       const WaveTab = document.getElementById('WaveTab')
       const TemperatureTab = document.getElementById('TemperatureTab')
+      const PortCallCard = document.getElementById('PortCallCard')
 
 
       let HeadHtml = '';
+      let PortCallCardHtml = '';
       let FirstHtml = '';
       let SecondHtml = '';
       let mWaveHtml = '';
@@ -2873,14 +2843,18 @@
 
       for (let card of cardData) {
 
-        if(card.Speed == 0){
-          console.log('Скорость 0')
-        }
+        // console.log(card.CallInPort)
 
         var re = /\r\n/gi;
         var img = card.FLAG;
         var newImg = img.replace(re, '');
         let SpeedCalc = card.WindSpeed * 1.94384
+        for (let cardPort of card.CallInPort) {
+          var imgPort = cardPort.FLAG
+          var newImgPort = imgPort.replace(re, '');
+          console.log(cardPort)
+          PortCallCardHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${imgPort}"> ${cardPort.PORT}</td><td>${cardPort.ARRIVAL}</td></tr>`
+        }
 
         HeadHtml = `<th id="lef">Position</th><th></th><th id="rig">${card.Actuallity}</th>`;
         FirstHtml = `<th class="shrift">Course: <br/><span class="spanTable">${card.Course}</span></th><th class="shrift">Speed, kn: <br/><span class="spanTable">${card.Speed}</span></th><th class="shrift">Draught: <br/><span class="spanTable">${card.Draught}</span></th>`
@@ -2952,7 +2926,7 @@
         SecondHtmlRu = `<th class="shrift">Температура, °C: <br/><span class="spanTable">${card.Temp}</span></th><th class="shrift">Ветер, м/с: <br/><span class="spanTable">${card.Wind} ${card.WindSpeed}</span></th><th class="shrift">Волна, м: <br/><span class="spanTable">${card.Wave}</span></th>`
         imgShipHtmlRu = `<img class="ImageofShip" width="100%" height="100%" src = "data:image/png;base64,${card.Picture}">`
 
-        
+
       }
 
       FlagName.innerHTML = FlagNameHtml;
@@ -2962,6 +2936,7 @@
       mWave.innerHTML = mWaveHtml;
       mSpeed.innerHTML = mSpeedHtml;
       mTemp.innerHTML = mTempHtml;
+      PortCallCard.innerHTML = PortCallCardHtml;
 
       if (hash == '#en') {
 
@@ -3743,9 +3718,18 @@
         "en": "Departure",
       },
       "PortInfo": {
-        "ru": "Информация о порте",
-        "en": "Port information",
+        "ru": "Заходы в портах",
+        "en": "Calls at ports",
+      },
+      "ArrivedTabEf": {
+        "ru": "Прибытие",
+        "en": "Arrived",
+      },
+      "PortTabEf": {
+        "ru": "Порт",
+        "en": "Port",
       }
+
 
 
     }
@@ -3901,7 +3885,7 @@
 
   </script>
 
-<!-- Перерисовка элементов кода -->
+  <!-- Перерисовка элементов кода -->
   <script>
 
     let database = []
