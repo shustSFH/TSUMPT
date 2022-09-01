@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -1300,67 +1299,27 @@
                 <hr>
               </div>
 
-              <!-- </div>
+            </div>
             <div class="tabef">
               <input id="tabef-two" type="checkbox" name="tabsef">
               <label for="tabef-two" class="lng-PortInfo"></label>
               <div class="tabef-content">
-                <div class="select-btn">
-                  <span class="btn-text">Select Language</span>
-                  <span class="arrow-dwn">
-                      <i class="fa-solid fa-chevron-down"></i>
-                  </span>
+                <div style="max-height: 30vh; overflow: auto; ">
+                <table class="table" cellspacing="0" cellpadding="0">
+                  <thead class="head-ves" style="position: sticky; top: 0;">
+                    <tr>
+                      <th class="lng-PortTabEf">Port</th>
+                      <th class="lng-ArrivedTabEf">Arrived</th>
+                    </tr>
+                  </thead>
+                  <tbody id="PortCallCard">
+
+                  </tbody>
+                </table>
               </div>
-          
-              <ul class="list-items">
-          
-                <li class="item" onclick="toggle(this)">
-                  <span class="checkbox">
-                      <i class="fa-solid fa-check check-icon"></i>
-                  </span>
-                  <span class="item-text">Toggle All</span>
-              </li>
-          
-                  <li class="item" name="foo">
-                      <span class="checkbox">
-                          <i class="fa-solid fa-check check-icon"></i>
-                      </span>
-                      <span class="item-text">HTML & CSS</span>
-                  </li>
-                  <li class="item" name="foo">
-                      <span class="checkbox">
-                          <i class="fa-solid fa-check check-icon"></i>
-                      </span>
-                      <span class="item-text">Bootstrap</span>
-                  </li>
-                  <li class="item" name="foo">
-                      <span class="checkbox">
-                          <i class="fa-solid fa-check check-icon"></i>
-                      </span>
-                      <span class="item-text">JavaScript</span>
-                  </li>
-                  <li class="item" name="foo">
-                      <span class="checkbox">
-                          <i class="fa-solid fa-check check-icon"></i>
-                      </span>
-                      <span class="item-text">Node.Js</span>
-                  </li>
-                  <li class="item" name="foo">
-                      <span class="checkbox">
-                          <i class="fa-solid fa-check check-icon"></i>
-                      </span>
-                      <span class="item-text">React JS</span>
-                  </li>
-                  <li class="item" name="foo">
-                      <span class="checkbox">
-                          <i class="fa-solid fa-check check-icon"></i>
-                      </span>
-                      <span class="item-text">Mango DB</span>
-                  </li>
-              </ul>
               </div>
-            </div> -->
-              <!-- <div class="tabef">
+            </div>
+            <!-- <div class="tabef">
               <input id="tabef-three" type="checkbox" name="tabsef">
               <label for="tabef-three">Label Three</label>
               <div class="tabef-content">
@@ -1369,9 +1328,9 @@
                   adipisci eum? Saepe, itaque.</p>
               </div>
             </div> -->
-            </div>
-
           </div>
+
+        </div>
 
       </section>
     </div>
@@ -1687,9 +1646,6 @@
   <aside class="object js-object ">
     <button class="object__close js-object-close"></button>
     <div class="object__title js-object-title lng-eventsName" style="text-align: center;"></div>
-    <!-- <div class="object__img">
-      <img src="ShipBorder.png" alt="Озеро Мазарское" class="img-absolute js-object-img">
-    </div> -->
     <div class="object__descr" id="eHead"></div>
 
   </aside>
@@ -1849,9 +1805,6 @@
     }
 
     var overlaysRu = {
-      //"Кадастр": wmsLayer,
-      //"Слой рисунков":drawnItems,
-      //"Моя карта":mylayer,
       "Погода (ветер)": OWMlayerWind,
       "Погода (облачность)": OWMlayerClouds,
       "Погода (осадки)": OWMlayerPrecipitation,
@@ -1860,9 +1813,6 @@
     };
 
     var overlays = {
-      //"Кадастр": wmsLayer,
-      //"Слой рисунков":drawnItems,
-      //"Моя карта":mylayer,
       "Weather (wind)": OWMlayerWind,
       "Weather (cloud)": OWMlayerClouds,
       "Weather (precipitation)": OWMlayerPrecipitation,
@@ -2106,13 +2056,13 @@
 
 
     function Get(yourUrl) {
-      var Httpreq = new XMLHttpRequest(); // a new request
+      var Httpreq = new XMLHttpRequest();
       Httpreq.open("GET", yourUrl, false);
 
       Httpreq.onload = function () {
-        if (Httpreq.status != 200) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
-          alert(`Ошибка ${Httpreq.status}: ${Httpreq.statusText}`); // Например, 404: Not Found
-        } else { // если всё прошло гладко, выводим результат
+        if (Httpreq.status != 200) {
+          alert(`Ошибка ${Httpreq.status}: ${Httpreq.statusText}`);
+        } else {
 
         }
       };
@@ -2156,14 +2106,22 @@
         iconAnchor: [25 / 2, 30 / 2]
       }
     });
-    /* console.log(personData.length) */
+
+    var LeafCircleIcon = L.Icon.extend({
+      options: {
+        iconSize: [19, 19],
+        iconAnchor: [19 / 2, 19 / 2]
+      }
+    });
 
     var Ship = new LeafIcon({
       iconUrl: 'КорабликТ2.png'
 
     })
 
-
+    var CircleShip = new LeafCircleIcon({
+      iconUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAADLUlEQVRIic3XTW8TRxgH8P/MjtfJJgHbC45qRyIciGiUoFjikgDGF6CySyRaFAkhEHwBKs7NDT5AEWekckBIe0M4EeRkXgoXpESpASk9ECRilJdNHEG83teHQ+sl5A0TvND/bUYz89NotDvPAN8prN6B/dqJmMTwMxilmYcfiLEOAGBEb4jjLQMvkCmNPD47stQQeEA71scZv8Ijy1k5Mc9Fuw7eYoCHLQCAV5VBlWbYsyrsUtzzyjvyjKThh0Ojf28LPnRnsI1b1nWhLp4L9/7Dxa66NgJ3cSeqxX2ePaf+Kcj8rTBUeF83nNaO7/VCXl5JveiW95TqAtfGmk6iMv5jUZjiZOHMvenPwmnt+F40m89aBiZiUmx5W2gtjh5B5WlK5+/DB9fifHXj0J3BNi/k5ZUGoAAg1DKU/nHVCTt3M1qmdVOYW9Z1JfWiWzQA/QRPvexxWPjahvCAdqyPx/Vz2z3TrSJ3zkDavXQhrWV718Gc8ytKzxTfeOrXp7lnihNzr34C92snYnzncrYR57pZhFoGj7zLHb6Vi/ow53RSTs4HtttaQolZiYXdnA8z4IiI60G7EO06iCjtwyCW5C1G4DBXqmBESR9mDInavzdQuMkE4yzhwwAocPUjRD5MhBJV5cBRzwiDCKWPMDDjVZq/AdwEYBXMCA/tWTVw2JndBRAKPgxb5J237W7QsF2KuyJkjvrw47MjS87ijlFHjwSGOnoETrktXzhVKPswADCOYbPY5QUFG8UujyQarrV9+NHpe5P2fPSmNZ1sOGq96oA7H73x5Jex4joYAASZlyrj3c/dhWjDUFePwJjYP6kYdHl1/7rSJ3P7p06v1Xym9I+rQi1/FeroEaw87VtwLeXgk19HX28J13An7NxVUi975M6ZbaHWqw4YE/snXZIH16KbwgCQ0TKtDpf/kKLLF5UDU1z6gvK2Uuzy3LnYDcWgy2Pnx1Y2GvfZgj6tZXuJuVd55F0ulJiTRPsCJMUAa/r3UqGqDHdFgTOnwi7FXafclgfD73+dvv98q3XrfsIcvpWLkmxnGdhRAAkQOv5b4Q2AEoEehIQ1UvtO/7f5AMnaRGz3HdljAAAAAElFTkSuQmCC'
+    })
 
     window.onload = () => {
       loadTable(),
@@ -2171,6 +2129,8 @@
         EventsWrite(),
         start_select_row()
     }
+
+    var markerOptions;
 
     window.onload(createM())
 
@@ -2187,15 +2147,29 @@
 
       let hash = window.location.hash;
 
+
       for (let person of personData) {
 
-        var markerOptions = {
-          title: [person.SHIP],
-          icon: Ship,
-          rotationAngle: person.COURSE,
-          id: person.IMO,
-        }
 
+        if (person.SPEED !== 0) {
+
+          markerOptions = {
+            title: [person.SHIP],
+            icon: Ship,
+            rotationAngle: person.COURSE,
+            id: person.IMO,
+          }
+
+        } else {
+
+          markerOptions = {
+            title: [person.SHIP],
+            icon: CircleShip,
+            rotationAngle: person.COURSE,
+            id: person.IMO,
+          }
+
+        }
 
         if (hash == '#en') {
           marker = new L.marker([person.LAT, person.LON], markerOptions).bindPopup([person.SHIP] + `<br/>` + 'LAT:' + ' ' + [person.LON] + `<br/>` + 'LON:' + ' ' + [person.LAT] + `<br/>` + 'Date:' + ' ' + [person.PERIOD]).openPopup();
@@ -2241,22 +2215,34 @@
           }
         });
 
+        console.log(marker.options.icon.options)
 
-        markers[person.IMO].on('mouseover', function (e) {
-          e.target.setIcon(ShipBorderIcon);
-        })
-        markers[person.IMO].on('mouseout', function (e) {
-          e.target.setIcon(ShipIcon);
-        })
+        if (marker.options.icon.options.iconUrl === 'КорабликТ2.png') {
+
+          markers[person.IMO].on('mouseover', function (e) {
+            e.target.setIcon(ShipBorderIcon);
+          })
+          markers[person.IMO].on('mouseout', function (e) {
+            e.target.setIcon(ShipIcon);
+          })
+
+        } else {
+
+          markers[person.IMO].on('mouseover', function (e) {
+            e.target.setIcon(CircleBorderIcon);
+          })
+          markers[person.IMO].on('mouseout', function (e) {
+            e.target.setIcon(CircleShip);
+          })
+
+        }
 
 
 
         var ShipIcon = new LeafIcon({ iconUrl: "КорабликТ2.png" })
         var ShipBorderIcon = new BorderLeaf({ iconUrl: "РамкаК.png" });
+        var CircleBorderIcon = new LeafCircleIcon({ iconUrl: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAGYktHRAD/AP8A/6C9p5MAAAMlSURBVEhLvZfrS1NhHMe/Xmduc5r3u6SoXQiCoEyxaTYzXyyCXkgX6H+QKEikyOhF/gnVGy9BEBKVzls3L1gvogIhNMq06cxwc2e2ee35/XacM9205vHDGM/5HTgf9jzP+T3fBS0D4rPzuMXLm7unnVaYhrvRN/oWE9IkzNI411M0yUjSJKAo4ygM2SWIjtBx3S9BQZuLP1kGUfemHv0OE6JzHIjJ+g2VbgFhkUt8f342GC5bKKa/7oJ1WI1CbQWuF1djX3we398Qf2JpzoErHbV4Pv0QmfopRKW55Dv+kcZVGHkZi0rdBdwpq4U6PFK+44Uv8Yh1FFUtl7F4eAAJByS5+m9YPmoQ/r4ATWfuI0OXJldlNhKT9NSj00iqHIImZWu/0hf2HypYWvNgOvdsrfxvMU2vocmIcEMPtAFKVyD5QmcxTFUtq9MuxMHukRtaU5re7ZIS2lQX5g7142rnDbnixiOm3dtqa/7vNfVH4kEJT6cbMPjzs1zxEtf11CNL/0u+2n4yxbNvvb4rX8liag79kingzeQPmvJeexusThtfs7htqAsxojkoTXSOhPYvL3jM4v6xd4gWHUlpyNE3OsBjFpvtE9wGlYYcZruFxyy2OCyi9y5yQUnC1YvsIlgs+gh/Kw+Z3B4WJ6oTMe/goaLMSSHsItiWok2EayaUC0rimglBsjaBxyw+ln6Ez1OlsQoHBQaCxeU5pbANa7igJFbhOLmnhMcsprhSoCnnk0QpZsZUKIqqgC4iiq89O4riCiUHpfj+Ko4dK3jE+xPyURlznpPDdjPxQQtj7EXsjc+VK+LF8g4CjrlZGBqNCC3rQVS6k2uBQsu31KVHW9VjRIb5CAKUEJrPPsCkKXdb1pvW1dKaj0bjvVWpzBoxQdmIMhLFlUCmnaZ3uVuPdvGsdF2qXF3FZ7ylab/WdRNPphr4EN/q1EtmFb6JTWrcfQm3T9Ss+6WMr3jrDcUVSg50iNN5SkdbBAV6tRzoRat12sJEc4jg95RemZrj1ciPW91I69iKeAVKDh3iEO8V5+m4fe1fGGqDhaL7GbJLPe+pXzziHQf4A0ByQgP77N0XAAAAAElFTkSuQmCC" });
         var BorderIcon = new BorderLeaf({ iconUrl: "КорабликРамкаКра.png" });
-
-
-        /* marker.on('click', () => console.log(person.SHIP)) */
 
 
       }
@@ -2304,7 +2290,6 @@
           markers[Imo].on('popupopen', function (evt) {
             markers[Imo].setIcon(ShipBorderIcon);
           });
-          /*  console.log(markerdata[i]) */
 
         };
         i++
@@ -2384,28 +2369,18 @@
       switching = true;
 
       while (switching) {
-        //start by saying: no switching is done:
         switching = false;
         rows = table.rows;
-        /*Loop through all table rows (except the
-        first, which contains table headers):*/
         for (i = 1; i < (rows.length - 1); i++) {
-          //start by saying there should be no switching:
           shouldSwitch = false;
-          /*Get the two elements you want to compare,
-          one from current row and one from the next:*/
           x = rows[i].getElementsByTagName("td")[0];
           y = rows[i + 1].getElementsByTagName("td")[0];
-          //check if the two rows should switch place:
           if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-            //if so, mark as a switch and break the loop:
             shouldSwitch = true;
             break;
           }
         }
         if (shouldSwitch) {
-          /*If a switch has been marked, make the switch
-          and mark that a switch has been done:*/
           rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
           switching = true;
         }
@@ -2420,7 +2395,6 @@
     function tableSearch() {
       let input, filter, table, tr, td, txtValue;
 
-      //Intialising Variables
       input = document.getElementById("myInput");
       filter = input.value.toUpperCase();
       table = document.getElementById("TableFlot");
@@ -2479,19 +2453,6 @@
 
       } while (e < tr.length)
 
-
-
-      /*   do {
-          if (TableFlot.rows[e] != null) { TableFlot.rows[e].className = '' };
-          console.log(TableFlot.rows[e])
-          
-          if (TableFlot.rows[e].cells[0].innerHTML === (mShip + `<div style="display: none;">${IMO}</div>`)) {
-            console.log((mShip + `<div style="display: none;">${IMO}</div>`))
-            TableFlot.rows[e].className = 'selected';
-            TableFlot.rows[e].scrollIntoView({ block: "center", behavior: "smooth" });
-          };
-          e++
-        } while (e < TableFlot.rows.length) */
     }
 
 
@@ -2503,7 +2464,7 @@
 
   </script>
 
-  <!-- Координаты -->
+  <!-- Координаты приближения/отдаления -->
   <script>
 
     L.control.scale().addTo(map);
@@ -2588,11 +2549,13 @@
 
   </script>
 
-  <!-- Время -->
+
   <script>
     window.onload = () => {
       TimeDisp(), startLoadTable(), startloadCardTable(), startDrawGeoOjectFromgjsonLineHistoryMove(), startDrawGeoJsonGradient(), ObjectAs()
     }
+
+    // Время 
 
     function TimeDisp() {
       var
@@ -2654,7 +2617,6 @@
         var personData = DatePers.Vessels
       }
 
-      /* Функция для определения первого IMO судна в таблице */
       let database = [];
       let openCD = [];
 
@@ -2665,7 +2627,7 @@
       if (checkV !== 'Non') {
         map.setView([database[0].LAT, database[0].LON], 16)
       }
-      /* Функция для определения первого IMO судна в таблице */
+
 
 
       let cardData = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/vessel_info/${database[0].IMO}`), { fetcher });
@@ -2687,6 +2649,7 @@
       const WindSpeed = document.getElementById('WindSpeed');
       const WaveTab = document.getElementById('WaveTab');
       const TemperatureTab = document.getElementById('TemperatureTab')
+      const PortCallCard = document.getElementById('PortCallCard')
 
       let HeadHtml = '';
       let FirstHtml = '';
@@ -2706,6 +2669,7 @@
       let WaveTabHtml = '';
       let WindSpeedHtml = '';
       let TemperatureTabHtml = '';
+      let PortCallCardHtml = '';
       let hash = window.location.hash;
 
       for (let card of cardData) {
@@ -2715,6 +2679,12 @@
         var newImg = img.replace(re, '');
         let SpeedCalc = card.WindSpeed * 1.94384
 
+        for (let cardPort of card.CallInPort) {
+          var imgPort = cardPort.FLAG
+          var newImgPort = imgPort.replace(re, '');
+         
+          PortCallCardHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${imgPort}"> ${cardPort.PORT}</td><td>${cardPort.ARRIVAL}</td></tr>`
+        }
 
         HeadHtml = `<th id="lef">Position</th><th></th><th id="rig">${card.Actuallity}</th>`;
         FirstHtml = `<th class="shrift">Course: <br/><span class="spanTable">${card.Course}</span></th><th class="shrift">Speed, kn: <br/><span class="spanTable">${card.Speed}</span></th><th class="shrift">Draught: <br/><span class="spanTable">${card.Draught}</span></th>`
@@ -2726,11 +2696,9 @@
         <span>${openCD[0].typeOfVessel}</span>
         </span>
         <hr style="position: relative; top: -4vh;">`
-        if (card.Wave !== null && hash == '#ru') { mWaveHtml = `${card.Wave} м` } else { mWaveHtml = `N/A` }
-        if (card.WindSpeed !== null && hash == '#ru') { mSpeedHtml = `${card.WindSpeed} м/с` } else { mSpeedHtml = `N/A` }
 
-        if (card.Wave !== null && hash == '#en') { mWaveHtml = `${card.Wave} m` } else { mWaveHtml = `N/A` }
-        if (card.WindSpeed !== null && hash == '#en') { mSpeedHtml = `${card.WindSpeed} m/s` } else { mSpeedHtml = `N/A` }
+        if (card.Wave !== null && hash == '#ru') { mWaveHtml = `${card.Wave} м` } else if (card.Wave !== null && hash == '#en') { mWaveHtml = `${card.Wave} m` } else { mWaveHtml = `N/A` }
+        if (card.WindSpeed !== null && hash == '#ru') { mSpeedHtml = `${card.WindSpeed} м/с` } else if (card.WindSpeed !== null && hash == '#en') { mSpeedHtml = `${card.WindSpeed} m/s` } else { mSpeedHtml = `N/A` }
 
         if (card.Temp !== null) { mTempHtml = `${card.Temp} °C` } else { mTempHtml = `N/A` }
 
@@ -2786,9 +2754,6 @@
         FirstHtmlRu = `<th class="shrift">Курс: <br/><span class="spanTable">${card.Course}</span></th><th class="shrift">Скорость, кн: <br/><span class="spanTable">${card.Speed}</span></th><th class="shrift">Осадка: <br/><span class="spanTable">${card.Draught}</span></th>`
         SecondHtmlRu = `<th class="shrift">Температура, °C: <br/><span class="spanTable">${card.Temp}</span></th><th class="shrift">Ветер, м/с: <br/><span class="spanTable">${card.Wind} ${card.WindSpeed}</span></th><th class="shrift">Волна, м: <br/><span class="spanTable">${card.Wave}</span></th>`
         imgShipHtmlRu = `<img class="ImageofShip" width="100%" height="100%" src = "data:image/png;base64,${card.Picture}">`
-        if (card.Wave !== null) { mWaveHtmlRu = `${card.Wave} м` } else { mWaveHtmlRu = `N/A` }
-        if (card.WindSpeed !== null) { mSpeedHtmlRu = `${card.WindSpeed} м/с` } else { mSpeedHtmlRu = `N/A` }
-        if (card.Temp !== null) { mTempHtmlRu = `${card.Temp} °C` } else { mTempHtmlRu = `N/A` }
 
         /* console.log(person.SHIP) */
       }
@@ -2797,16 +2762,16 @@
       TemperatureTab.innerHTML = TemperatureTabHtml;
       WindSpeed.innerHTML = WindSpeedHtml;
       WaveTab.innerHTML = WaveTabHtml;
+      mWave.innerHTML = mWaveHtml;
+      mSpeed.innerHTML = mSpeedHtml;
+      mTemp.innerHTML = mTempHtml;
+      PortCallCard.innerHTML = PortCallCardHtml;
 
       if (hash == '#en') {
 
         Head.innerHTML = HeadHtml;
         First.innerHTML = FirstHtml;
-        //Second.innerHTML = SecondHtml;
         ImgShip.innerHTML = imgShipHtml;
-        mWave.innerHTML = mWaveHtml;
-        mSpeed.innerHTML = mSpeedHtml;
-        mTemp.innerHTML = mTempHtml;
 
 
       }
@@ -2814,11 +2779,7 @@
 
         Head.innerHTML = HeadHtmlRu;
         First.innerHTML = FirstHtmlRu;
-        //Second.innerHTML = SecondHtmlRu;
         ImgShip.innerHTML = imgShipHtmlRu;
-        mWave.innerHTML = mWaveHtmlRu;
-        mSpeed.innerHTML = mSpeedHtmlRu;
-        mTemp.innerHTML = mTempHtmlRu;
 
       }
 
@@ -2856,9 +2817,11 @@
       const WindSpeed = document.getElementById('WindSpeed');
       const WaveTab = document.getElementById('WaveTab')
       const TemperatureTab = document.getElementById('TemperatureTab')
+      const PortCallCard = document.getElementById('PortCallCard')
 
 
       let HeadHtml = '';
+      let PortCallCardHtml = '';
       let FirstHtml = '';
       let SecondHtml = '';
       let mWaveHtml = '';
@@ -2880,10 +2843,18 @@
 
       for (let card of cardData) {
 
+        // console.log(card.CallInPort)
+
         var re = /\r\n/gi;
         var img = card.FLAG;
         var newImg = img.replace(re, '');
         let SpeedCalc = card.WindSpeed * 1.94384
+        for (let cardPort of card.CallInPort) {
+          var imgPort = cardPort.FLAG
+          var newImgPort = imgPort.replace(re, '');
+          console.log(cardPort)
+          PortCallCardHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${imgPort}"> ${cardPort.PORT}</td><td>${cardPort.ARRIVAL}</td></tr>`
+        }
 
         HeadHtml = `<th id="lef">Position</th><th></th><th id="rig">${card.Actuallity}</th>`;
         FirstHtml = `<th class="shrift">Course: <br/><span class="spanTable">${card.Course}</span></th><th class="shrift">Speed, kn: <br/><span class="spanTable">${card.Speed}</span></th><th class="shrift">Draught: <br/><span class="spanTable">${card.Draught}</span></th>`
@@ -2895,11 +2866,10 @@
         <span>${openCD[0].typeOfVessel}</span>
         </span>
         <hr style="position: relative; top: -4vh;">`
-        if (card.Wave !== null && hash == '#ru') { mWaveHtml = `${card.Wave} м` } else { mWaveHtml = `N/A` }
-        if (card.WindSpeed !== null && hash == '#ru') { mSpeedHtml = `${card.WindSpeed} м/с` } else { mSpeedHtml = `N/A` }
 
-        if (card.Wave !== null && hash == '#en') { mWaveHtml = `${card.Wave} m` } else { mWaveHtml = `N/A` }
-        if (card.WindSpeed !== null && hash == '#en') { mSpeedHtml = `${card.WindSpeed} m/s` } else { mSpeedHtml = `N/A` }
+
+        if (card.Wave !== null && hash == '#ru') { mWaveHtml = `${card.Wave} м` } else if (card.Wave !== null && hash == '#en') { mWaveHtml = `${card.Wave} m` } else { mWaveHtml = `N/A` }
+        if (card.WindSpeed !== null && hash == '#ru') { mSpeedHtml = `${card.WindSpeed} м/с` } else if (card.WindSpeed !== null && hash == '#en') { mSpeedHtml = `${card.WindSpeed} m/s` } else { mSpeedHtml = `N/A` }
 
         if (card.Temp !== null) { mTempHtml = `${card.Temp} °C` } else { mTempHtml = `N/A` }
 
@@ -2955,38 +2925,31 @@
         FirstHtmlRu = `<th class="shrift">Курс: <br/><span class="spanTable">${card.Course}</span></th><th class="shrift">Скорость, кн: <br/><span class="spanTable">${card.Speed}</span></th><th class="shrift">Осадка: <br/><span class="spanTable">${card.Draught}</span></th>`
         SecondHtmlRu = `<th class="shrift">Температура, °C: <br/><span class="spanTable">${card.Temp}</span></th><th class="shrift">Ветер, м/с: <br/><span class="spanTable">${card.Wind} ${card.WindSpeed}</span></th><th class="shrift">Волна, м: <br/><span class="spanTable">${card.Wave}</span></th>`
         imgShipHtmlRu = `<img class="ImageofShip" width="100%" height="100%" src = "data:image/png;base64,${card.Picture}">`
-        if (card.Wave !== null) { mWaveHtmlRu = `${card.Wave} м` } else { mWaveHtmlRu = `N/A` }
-        if (card.WindSpeed !== null) { mSpeedHtmlRu = `${card.WindSpeed} м/с` } else { mSpeedHtmlRu = `N/A` }
-        if (card.Temp !== null) { mTempHtmlRu = `${card.Temp} °C` } else { mSpeedHtmlRu = `N/A` }
 
-        /* console.log(person.SHIP) */
+
       }
 
       FlagName.innerHTML = FlagNameHtml;
       TemperatureTab.innerHTML = TemperatureTabHtml;
       WindSpeed.innerHTML = WindSpeedHtml;
       WaveTab.innerHTML = WaveTabHtml;
+      mWave.innerHTML = mWaveHtml;
+      mSpeed.innerHTML = mSpeedHtml;
+      mTemp.innerHTML = mTempHtml;
+      PortCallCard.innerHTML = PortCallCardHtml;
 
       if (hash == '#en') {
 
         Head.innerHTML = HeadHtml;
         First.innerHTML = FirstHtml;
-        //Second.innerHTML = SecondHtml;
         ImgShip.innerHTML = imgShipHtml;
-        mWave.innerHTML = mWaveHtml;
-        mSpeed.innerHTML = mSpeedHtml;
-        mTemp.innerHTML = mTempHtml;
 
       }
       if (hash == '#ru') {
 
         Head.innerHTML = HeadHtmlRu;
         First.innerHTML = FirstHtmlRu;
-        //Second.innerHTML = SecondHtmlRu;
         ImgShip.innerHTML = imgShipHtmlRu;
-        mWave.innerHTML = mWaveHtmlRu;
-        mSpeed.innerHTML = mSpeedHtmlRu;
-        mTemp.innerHTML = mTempHtmlRu;
       }
 
 
@@ -2997,8 +2960,6 @@
 
   <!-- Открывающаяся карточка судна -->
   <script>
-
-    /* window.onload(loadCardTable(9338230)) */
 
     function loadCardTable(OpenImo) {
 
@@ -3214,8 +3175,6 @@
   <!-- GeoJson точки -->
   <script>
 
-    /* var Line; */
-
 
     function onSetStyleShip(feature) {
 
@@ -3344,6 +3303,7 @@
       const PortFlagSpan = document.getElementById('PortFlagSpan')
       let hash = window.location.hash;
 
+      console.log(CODE)
 
       let CardPortsHtml = '';
       let ModalContHtml = '';
@@ -3375,11 +3335,9 @@
         }
 
 
-        if (portC.Wave !== null && hash == '#ru') { PWaveHtml = `${portC.Wave} м` } else { PWaveHtml = `N/A` }
-        if (portC.WindSpeed !== null && hash == '#ru') { PWindHtml = `${portC.WindSpeed} м/с` } else { PWindHtml = `N/A` }
+        if (portC.Wave !== null && hash == '#ru') { PWaveHtml = `${portC.Wave} м` } else if (portC.Wave !== null && hash == '#en') { PWaveHtml = `${portC.Wave} m` } else { PWaveHtml = `N/A` }
+        if (portC.WindSpeed !== null && hash == '#ru') { PWindHtml = `${portC.WindSpeed} м/с` } else if (portC.WindSpeed !== null && hash == '#en') { PWindHtml = `${portC.WindSpeed} m/s` } else { PWindHtml = `N/A` }
 
-        if (portC.Wave !== null && hash == '#en') { PWaveHtml = `${portC.Wave} m` } else { PWaveHtml = `N/A` }
-        if (portC.WindSpeed !== null && hash == '#en') { PWindHtml = `${portC.WindSpeed} m/s` } else { PWindHtml = `N/A` }
 
         if (portC.Temp !== null) { PTempHtml = `${portC.Temp} °C` } else { PTempHtml = `N/A` }
 
@@ -3467,9 +3425,9 @@
         var img = portC.Flag;
         var newImg = img.replace(re, '');
 
-        CardPortsHtml += `<td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${img}"> ${portC.SHIP}</td>
+        CardPortsHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${img}"> ${portC.SHIP}</td>
         <td>${portC.Arrival}</td>
-        <td>${portC.Departure}</td>`
+        <td>${portC.Departure}</td></tr>`
       }
 
 
@@ -3558,8 +3516,6 @@
 
       }
 
-
-      /*  console.log(cordSpeed) */
 
       hotlineLayer = L.hotline(cordSpeed, {
         min: 0,
@@ -3762,18 +3718,26 @@
         "en": "Departure",
       },
       "PortInfo": {
-        "ru": "Информация о порте",
-        "en": "Port information",
+        "ru": "Заходы в портах",
+        "en": "Calls at ports",
       },
-      /* "IModal-3": {
-        "ru": "Прибытие в порт & Отправка & Информация",
-        "en": "Port Arrivals & Departures & Info",
-      } */
+      "ArrivedTabEf": {
+        "ru": "Прибытие",
+        "en": "Arrived",
+      },
+      "PortTabEf": {
+        "ru": "Порт",
+        "en": "Port",
+      }
+
 
 
     }
 
   </script>
+
+  <!-- Смена языка -->
+
   <script>
 
 
@@ -3921,8 +3885,8 @@
 
   </script>
 
+  <!-- Перерисовка элементов кода -->
   <script>
-    var time = new Date().getTime();
 
     let database = []
 
@@ -3933,11 +3897,9 @@
     arrImo.push(database[0].IMO)
     arrLat.push(latlngvar)
 
-    $(document.body).bind("mousemove keypress", function (e) {
-      time = new Date().getTime();
-    });
 
-    /* Перерисовка маркеров */
+    /* Перерисовка элементов */
+
     setInterval(function () {
 
       let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${variables['username']}/${variables['pass']}`), { fetcher });
@@ -3955,12 +3917,12 @@
       let numByImo = personData.findIndex(i => i.IMO == `${arrMImo}`)
 
       markerArr.splice(0, markerArr.length);
-      loadTable(), TimeDisp(), EventsWrite(), createM(), startLoadTable('Non'), loadBottomTable(arrMImo), startDrawGeoJsonGradient(), DrawGeoJsonGradient(arrMImo, personData[numByImo].LAT, personData[numByImo].LON)
+      loadTable(), TimeDisp(), EventsWrite(), createM(), startLoadTable('Non'), loadBottomTable(arrMImo), DrawGeoOjectFromgjsonLineHistoryMove(arrMImo), startDrawGeoJsonGradient(), DrawGeoJsonGradient(arrMImo, personData[numByImo].LAT, personData[numByImo].LON)
       map.setView([personData[numByImo].LAT, personData[numByImo].LON], 16)
       arrImo.splice(0, arrImo.length - 1)
       arrLat.splice(0, arrLat.length - 1)
 
-      
+
 
     }, 300000);
 
