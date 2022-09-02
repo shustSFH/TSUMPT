@@ -1299,7 +1299,6 @@
                     </div>
                   </div>
                 </div>
-                <hr>
               </div>
 
             </div>
@@ -1322,9 +1321,30 @@
               </div>
               </div>
             </div>
-            <!-- <div class="tabef">
+            <div class="tabef">
               <input id="tabef-three" type="checkbox" name="tabsef">
-              <label for="tabef-three">Label Three</label>
+              <label for="tabef-three" class="lng-ShipInformation"></label>
+              <div class="tabef-content">
+                <div>
+
+                  <table class="table" cellspacing="0" cellpadding="0" style="margin-top: -20px;">
+                    <thead class="head-ves2">
+                      <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="ShipInfor">
+                    </tbody>
+                  </table>
+                  <hr>
+                </div>
+              </div>
+            </div> 
+            <!-- <div class="tabef">
+              <input id="tabef-four" type="checkbox" name="tabsef">
+              <label for="tabef-four">Label Three</label>
               <div class="tabef-content">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis
                   nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum
@@ -2656,10 +2676,13 @@
       const WaveTab = document.getElementById('WaveTab');
       const TemperatureTab = document.getElementById('TemperatureTab')
       const PortCallCard = document.getElementById('PortCallCard')
+      const ShipInfor = document.getElementById('ShipInfor')
 
       let HeadHtml = '';
       let FirstHtml = '';
       let SecondHtml = '';
+      let ShipInforHtml = '';
+      let ShipInforHtmlRu = '';
       let mWaveHtml = '';
       let mSpeedHtml = '';
       let mTempHtml = '';
@@ -2690,6 +2713,14 @@
           var newImgPort = imgPort.replace(re, '');
          
           PortCallCardHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${imgPort}"> ${cardPort.PORT}</td><td>${cardPort.ARRIVAL}</td></tr>`
+        }
+
+        for(let cardVes of card.VesselData){
+          ShipInforHtml = `<tr><th class="shrift">Length(m): <br/><span class="spanTable">${cardVes.LENGTH}</span></th><th class="shrift">Year of built: <br/><span class="spanTable">${cardVes.YEAR_BUILT}</span></th><th class="shrift">IMO: <br/><span class="spanTable">${cardVes.IMO}</span></th></tr>
+          <tr><th class="shrift">Width(m): <br/><span class="spanTable">${cardVes.WIDTH}</span></th><th class="shrift">DWT: <br/><span class="spanTable">${cardVes.DWT}</span></th><th class="shrift">MMSI: <br/><span class="spanTable">${cardVes.MMSI}</span></th></tr>`
+          ShipInforHtmlRu = `<tr><th class="shrift">Длина(м): <br/><span class="spanTable">${cardVes.LENGTH}</span></th><th class="shrift">Год постройки: <br/><span class="spanTable">${cardVes.YEAR_BUILT}</span></th><th class="shrift">IMO: <br/><span class="spanTable">${cardVes.IMO}</span></th></tr>
+          <tr><th class="shrift">Ширина(м): <br/><span class="spanTable">${cardVes.WIDTH}</span></th><th class="shrift">Дедвейт: <br/><span class="spanTable">${cardVes.DWT}</span></th><th class="shrift">MMSI: <br/><span class="spanTable">${cardVes.MMSI}</span></th></tr>`
+          
         }
 
         HeadHtml = `<th id="lef">Position</th><th></th><th id="rig">${card.Actuallity}</th>`;
@@ -2778,6 +2809,7 @@
         Head.innerHTML = HeadHtml;
         First.innerHTML = FirstHtml;
         ImgShip.innerHTML = imgShipHtml;
+        ShipInfor.innerHTML = ShipInforHtml;
 
 
       }
@@ -2786,6 +2818,7 @@
         Head.innerHTML = HeadHtmlRu;
         First.innerHTML = FirstHtmlRu;
         ImgShip.innerHTML = imgShipHtmlRu;
+        ShipInfor.innerHTML = ShipInforHtmlRu;
 
       }
 
@@ -2824,10 +2857,13 @@
       const WaveTab = document.getElementById('WaveTab')
       const TemperatureTab = document.getElementById('TemperatureTab')
       const PortCallCard = document.getElementById('PortCallCard')
+      const ShipInfor = document.getElementById('ShipInfor')
 
 
       let HeadHtml = '';
       let PortCallCardHtml = '';
+      let ShipInforHtml = '';
+      let ShipInforHtmlRu = '';
       let FirstHtml = '';
       let SecondHtml = '';
       let mWaveHtml = '';
@@ -2860,6 +2896,14 @@
           var newImgPort = imgPort.replace(re, '');
           console.log(cardPort)
           PortCallCardHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${imgPort}"> ${cardPort.PORT}</td><td>${cardPort.ARRIVAL}</td></tr>`
+        }
+
+        for(let cardVes of card.VesselData){
+          ShipInforHtml = `<tr><th class="shrift">Length(m): <br/><span class="spanTable">${cardVes.LENGTH}</span></th><th class="shrift">Year of built: <br/><span class="spanTable">${cardVes.YEAR_BUILT}</span></th><th class="shrift">IMO: <br/><span class="spanTable">${cardVes.IMO}</span></th></tr>
+          <tr><th class="shrift">Width(m): <br/><span class="spanTable">${cardVes.WIDTH}</span></th><th class="shrift">DWT: <br/><span class="spanTable">${cardVes.DWT}</span></th><th class="shrift">MMSI: <br/><span class="spanTable">${cardVes.MMSI}</span></th></tr>`
+          ShipInforHtmlRu = `<tr><th class="shrift">Длина(м): <br/><span class="spanTable">${cardVes.LENGTH}</span></th><th class="shrift">Год постройки: <br/><span class="spanTable">${cardVes.YEAR_BUILT}</span></th><th class="shrift">IMO: <br/><span class="spanTable">${cardVes.IMO}</span></th></tr>
+          <tr><th class="shrift">Ширина(м): <br/><span class="spanTable">${cardVes.WIDTH}</span></th><th class="shrift">Дедвейт: <br/><span class="spanTable">${cardVes.DWT}</span></th><th class="shrift">MMSI: <br/><span class="spanTable">${cardVes.MMSI}</span></th></tr>`
+          
         }
 
         HeadHtml = `<th id="lef">Position</th><th></th><th id="rig">${card.Actuallity}</th>`;
@@ -2949,6 +2993,7 @@
         Head.innerHTML = HeadHtml;
         First.innerHTML = FirstHtml;
         ImgShip.innerHTML = imgShipHtml;
+        ShipInfor.innerHTML = ShipInforHtml;
 
       }
       if (hash == '#ru') {
@@ -2956,6 +3001,8 @@
         Head.innerHTML = HeadHtmlRu;
         First.innerHTML = FirstHtmlRu;
         ImgShip.innerHTML = imgShipHtmlRu;
+        ShipInfor.innerHTML = ShipInforHtmlRu;
+      
       }
 
 
@@ -3734,8 +3781,11 @@
       "PortTabEf": {
         "ru": "Порт",
         "en": "Port",
+      },
+      "ShipInformation": {
+        "ru": "Данные судна",
+        "en": "Vessel data",
       }
-
 
 
     }
