@@ -2566,6 +2566,9 @@
         day = ("0" + now.getDate()).slice(-2),
         month = ("0" + (now.getMonth() + 1)).slice(-2),
         year = now.getFullYear(),
+        monthWords = now.toLocaleString('en', { month: 'long' }).slice(0,3),
+        monthWordsRU = now.toLocaleString('ru', { month: 'long' }).slice(0,3),
+        utc = - now.getTimezoneOffset() / 60
         message = '';
 
       const Time = document.getElementById('navbar-brand');
@@ -2575,7 +2578,7 @@
 
       let hash = window.location.hash;
 
-
+      monthWordsRU = monthWordsRU[0].toLocaleUpperCase() + monthWordsRU.slice(1, monthWordsRU.length)
 
 
       // выполним форматирование времени с использованием тернарного оператора
@@ -2583,8 +2586,8 @@
       second = (second < 10) ? '0' + second : second;
       hour = (hour < 10) ? '0' + hour : hour;
 
-      message = 'Interactive monitor of the central control room of SOVFRACHT' + ' ' + day + '.' + month + '.' + year + ' ' + hour + ':' + minute;
-      messageRu = 'Интерактивный монитор центральной диспетчерской СОВФРАХТ' + ' ' + day + '.' + month + '.' + year + ' ' + hour + ':' + minute;
+      message = 'Interactive monitor of the central control room of SOVFRACHT' + ' ' + monthWords + ' ' + day + ',' + ' ' + hour + ':' + minute + ` (UTC+${utc})`;
+      messageRu = 'Интерактивный монитор центральной диспетчерской СОВФРАХТ' + ' ' + monthWordsRU + ' ' + day + ',' + ' ' + hour + ':' + minute + ` (UTC+${utc})`;
       TimeHtml = `<span><span class="lng-navis"></span>${messageRu}</span>`
 
       if (hash == '#en') {
