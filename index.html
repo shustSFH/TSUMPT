@@ -384,6 +384,12 @@
       height: 20vh;
       animation: showTop 1s;
     }
+    #ShipInformationTable{
+      position: relative;
+      width: 100%;
+      left: 0%;
+      animation: showTop 1s;
+    }
 
     #Icon-Info {
       position: relative;
@@ -462,6 +468,7 @@
 
     #lef {
       text-align: left;
+      font-size: 14px;
     }
 
     #rig {
@@ -1268,6 +1275,21 @@
           </div>
         </div>
 
+        <div id="ShipInformationTable" style="font-size: 14px; font-family: 'Calibri', serif">
+
+          <table class="table" cellspacing="0" cellpadding="0">
+            <thead class="head-ves">
+              <tr>
+                <th id="lef"class="lng-ShipInformation"></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="ShipInfor">
+            </tbody>
+          </table>
+        </div>
+
         <div class="wrapper" style="font-size: 14px;" id="tab-WeatherAnd">
           <div class="half">
             <div class="tabef">
@@ -1321,27 +1343,7 @@
               </div>
               </div>
             </div>
-            <div class="tabef">
-              <input id="tabef-three" type="checkbox" name="tabsef">
-              <label for="tabef-three" class="lng-ShipInformation"></label>
-              <div class="tabef-content">
-                <div>
-
-                  <table class="table" cellspacing="0" cellpadding="0" style="margin-top: -20px;">
-                    <thead class="head-ves2">
-                      <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody id="ShipInfor">
-                    </tbody>
-                  </table>
-                  <hr>
-                </div>
-              </div>
-            </div> 
+            
             <!-- <div class="tabef">
               <input id="tabef-four" type="checkbox" name="tabsef">
               <label for="tabef-four">Label Three</label>
