@@ -1163,6 +1163,7 @@
     var marker_push_pop = [];
     let mmsi = [];
     let arrS = [];
+    let dataTime = '';
     var selected_row = null;
     let loadBottomTableImo = [];
     let dataLATLNG = []
@@ -1328,7 +1329,7 @@
               <input id="tabef-two" type="checkbox" name="tabsef">
               <label for="tabef-two" class="lng-PortInfo"></label>
               <div class="tabef-content">
-                <div style="max-height: 30vh; overflow: auto; ">
+                <div style="max-height: 18vh; overflow: auto; ">
                 <table class="table" cellspacing="0" cellpadding="0">
                   <thead class="head-ves2" style="position: sticky; top: 0;">
                     <tr>
@@ -2240,8 +2241,6 @@
           }
         });
 
-        console.log(marker.options.icon.options)
-
         if (marker.options.icon.options.iconUrl === 'КорабликТ2.png') {
 
           markers[person.IMO].on('mouseover', function (e) {
@@ -2713,8 +2712,11 @@
         for (let cardPort of card.CallInPort) {
           var imgPort = cardPort.FLAG
           var newImgPort = imgPort.replace(re, '');
+          var formatData = new Date(cardPort.ARRIVAL)
+          let FormatData = `${formatData}`
+          dataTime = FormatData.slice(4,10) + ', ' + FormatData.slice(16,21) + ` (UTC+${FormatData.slice(30,31)})`
          
-          PortCallCardHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${imgPort}"> ${cardPort.PORT}</td><td>${cardPort.ARRIVAL}</td></tr>`
+          PortCallCardHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${imgPort}"> ${cardPort.PORT}</td><td>${dataTime}</td></tr>`
         }
 
         for(let cardVes of card.VesselData){
@@ -2896,8 +2898,10 @@
         for (let cardPort of card.CallInPort) {
           var imgPort = cardPort.FLAG
           var newImgPort = imgPort.replace(re, '');
-          console.log(cardPort)
-          PortCallCardHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${imgPort}"> ${cardPort.PORT}</td><td>${cardPort.ARRIVAL}</td></tr>`
+          var formatData = new Date(cardPort.ARRIVAL)
+          let FormatData = `${formatData}`
+          dataTime = FormatData.slice(4,10) + ', ' + FormatData.slice(16,21) + ` (UTC+${FormatData.slice(30,31)})`
+          PortCallCardHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${imgPort}"> ${cardPort.PORT}</td><td>${dataTime}</td></tr>`
         }
 
         for(let cardVes of card.VesselData){
