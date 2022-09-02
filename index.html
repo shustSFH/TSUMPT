@@ -3483,10 +3483,26 @@
         var re = /\r\n/gi;
         var img = portC.Flag;
         var newImg = img.replace(re, '');
+        let dataTime1 = '';
+        let dataTime2 = '';
+        if(portC.Arrival !== null){
+          var formatData = new Date(portC.Arrival)
+          let FormatData = `${formatData}`
+          dataTime1 = FormatData.slice(4,10) + ', ' + FormatData.slice(16,21) + ` (UTC+${FormatData.slice(30,31)})`
+        } else {
+          dataTime1 = '-'
+        }
+        if(portC.Departure !== null){
+        var formatData2 = new Date(portC.Departure)
+          let FormatData2 = `${formatData2}`
+          dataTime2 = FormatData2.slice(4,10) + ', ' + FormatData2.slice(16,21) + ` (UTC+${FormatData2.slice(30,31)})`
+        } else{
+          dataTime2 = '-'
+        }
 
         CardPortsHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${img}"> ${portC.SHIP}</td>
-        <td>${portC.Arrival}</td>
-        <td>${portC.Departure}</td></tr>`
+        <td>${dataTime1}</td>
+        <td>${dataTime2}</td></tr>`
       }
 
 
