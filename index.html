@@ -2590,38 +2590,23 @@
         day = ("0" + now.getDate()).slice(-2),
         month = ("0" + (now.getMonth() + 1)).slice(-2),
         year = now.getFullYear(),
-        monthWords = now.toLocaleString('en', { month: 'long' }).slice(0,3),
-        monthWordsRU = now.toLocaleString('ru', { month: 'long' }).slice(0,3),
-        utc = - now.getTimezoneOffset() / 60
         message = '';
-
       const Time = document.getElementById('navbar-brand');
-
-
       let TimeHtml = '';
-
       let hash = window.location.hash;
-
-      monthWordsRU = monthWordsRU[0].toLocaleUpperCase() + monthWordsRU.slice(1, monthWordsRU.length)
-
-
       // выполним форматирование времени с использованием тернарного оператора
       minute = (minute < 10) ? '0' + minute : minute;
       second = (second < 10) ? '0' + second : second;
       hour = (hour < 10) ? '0' + hour : hour;
-
-      message = 'Interactive monitor of the central control room of SOVFRACHT' + ' ' + monthWords + ' ' + day + ',' + ' ' + hour + ':' + minute + ` (UTC+${utc})`;
-      messageRu = 'Интерактивный монитор центральной диспетчерской СОВФРАХТ' + ' ' + monthWordsRU + ' ' + day + ',' + ' ' + hour + ':' + minute + ` (UTC+${utc})`;
+      message = 'Interactive monitor of the central control room of SOVFRACHT' + ' ' + day + '.' + month + '.' + year + ' ' + hour + ':' + minute;
+      messageRu = 'Интерактивный монитор центральной диспетчерской СОВФРАХТ' + ' ' + day + '.' + month + '.' + year + ' ' + hour + ':' + minute;
       TimeHtml = `<span><span class="lng-navis"></span>${messageRu}</span>`
-
       if (hash == '#en') {
         Time.innerHTML = `<span>${message}</span>`;
       }
       if (hash == '#ru') {
         Time.innerHTML = `<span>${messageRu}</span>`;
-
       }
-
     }
     /* setInterval(TimeDisp, 1000); */
 
@@ -2731,7 +2716,7 @@
         FirstHtml = `<th class="shrift">Course: <br/><span class="spanTable">${card.Course}</span></th><th class="shrift">Speed, kn: <br/><span class="spanTable">${card.Speed}</span></th><th class="shrift">Draught: <br/><span class="spanTable">${card.Draught}</span></th>`
         SecondHtml = `<th class="shrift">Temperature, °C: <br/><span class="spanTable">${card.Temp}</span></th><th class="shrift">Wind, m/s: <br/><span class="spanTable">${card.Wind} ${card.WindSpeed}</span></th><th class="shrift">Wave, m: <br/><span class="spanTable">${card.Wave}</span></th>`
         imgShipHtml = `<img class="ImageofShip" width="100%" height="100%" src = "data:image/png;base64,${card.Picture}">`
-        FlagNameHtml = `<img width="60px" height="40px" src="data:image/png;base64,${newImg}" style="box-shadow: 0 0 1px 0;">
+        FlagNameHtml = `<img width="75px" height="50px" src="data:image/png;base64,${newImg}" style="box-shadow: 0 0 1px 0;">
         <span id="FlagNameSpan">
         <span style="font-weight: bold;">${database[0].name}</span>
         <span>${openCD[0].typeOfVessel}</span>
@@ -2916,7 +2901,7 @@
         FirstHtml = `<th class="shrift">Course: <br/><span class="spanTable">${card.Course}</span></th><th class="shrift">Speed, kn: <br/><span class="spanTable">${card.Speed}</span></th><th class="shrift">Draught: <br/><span class="spanTable">${card.Draught}</span></th>`
         SecondHtml = `<th class="shrift">Temperature, °C: <br/><span class="spanTable">${card.Temp}</span></th><th class="shrift">Wind, m/s: <br/><span class="spanTable">${card.Wind} ${card.WindSpeed}</span></th><th class="shrift">Wave, m: <br/><span class="spanTable">${card.Wave}</span></th>`
         imgShipHtml = `<img class="ImageofShip" width="100%" height="100%" src = "data:image/png;base64,${card.Picture}">`
-        FlagNameHtml = `<img width="60px" height="40px" src="data:image/png;base64,${newImg}" style="box-shadow: 0 0 1px 0;">
+        FlagNameHtml = `<img width="75px" height="50px" src="data:image/png;base64,${newImg}" style="box-shadow: 0 0 1px 0;">
         <span id="FlagNameSpan">
         <span style="font-weight: bold;">${openCD[0].nameVes}</span>
         <span>${openCD[0].typeOfVessel}</span>
@@ -3456,7 +3441,7 @@
         }
 
         if (img !== null) {
-          PortFlagSpanHtml = `<img style="box-shadow: 0 0 1px 0;" width="70px" height="50px" src = "data:image/png;base64,${img}">
+          PortFlagSpanHtml = `<img style="box-shadow: 0 0 1px 0;" width="75px" height="50px" src = "data:image/png;base64,${img}">
           <span style="margin-left: 8px;
             display: flex;
             flex-direction: column;
@@ -3466,7 +3451,7 @@
           </span>`
         }
         else {
-          PortFlagSpanHtml = `<img style="box-shadow: 0 0 1px 0;" width="70px" height="50px" src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAaCAAAAAAYx7rgAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAHdElNRQfmCBoKCwdzGme7AAABH0lEQVQoz7XSwXKCMBAGYN//aRoP2h7aM0qC0HGm4ggoBTWmSQwjRRlgCxftYJBLu5fs4ZvJJvsPoL8G/2PObONv2PmBSV0y99benLhpl9njIKvqs8oCTPUmJuraB29bnRH4dO0PeEvEvSlsCtV3ml7qnuEjULu4M8wpC75zAyoTan6qonQOd2YRgTxeZCJZaIpcCIgWbVPaCvYflvGu4umuggsHZZctk88yCBBCHjdlbMxIBNksbxurNkP0vMQC4iF68jWmuctHYzxhkBM0RL7mrmZm+oqntrU0x6PRC9XM3Ly9CqdfCedcCJFUpcN0fygwvy1A94cgjckvcsKaXQBExm2nisT92dh35AfSJZmv1qtHGYMmq2FPVjvqr8wP0wRtAPxD8UQAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjItMDgtMjZUMTA6MTE6MDcrMDM6MDDIkY88AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIyLTA4LTI2VDEwOjExOjA3KzAzOjAwucw3gAAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMi0wOC0yNlQwNzowOTo0MCswMDowMI+k8d8AAAAASUVORK5CYII=">
+          PortFlagSpanHtml = `<img style="box-shadow: 0 0 1px 0;" width="75px" height="50px" src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAaCAAAAAAYx7rgAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAHdElNRQfmCBoKCwdzGme7AAABH0lEQVQoz7XSwXKCMBAGYN//aRoP2h7aM0qC0HGm4ggoBTWmSQwjRRlgCxftYJBLu5fs4ZvJJvsPoL8G/2PObONv2PmBSV0y99benLhpl9njIKvqs8oCTPUmJuraB29bnRH4dO0PeEvEvSlsCtV3ml7qnuEjULu4M8wpC75zAyoTan6qonQOd2YRgTxeZCJZaIpcCIgWbVPaCvYflvGu4umuggsHZZctk88yCBBCHjdlbMxIBNksbxurNkP0vMQC4iF68jWmuctHYzxhkBM0RL7mrmZm+oqntrU0x6PRC9XM3Ly9CqdfCedcCJFUpcN0fygwvy1A94cgjckvcsKaXQBExm2nisT92dh35AfSJZmv1qtHGYMmq2FPVjvqr8wP0wRtAPxD8UQAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjItMDgtMjZUMTA6MTE6MDcrMDM6MDDIkY88AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIyLTA4LTI2VDEwOjExOjA3KzAzOjAwucw3gAAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMi0wOC0yNlQwNzowOTo0MCswMDowMI+k8d8AAAAASUVORK5CYII=">
         <span style="margin-left: 8px;
           display: flex;
           flex-direction: column;
