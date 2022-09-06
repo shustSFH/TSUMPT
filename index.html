@@ -2701,7 +2701,7 @@
           let FormatData = `${formatData}`
           dataTime = FormatData.slice(4,10) + ', ' + FormatData.slice(16,21) + ` (UTC+${FormatData.slice(30,31)})`
          
-          PortCallCardHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${imgPort}"> ${cardPort.PORT}</td><td>${dataTime}</td></tr>`
+          PortCallCardHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="45px" height="30px" src = "data:image/png;base64,${imgPort}"> ${cardPort.PORT}</td><td>${dataTime}</td></tr>`
         }
 
         for(let cardVes of card.VesselData){
@@ -2886,7 +2886,7 @@
           var formatData = new Date(cardPort.ARRIVAL)
           let FormatData = `${formatData}`
           dataTime = FormatData.slice(4,10) + ', ' + FormatData.slice(16,21) + ` (UTC+${FormatData.slice(30,31)})`
-          PortCallCardHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${imgPort}"> ${cardPort.PORT}</td><td>${dataTime}</td></tr>`
+          PortCallCardHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="45px" height="30px" src = "data:image/png;base64,${imgPort}"> ${cardPort.PORT}</td><td>${dataTime}</td></tr>`
         }
 
         for(let cardVes of card.VesselData){
@@ -3485,7 +3485,7 @@
           dataTime2 = '-'
         }
 
-        CardPortsHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="35px" height="30px" src = "data:image/png;base64,${img}"> ${portC.SHIP}</td>
+        CardPortsHtml += `<tr><td><img style="box-shadow: 0 0 1px 0;" width="45px" height="30px" src = "data:image/png;base64,${img}"> ${portC.SHIP}</td>
         <td>${dataTime1}</td>
         <td>${dataTime2}</td></tr>`
       }
