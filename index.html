@@ -1171,7 +1171,8 @@
     var popup = null;
     var popupRu = null;
     var marker = null;
-
+    let username = localStorage.getItem("name");
+    let password = localStorage.getItem("pass") 
 
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
       minZoom: 3,
@@ -1961,7 +1962,7 @@
 
     function CentrPosition(lngv, latv, glImo, track) {
       var latlngvar = new L.latLng([latv, lngv]);
-      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${variables['username']}/${variables['pass']}`), { fetcher });
+      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${username}/${password}`), { fetcher });
 
       if (DatePers.Login == 'False') {
       } else {
@@ -2113,9 +2114,8 @@
     function getGETParameters(paramStr) {
       return Object.fromEntries(paramStr.split('&').map(e => decodeURI(e).split('=')));
     }
-    let variables = getGETParameters(window.location.search.substr(1));
 
-    let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${variables['username']}/${variables['pass']}`), { fetcher });
+    let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${username}/${password}`), { fetcher });
     if (DatePers.Login == 'False') {
     } else {
       var personData = DatePers.Vessels
@@ -2165,7 +2165,7 @@
 
     function createM() {
 
-      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${variables['username']}/${variables['pass']}`), { fetcher });
+      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${username}/${password}`), { fetcher });
       if (DatePers.Login == 'False') {
       } else {
         var personData = DatePers.Vessels
@@ -2275,7 +2275,7 @@
 
 
     function Check(personData, Imo, Lat, Lng) {
-      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${variables['username']}/${variables['pass']}`), { fetcher });
+      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${username}/${password}`), { fetcher });
       if (DatePers.Login == 'False') {
       } else {
         var personData = DatePers.Vessels
@@ -2327,7 +2327,7 @@
 
     function loadTable() {
 
-      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${variables['username']}/${variables['pass']}`), { fetcher });
+      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${username}/${password}`), { fetcher });
       if (DatePers.Login == 'False') {
       } else {
         var personData = DatePers.Vessels
@@ -2623,7 +2623,7 @@
 
     function startLoadTable(checkV) {
 
-      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${variables['username']}/${variables['pass']}`), { fetcher });
+      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${username}/${password}`), { fetcher });
       if (DatePers.Login == 'False') {
       } else {
         var personData = DatePers.Vessels
@@ -3077,7 +3077,7 @@
 
     function startloadCardTable() {
 
-      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${variables['username']}/${variables['pass']}`), { fetcher });
+      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${username}/${password}`), { fetcher });
       if (DatePers.Login == 'False') {
       } else {
         var personData = DatePers.Vessels
@@ -3181,7 +3181,7 @@
 
 
     } else {
-      let name = `${variables['username']}`
+      let name = `${username}`
 
       writeHelloHtml = `<span class="Welcome">Welcome to site, <span class="WelcomeName">${name}</span></span>`
 
@@ -3200,7 +3200,7 @@
       document.getElementById('nameLegend').style.display = "none";
       map.setView([59.919330, 30.327035], 10)
     } else {
-      let name = `${variables['username']}`
+      let name = `${username}`
 
       document.getElementById('Icon-Info').style.display = "display";
       document.getElementById('legend').style.display = "block";
@@ -3279,7 +3279,7 @@
 
     function startDrawGeoOjectFromgjsonLineHistoryMove() {
 
-      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${variables['username']}/${variables['pass']}`), { fetcher });
+      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${username}/${password}`), { fetcher });
       if (DatePers.Login == 'False') {
       } else {
         var personData = DatePers.Vessels
@@ -3602,7 +3602,7 @@
 
     function startDrawGeoJsonGradient() {
 
-      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${variables['username']}/${variables['pass']}`), { fetcher });
+      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${username}/${password}`), { fetcher });
       if (DatePers.Login == 'False') {
       } else {
         var personData = DatePers.Vessels
@@ -3878,10 +3878,10 @@
 
     }
 
-    if (`${window.location.pathname}?username=${variables['username']}&pass=${variables['pass']}`) {
+    if (`${window.location.pathname}`) {
 
 
-      let locAuth = `${window.location.pathname}?username=${variables['username']}&pass=${variables['pass']}`;
+      let locAuth = `${window.location.pathname}`;
 
       select.addEventListener('change', changeURLLanguage);
       select2.addEventListener('change', changeURLLanguage2);
@@ -3965,7 +3965,7 @@
 
     setInterval(function () {
 
-      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${variables['username']}/${variables['pass']}`), { fetcher });
+      let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/${username}/${password}`), { fetcher });
 
       if (DatePers.Login == 'False') {
       } else {
@@ -3988,6 +3988,8 @@
 
 
     }, 300000);
+
+
 
   </script>
 
