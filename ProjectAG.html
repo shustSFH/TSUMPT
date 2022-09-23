@@ -104,7 +104,7 @@
             width: 50%;
             justify-content: center;
         }
-        
+
         .TxtPortBlock {
             display: flex;
             font-size: 1.2vw;
@@ -126,7 +126,7 @@
             height: 3%;
         }
 
-        .StartWayTxtBlock{
+        .StartWayTxtBlock {
             width: 40%;
         }
 
@@ -138,11 +138,67 @@
             flex-direction: column;
         }
 
-        .infoWayBlock{
+        .infoWayBlock {
             display: flex;
             align-items: center;
             width: 80%;
             justify-content: space-between;
+        }
+
+        #distance {
+            display: flex;
+            width: 90%;
+            height: 3%;
+            align-items: center;
+        }
+
+        .LineDistance {
+            background-color: #f6bf40;
+            height: 0.3vw;
+            border: none;
+            position: relative;
+        }
+
+        .LineDistance::after {
+            content: "";
+            width: 30px;
+            height: 30px;
+            background-image: url("data:image/png;base64,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");
+            display: block;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+            right: -15px;
+            top: -12px;
+
+        }
+
+        #Route {
+            display: flex;
+            width: 100%;
+            height: 8%;
+        }
+
+        .firstRouteBlock {
+            display: flex;
+            width: 50%;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .secondRouteBlock {
+            display: flex;
+            width: 50%;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .TxtRouteBlock {
+            font-size: 1.2vw;
+            font-weight: bold;
         }
 
         #infoAll {
@@ -234,6 +290,17 @@
         </div>
 
         <div id="distance">
+        </div>
+
+        <div id="Route">
+            <div class="firstRouteBlock">
+                <span class="anotherTxt">Пройдено</span>
+                <div id="Passed" class="infoWayBlock"></div>
+            </div>
+            <div class="secondRouteBlock">
+                <span class="anotherTxt">Осталось</span>
+                <div id="Stay" class="infoWayBlock"></div>
+            </div>
         </div>
 
         <div id="infoAll">
@@ -342,6 +409,8 @@
             let personData = DatePers.Vessels
             let person = personData[0]
 
+            map.setView([41.20729, 34.7605], 7)
+
             if (person.SPEED !== 0) {
 
                 markerOptions = {
@@ -426,6 +495,11 @@
             const spanArrival = document.getElementById('spanArrival');
             const spanDeparture = document.getElementById('spanDeparture');
 
+            const distance = document.getElementById('distance');
+
+            const Stay = document.getElementById('Stay');
+            const Passed = document.getElementById('Passed');
+
             let re = /\r\n/gi;
 
             let SpeedTabHtml = '';
@@ -444,8 +518,11 @@
             let PortDepartureImgHtml = '';
             let spanArrivalHtml = '';
             let spanDepartureHtml = '';
-
-
+            let distanceHtml = '';
+            let RouteHtml = '';
+            let StayHtml = '';
+            let PassedHtml = '';
+            let pointList = [];
             for (let card of cardData) {
 
                 if (card.Wave !== null) { mWaveHtml = `<span class="anotherTxt">Высота волны</span><span>${card.Wave} м</span>` } else { mWaveHtml = `N/A` }
@@ -489,18 +566,14 @@
 
             for (let cruise of cruiseInfo) {
 
-                let cruiseArrival = cruise.Arrival
-                let cruiseDeparture = cruise.Departure
-                let FormatDataCruiseArrival = `${cruiseArrival}`
-                let FormatDataCruiseDeparture = `${cruiseDeparture}`
-                console.log(cruise.Arrival)
-                let dataTimeArrive = `${FormatDataCruiseArrival.slice(8, 10)}.${FormatDataCruiseArrival.slice(5, 7)}.${FormatDataCruiseArrival.slice(0, 4)} ${FormatDataCruiseArrival.slice(11, 16)}`
-                let dataTimDeparture = `${FormatDataCruiseArrival.slice(8, 10)}.${FormatDataCruiseArrival.slice(5, 7)}.${FormatDataCruiseArrival.slice(0, 4)} ${FormatDataCruiseArrival.slice(11, 16)}`
+                let dataTimeArrive = new Date(cruise.Arrival).toLocaleString('ru', { day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' }).replace(',', '')
+                let dataTimDeparture = new Date(cruise.Departure).toLocaleString('ru', { day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' }).replace(',', '')
 
                 let imgDeparture = cruise.FlagDeparture;
                 let imgArrival = cruise.FlagArrival;
                 imgDeparture.replace(re, '');
                 imgArrival.replace(re, '');
+
 
                 PortDepartureImgHtml = `<img class="PortFlagIMG" src="data:image/png;base64,${imgDeparture}">`
                 PortArrivalHtml = `${cruise.PortArrival}`
@@ -509,8 +582,16 @@
 
                 spanArrivalHtml = `<span class="anotherTxt StartWayTxtBlock">Отправка</span><span class="TxtWayBlock">${dataTimeArrive}</span>`
                 spanDepartureHtml = `<span class="anotherTxt StartWayTxtBlock">Прибытие</span><span class="TxtWayBlock">${dataTimDeparture}</span>`
-            }
 
+                distanceHtml = `<hr style="width: calc(100%*${cruise.Ratio})!important" class="LineDistance">`
+
+                PassedHtml = `<span class="TxtRouteBlock">${cruise.Passed}мл</span><span class="TxtRouteBlock">${cruise.PassedTime}</span>`
+                StayHtml = `<span class="TxtRouteBlock">${cruise.Stay}мл</span><span class="TxtRouteBlock">${cruise.StayTime}</span>`
+                for(let point of cruise.Route){
+                    pointList.push([point.LAT, point.LON])
+                }
+            }
+            console.log(pointList)
             SpeedIMG.innerHTML = SpeedTabHtml;
             Speed.innerHTML = mSpeedHtml;
             TempIMG.innerHTML = TemperatureTabHtml;
@@ -530,6 +611,18 @@
 
             spanArrival.innerHTML = spanArrivalHtml;
             spanDeparture.innerHTML = spanDepartureHtml;
+
+            distance.innerHTML = distanceHtml;
+
+            Passed.innerHTML = PassedHtml;
+            Stay.innerHTML = StayHtml;
+
+            let allRoute = new L.polyline(pointList, {
+                color: '#37a0a8',
+                weight: 4,
+                opacity: 0.5,
+                smoothFactor: 1
+            }).addTo(map);
         }
 
         function startDrawGeoJsonGradient() {
@@ -586,7 +679,7 @@
                 map.removeLayer(markerArr[i])
             };
             markerArr.splice(0, markerArr.length);
-            createM(), startLoadTable(), startDrawGeoJsonGradient()
+            createM(), startLoadTable(), startDrawGeoJsonGradient(), srtTime()
         }, 300000)
     </script>
 
