@@ -86,6 +86,65 @@
             font-weight: bold;
         }
 
+        #portCalls {
+            display: flex;
+            width: 100%;
+            height: 7%;
+            align-items: center;
+        }
+
+        .firstPortBlock {
+            display: flex;
+            width: 50%;
+            justify-content: center;
+        }
+
+        .secondPortBlock {
+            display: flex;
+            width: 50%;
+            justify-content: center;
+        }
+        
+        .TxtPortBlock {
+            display: flex;
+            font-size: 1.2vw;
+            font-weight: bold;
+            width: 70%;
+            align-items: flex-end;
+            flex-direction: column;
+        }
+
+        .PortFlagIMG {
+            width: 4vw;
+            height: 2.66666666667vw;
+            box-shadow: 0 0 1px 0;
+        }
+
+        #wayCSS {
+            display: flex;
+            width: 100%;
+            height: 3%;
+        }
+
+        .StartWayTxtBlock{
+            width: 40%;
+        }
+
+        .TxtWayBlock {
+            display: flex;
+            font-size: 1vw;
+            width: 60%;
+            align-items: flex-end;
+            flex-direction: column;
+        }
+
+        .infoWayBlock{
+            display: flex;
+            align-items: center;
+            width: 80%;
+            justify-content: space-between;
+        }
+
         #infoAll {
             display: flex;
             width: 100%;
@@ -150,9 +209,28 @@
         </div>
 
         <div id="portCalls">
+            <div class="firstPortBlock">
+                <div class="infoBlock">
+                    <div id="PortDepartureIMG" class="ImgBlock"></div>
+                    <div id="PortDeparture" class="TxtPortBlock"></div>
+                </div>
+            </div>
+            <div class="secondPortBlock">
+                <div class="infoBlock">
+                    <div id="PortArrivalIMG" class="ImgBlock"></div>
+                    <div id="PortArrival" class="TxtPortBlock"></div>
+                </div>
+            </div>
         </div>
 
         <div id="wayCSS">
+            <div class="firstPortBlock">
+                <div id="spanArrival" class="infoWayBlock"></div>
+            </div>
+            <div class="secondPortBlock">
+                <div id="spanDeparture" class="infoWayBlock"></div>
+
+            </div>
         </div>
 
         <div id="distance">
@@ -190,8 +268,8 @@
     <script>
 
         let map = L.map('map', {
-            center: [42, 38],
-            zoom: 10,
+            center: [41.20729, 34.7605],
+            zoom: 7,
             coordinateControl: true
         });
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -264,8 +342,6 @@
             let personData = DatePers.Vessels
             let person = personData[0]
 
-            map.setView([person.LAT, person.LON], 11)
-
             if (person.SPEED !== 0) {
 
                 markerOptions = {
@@ -327,6 +403,7 @@
             let person = personData[0]
             let cardData = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/vessel_info/${person.IMO}`), { fetcher });
             let openCardData = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/vessel_card/${person.IMO}`), { fetcher });
+            let cruiseInfo = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/cruise_info`), { fetcher });
             let cardO = openCardData[0]
 
             const SpeedIMG = document.getElementById('SpeedIMG');
@@ -341,6 +418,15 @@
             const WindSpeed = document.getElementById('WindSpeed');
             const WindSpeedIMG = document.getElementById('WindSpeedIMG');
 
+            const PortDeparture = document.getElementById('PortDeparture');
+            const PortDepartureIMG = document.getElementById('PortDepartureIMG');
+            const PortArrival = document.getElementById('PortArrival');
+            const PortArrivalIMG = document.getElementById('PortArrivalIMG');
+
+            const spanArrival = document.getElementById('spanArrival');
+            const spanDeparture = document.getElementById('spanDeparture');
+
+            let re = /\r\n/gi;
 
             let SpeedTabHtml = '';
             let WaveTabHtml = '';
@@ -352,6 +438,13 @@
             let mSpeedHtml = '';
             let mCourseHtml = '';
             let mWindSpeedHtml = '';
+            let PortArrivalHtml = '';
+            let PortArrivalImgHtml = '';
+            let PortDepartureHtml = '';
+            let PortDepartureImgHtml = '';
+            let spanArrivalHtml = '';
+            let spanDepartureHtml = '';
+
 
             for (let card of cardData) {
 
@@ -393,6 +486,31 @@
 
                 WindSpeedTabHtml = `<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAYAAADFniADAAAABmJLR0QA/wD/AP+gvaeTAAACJElEQVRYhe3Y32vNcRzH8cfWyiK/GplIa0iG4mLarSsXlKvNPTdyo5TQ5EpyrzRMQ7tQslKixg1/AC6EuxWTXxEm24Tj4n1OfW3nx+b7PeeseNa3b9/zPt/P59X78/683+/Pl/9Uh8Z6CyiwCVfxFjm8wwDW1UtQD77hPc7hKM7jA75iV60FdWAcw1gyxdaCBxjD2lmM2YT5aUS14xIWl7Avwyf0VxinBb14ju8iBN7gItanEViKfrwqY9+Ol/iBm3lxh3ABHzGJ/VmLOpGfsKGIrV148ik2FrEvxXXhuZ4sRQ0o7akhsWNby7zfiLti4yzKQtAqfBFLUYwukU4q0YFfOJhW0AY8wmesSTsYnuFa4aEpYejEtgovL8BW7BX5aw9eZCBqFMuLGW6IoKt0jeIsVmcgpsDj/Pz401PdSuekAhMioWZJG7ZgMONx/5oGsUvHlN+lNaNZJN8cDiQNyeVrxeYaienEPqzEcfSV+vNtMwv0LK5J3BJlaBrJ8rBCBFw1KfRjI6L1+U8qksvXqHKeKkdOdAWZMiR9AE/gHnanEZL01ExqXzmaROfQLTrKPlH5cynGzIx5OC3EHKuzlmkMim2/sN5CknQJb806vqp54h3J32ddaKspqi1/f13FOaZxBjvL2C+LliSTA8FMGRYHhx1Tfm/AYRFPvbUURPTUD/ETd3ASp8SBIocr6vSVphlH8ES0I+O4LxLonGDOfLv6d/gNsy6Za8uwIiIAAAAASUVORK5CYII=">`
             }
+
+            for (let cruise of cruiseInfo) {
+
+                let cruiseArrival = cruise.Arrival
+                let cruiseDeparture = cruise.Departure
+                let FormatDataCruiseArrival = `${cruiseArrival}`
+                let FormatDataCruiseDeparture = `${cruiseDeparture}`
+                console.log(cruise.Arrival)
+                let dataTimeArrive = `${FormatDataCruiseArrival.slice(8, 10)}.${FormatDataCruiseArrival.slice(5, 7)}.${FormatDataCruiseArrival.slice(0, 4)} ${FormatDataCruiseArrival.slice(11, 16)}`
+                let dataTimDeparture = `${FormatDataCruiseArrival.slice(8, 10)}.${FormatDataCruiseArrival.slice(5, 7)}.${FormatDataCruiseArrival.slice(0, 4)} ${FormatDataCruiseArrival.slice(11, 16)}`
+
+                let imgDeparture = cruise.FlagDeparture;
+                let imgArrival = cruise.FlagArrival;
+                imgDeparture.replace(re, '');
+                imgArrival.replace(re, '');
+
+                PortDepartureImgHtml = `<img class="PortFlagIMG" src="data:image/png;base64,${imgDeparture}">`
+                PortArrivalHtml = `${cruise.PortArrival}`
+                PortArrivalImgHtml = `<img class="PortFlagIMG" src="data:image/png;base64,${imgArrival}">`
+                PortDepartureHtml = `${cruise.PortDeparture}`
+
+                spanArrivalHtml = `<span class="anotherTxt StartWayTxtBlock">Отправка</span><span class="TxtWayBlock">${dataTimeArrive}</span>`
+                spanDepartureHtml = `<span class="anotherTxt StartWayTxtBlock">Прибытие</span><span class="TxtWayBlock">${dataTimDeparture}</span>`
+            }
+
             SpeedIMG.innerHTML = SpeedTabHtml;
             Speed.innerHTML = mSpeedHtml;
             TempIMG.innerHTML = TemperatureTabHtml;
@@ -404,6 +522,14 @@
             Course.innerHTML = mCourseHtml;
             WindSpeedIMG.innerHTML = WindSpeedTabHtml;
             WindSpeed.innerHTML = mWindSpeedHtml;
+
+            PortArrivalIMG.innerHTML = PortArrivalImgHtml;
+            PortArrival.innerHTML = PortArrivalHtml;
+            PortDepartureIMG.innerHTML = PortDepartureImgHtml;
+            PortDeparture.innerHTML = PortDepartureHtml;
+
+            spanArrival.innerHTML = spanArrivalHtml;
+            spanDeparture.innerHTML = spanDepartureHtml;
         }
 
         function startDrawGeoJsonGradient() {
