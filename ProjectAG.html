@@ -89,7 +89,7 @@
         #portCalls {
             display: flex;
             width: 100%;
-            height: 7%;
+            height: 9%;
             align-items: center;
         }
 
@@ -109,9 +109,13 @@
             display: flex;
             font-size: 1.2vw;
             font-weight: bold;
-            width: 70%;
+            width: 50%;
             align-items: flex-end;
             flex-direction: column;
+        }
+
+        .anotherTxtPort{
+            color: #7f7f7f;
         }
 
         .PortFlagIMG {
@@ -123,7 +127,7 @@
         #wayCSS {
             display: flex;
             width: 100%;
-            height: 3%;
+            height: 5%;
         }
 
         .StartWayTxtBlock {
@@ -148,7 +152,7 @@
         #distance {
             display: flex;
             width: 90%;
-            height: 3%;
+            height: 5%;
             align-items: center;
         }
 
@@ -177,7 +181,7 @@
         #Route {
             display: flex;
             width: 100%;
-            height: 8%;
+            height: 13%;
         }
 
         .firstRouteBlock {
@@ -204,7 +208,7 @@
         #infoAll {
             display: flex;
             width: 100%;
-            height: 15%;
+            height: 25%;
         }
 
         .firstBlock {
@@ -324,6 +328,10 @@
                     <div id="Course" class="TxtBlock"></div>
                 </div>
                 <div class="infoBlock">
+                    <div id="TempWaterIMG" class="ImgBlock"></div>
+                    <div id="TempWater" class="TxtBlock"></div>
+                </div>
+                <div class="infoBlock">
                     <div id="WindSpeedIMG" class="ImgBlock"></div>
                     <div id="WindSpeed" class="TxtBlock"></div>
                 </div>
@@ -335,8 +343,8 @@
     <script>
 
         let map = L.map('map', {
-            center: [41.20729, 34.7605],
-            zoom: 7,
+            center: [41.42698, 32.92053],
+            zoom: 6,
             coordinateControl: true
         });
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -409,7 +417,7 @@
             let personData = DatePers.Vessels
             let person = personData[0]
 
-            map.setView([41.20729, 34.7605], 7)
+            map.setView([41.42698, 32.92053], 6)
 
             if (person.SPEED !== 0) {
 
@@ -484,6 +492,8 @@
 
             const Course = document.getElementById('Course');
             const CourseIMG = document.getElementById('CourseIMG');
+            const TempWater = document.getElementById('TempWater');
+            const TempWaterIMG = document.getElementById('TempWaterIMG');
             const WindSpeed = document.getElementById('WindSpeed');
             const WindSpeedIMG = document.getElementById('WindSpeedIMG');
 
@@ -512,6 +522,8 @@
             let mSpeedHtml = '';
             let mCourseHtml = '';
             let mWindSpeedHtml = '';
+            let TempWaterIMGHtml = '';
+            let TempWaterHtml = '';
             let PortArrivalHtml = '';
             let PortArrivalImgHtml = '';
             let PortDepartureHtml = '';
@@ -527,6 +539,7 @@
 
                 if (card.Wave !== null) { mWaveHtml = `<span class="anotherTxt">Высота волны</span><span>${card.Wave} м</span>` } else { mWaveHtml = `N/A` }
                 if (card.Temp !== null) { mTempHtml = `<span class="anotherTxt">Температура</span><span>${card.Temp} °C</span>` } else { mTempHtml = `N/A` }
+                if (card.Temp !== null) { TempWaterHtml = `<span class="anotherTxt">Температура воды</span><span>${card.Temp} °C</span>` } else { TempWaterHtml = `N/A` }
                 if (card.Speed !== null) { mSpeedHtml = `<span class="anotherTxt">Скорость</span><span>${card.Speed} уз</span>` } else { mSpeedHtml = `N/A` }
                 if (card.WindSpeed !== null) { mWindSpeedHtml = `<span class="anotherTxt">Скорость ветра</span><span>${card.WindSpeed} м/с</span>` } else { mWindSpeedHtml = `N/A` }
                 if (card.Course !== null) { mCourseHtml = `<span class="anotherTxt">Курс</span><span>${card.Course}</span>` } else { mCourseHtml = `N/A` }
@@ -538,6 +551,14 @@
                     TemperatureTabHtml = `<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAYAAADFniADAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAGYktHRAD/AP8A/6C9p5MAAAOPSURBVFhH7ZhNLCRREMdr5mB2fCTrm2QHwR6M4bA2w2kcHDZx54iTK1dxd0REXH2EkDiLRByI7+BAXHbWZ1ZCsCtIfGZS+6q2Wow1/V5bEsnuL3mp6qp+3f95/bre63GhAt4YbrFvijcp6lmP7/r6GpaXl+Hw8FAif5KVlQXBYBA8Ho9EHECinHB0dIRFRUX0Q7TN7/fj8fGx9DTHsaiWlpYnBcRqra2t0tMcx3Nqc3OTrRotWFlZidkoT4TDYbaOEHHG1NTU8AiUlZVJ5GkoT+fl5+djY2MjDgwMSEbPq4t62Ezn14uUhIODA9je3mb7mISEBFCjBfX19ZCamipRe15ElCcYgveVX9g+prq6Gra2tqCvrw9cLpdE7fk3K/rCwgLU1tZCV1eXRPS8uqj9/X0YHR2FpqYmUBNdova8uqjk5GRQbyI0NzdDWlqaRO1xLEq9seKZUVVVxcW0o6PjdSb69PQ0jI+Py5EZY2NjMDk5KUeG/C5XehYXF9Hr9XIRzMjIwLm5Ockg/vhQeN8sKE/n0fnUb2lpSTJ6jERdXV3d7wyys7NR1R3JIJ6dnUWJOj8/lwyiWidRbWG4H+0Y1JZHMvYYiWpvb+cLqzmB6vFJNHqEHjcL9fi4H/Xv7OyUqD1Gm7ySkhLY2NiAyspKmJqa4thP30e2dqR8/8Y2FArBzMwMlJaWwtraGsfs0E70nZ0dFkTU1dWxVY+MrY6Liwu2Vr/19XXY29tj3w6tqN3dXfEAAoEA20jgM1sdd/5PbK1+BP1IHVpRavsrHkB6erp4zsjMzBQv+nqx0Ip6WIVPTk7Ec8bD5cWkqmtFFRQUiAegag3bd1/1k5XwhtfZqhrHligsLBQvNlpReXl5UFxczP7g4CDb+Ph4tjpU0eRlyepHb3FOTg77dmhFEQ0NDWxppEZGRti3XvdYWPnh4WH+RiSs62ihOqXj8vISfT4fF8CkpCRcXV2VDOLt7W1U0by7u5MMolqIMTExkfvl5ubyymCC8dqnFmOMi4vjG9CN+vv7MRKJSDYaivf29qLan/P51G92dlayeoxFEUNDQ/fCqKk5gm1tbTgxMcGjQpaOVV26P0d9tqN6hHIFMxyJItRywd9y1k3tmnrTcH5+Xnqa41gUcXNzg93d3VheXo5utztKCB1XVFRgT08Pz7fn8Nd/mlFBpfXs9PQUUlJSQE1o4++7WPz/J8+UNygK4Bflp3G4eU+s+QAAAABJRU5ErkJggg==">`
                 } else {
                     TemperatureTabHtml = `<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAYAAADFniADAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAGYktHRAD/AP8A/6C9p5MAAAMqSURBVFhH7Zi7S2tBEIcnKRSJKXxrEQJq47MRH41Y2Nlrmy6ttmJvIz4QsZHgAySFtQhiI75R/wHxFbAQFQQLTRQdZ9YxREz2zN5LIHDvB8vOmT2z55c9u7N74kMCCgy/1AVFQYr6o9eXTCbh+PgYbm9vxfOb2tpa6OrqguLiYvE4wKJcuLu7w6amJv4hnqW5uRnv7+8lUo+zqNHR0awCcpWxsTGJ1OM8p87Pz01NowUnJyc5C7czZ2dnpnZCxKkZHBw0I9DR0SGe7HA731dfX4/RaBRXVlakxZu8i8os2vmV95QQCASARgsikQhUVFSI107eRQ0MDMDFxQUsLS2Bz+cTr51/M6MfHBzA0NAQzM7OisebvIu6ubmBtbU1GB4eBpro4rWTd1FlZWVAKxFGRkagsrJSvHacRdGKFUtHf3+/SabT09P5mejb29uwsbEhVzrW19dha2tLrpR8pStvDg8PsaSkxCTB6upq3Nvbk5bscDvfx/dz3NHRkbR4oxL18vKSPhnU1dUh5R1psUP7JNIRxsTxiYGOPNJiRyVqamrKdExzAun1iVcHvT4Tx/EzMzPitaMS1draajrt6+sTjxu9vb0mvr29XTx2PEVdXl6aDrnEYjHx6nh6ejL1wsJCuo/r62vjs+G5+qgTsQBoxMTSEQwGTZ0Zd3V1JVZuPEXR8VcsgKqqKrHcqKmpEetnf7nwFJWZhR8eHsRyI3N70WR1T1ENDQ1iAVCuEcsNynFiATQ2NoplQeaWlZaWFjNJu7u7xaPn4+MDOzs7TXxbW5t47ahETUxMpFdPPB4Xr47V1dV07OTkpHjtqEQ9Pz9jKBQyHdOKwtPTU2lBfH19FeuLt7c3sRBpI8bS0lITFw6Hzc6gQSWKoc0Yi4qKzAP4QcvLy/j+/i6tP2H/4uIi0vnc3M9xu7u70uqNWhTDr+JbGBeeI+Pj47i5uWlGhWu+/t4BuNBnu/MrdxLF7OzsmG+574faCq003N/fl0g9zqKYVCqFc3NzZjX6/f4fQvi6p6cH5+fnf803LX/9pxkn1EQiAY+Pj1BeXg40odXfd7n4/0+elgIUBfAJFX9R6wJOQlwAAAAASUVORK5CYII=">`
+                }
+
+                if (card.Temp <= 0) {
+                    TempWaterIMGHtml = `<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAYAAADFniADAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAGYktHRAD/AP8A/6C9p5MAAAN5SURBVFhH7Zi5SyxBEIdrN1BE1+etK4iwa+KZiEciBmbmmpqZairmJuKBiImIB4iBsQhiIt6o/4B4gqCo4AHueqD1qmprfLu6O9PjU1h474Oiuqumen4709M9sx4kIMnwqk8qklLUl27f4+Mj7OzswMXFhUY+U1RUBPX19ZCamqoRF7AoN1xeXmJ5eTn/EEerqKjAq6srrTTHtaienp64AhJZb2+vVprjek4dHByIp6sFu7u7CY3zzP7+vnhXqDhj2tra5ArU1tZqJD6c5+MCgQB2dnbizMyMZpz5cVHRZjq/vmVJOD8/h6OjI/EfSU9PB7pa0NHRAbm5uRq151tEFRf7IRgMiP9Ia2srHB4ewtTUFHg8Ho3a82+u6Jubm9De3g4jIyMacebHRZ2dncH8/Dx0dXUBTXSN2vPjorKzs4GeROju7oa8vDyN2uNaFD2x2jKjpaVFFtOhoaGfmegrKyuwuLioPTMWFhZgeXlZe4ZElitntra2MC0tTRbBgoICXF9f1wxfuj9mwXk+jo/nuu3tbc04YyQqHA6/vxn4/X6kdUcziHd3dzGi7u/vNYNI+yTSK4zU8RsDvfJoxh4jUYODgzIwzQmk26fRP0LimQXdPqnj+uHhYY3aE1WemKqqKhm0ublZI59FxDOLpqYm6gPW1NRoxJ6o0vjQniYDsk1MTEjs9vb2/cR2Zt3K8fFx6kfGODk5kZgdjk8fDaItALpi4rOyfol3IjPTJ96qY46Pj7WVGEdR9PqrLYD8/HxtuaOwsFBbseMlwlFU9Cp8fX2tLXdEby8mq7qjqGAwqC0AWmvEPzyExDsRCoXF0xonnikrK9OWDTq3bKmsrJRJ2tDQoJH4E/ujMW9vb1hXV0d9wOrq6kjQAS21p7+/XwZlm5ub0+hnEdFmMTs7S/1I7cDAgEbtiSpPTCgUwpKSEhnY5/Ph3t6eZhCfn5/fhbC9vLxoBpE2YszIyJC60tJS2RlMMBLF0GaMKSkpcgI+0fT0NL6+vmo2Fo5PTk4ivZ/L8Vy3tramWWeMRTF8KyxhbDxH+vr6cGlpSa4Ke+5bOwAbfbbH3HITXIliVldX5VvOOqmd0ZOGGxsbWmmOa1HM09MTjo6OytPo9XpjhHC/sbERx8bGZL59hb/+04wX1NPTU7i5uYGcnBygCW38fZeI///kmZKEogB+AzAU/LyQVthtAAAAAElFTkSuQmCC">`
+                } else if (card.Temp > 0) {
+                    TempWaterIMGHtml = `<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAYAAADFniADAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAGYktHRAD/AP8A/6C9p5MAAAOPSURBVFhH7ZhNLCRREMdr5mB2fCTrm2QHwR6M4bA2w2kcHDZx54iTK1dxd0REXH2EkDiLRByI7+BAXHbWZ1ZCsCtIfGZS+6q2Wow1/V5bEsnuL3mp6qp+3f95/bre63GhAt4YbrFvijcp6lmP7/r6GpaXl+Hw8FAif5KVlQXBYBA8Ho9EHECinHB0dIRFRUX0Q7TN7/fj8fGx9DTHsaiWlpYnBcRqra2t0tMcx3Nqc3OTrRotWFlZidkoT4TDYbaOEHHG1NTU8AiUlZVJ5GkoT+fl5+djY2MjDgwMSEbPq4t62Ezn14uUhIODA9je3mb7mISEBFCjBfX19ZCamipRe15ElCcYgveVX9g+prq6Gra2tqCvrw9cLpdE7fk3K/rCwgLU1tZCV1eXRPS8uqj9/X0YHR2FpqYmUBNdova8uqjk5GRQbyI0NzdDWlqaRO1xLEq9seKZUVVVxcW0o6PjdSb69PQ0jI+Py5EZY2NjMDk5KUeG/C5XehYXF9Hr9XIRzMjIwLm5Ockg/vhQeN8sKE/n0fnUb2lpSTJ6jERdXV3d7wyys7NR1R3JIJ6dnUWJOj8/lwyiWidRbWG4H+0Y1JZHMvYYiWpvb+cLqzmB6vFJNHqEHjcL9fi4H/Xv7OyUqD1Gm7ySkhLY2NiAyspKmJqa4thP30e2dqR8/8Y2FArBzMwMlJaWwtraGsfs0E70nZ0dFkTU1dWxVY+MrY6Liwu2Vr/19XXY29tj3w6tqN3dXfEAAoEA20jgM1sdd/5PbK1+BP1IHVpRavsrHkB6erp4zsjMzBQv+nqx0Ip6WIVPTk7Ec8bD5cWkqmtFFRQUiAegag3bd1/1k5XwhtfZqhrHligsLBQvNlpReXl5UFxczP7g4CDb+Ph4tjpU0eRlyepHb3FOTg77dmhFEQ0NDWxppEZGRti3XvdYWPnh4WH+RiSs62ihOqXj8vISfT4fF8CkpCRcXV2VDOLt7W1U0by7u5MMolqIMTExkfvl5ubyymCC8dqnFmOMi4vjG9CN+vv7MRKJSDYaivf29qLan/P51G92dlayeoxFEUNDQ/fCqKk5gm1tbTgxMcGjQpaOVV26P0d9tqN6hHIFMxyJItRywd9y1k3tmnrTcH5+Xnqa41gUcXNzg93d3VheXo5utztKCB1XVFRgT08Pz7fn8Nd/mlFBpfXs9PQUUlJSQE1o4++7WPz/J8+UNygK4Bflp3G4eU+s+QAAAABJRU5ErkJggg==">`
+                } else {
+                    TempWaterIMGHtml = `<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAYAAADFniADAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAGYktHRAD/AP8A/6C9p5MAAAMqSURBVFhH7Zi7S2tBEIcnKRSJKXxrEQJq47MRH41Y2Nlrmy6ttmJvIz4QsZHgAySFtQhiI75R/wHxFbAQFQQLTRQdZ9YxREz2zN5LIHDvB8vOmT2z55c9u7N74kMCCgy/1AVFQYr6o9eXTCbh+PgYbm9vxfOb2tpa6OrqguLiYvE4wKJcuLu7w6amJv4hnqW5uRnv7+8lUo+zqNHR0awCcpWxsTGJ1OM8p87Pz01NowUnJyc5C7czZ2dnpnZCxKkZHBw0I9DR0SGe7HA731dfX4/RaBRXVlakxZu8i8os2vmV95QQCASARgsikQhUVFSI107eRQ0MDMDFxQUsLS2Bz+cTr51/M6MfHBzA0NAQzM7OisebvIu6ubmBtbU1GB4eBpro4rWTd1FlZWVAKxFGRkagsrJSvHacRdGKFUtHf3+/SabT09P5mejb29uwsbEhVzrW19dha2tLrpR8pStvDg8PsaSkxCTB6upq3Nvbk5bscDvfx/dz3NHRkbR4oxL18vKSPhnU1dUh5R1psUP7JNIRxsTxiYGOPNJiRyVqamrKdExzAun1iVcHvT4Tx/EzMzPitaMS1draajrt6+sTjxu9vb0mvr29XTx2PEVdXl6aDrnEYjHx6nh6ejL1wsJCuo/r62vjs+G5+qgTsQBoxMTSEQwGTZ0Zd3V1JVZuPEXR8VcsgKqqKrHcqKmpEetnf7nwFJWZhR8eHsRyI3N70WR1T1ENDQ1iAVCuEcsNynFiATQ2NoplQeaWlZaWFjNJu7u7xaPn4+MDOzs7TXxbW5t47ahETUxMpFdPPB4Xr47V1dV07OTkpHjtqEQ9Pz9jKBQyHdOKwtPTU2lBfH19FeuLt7c3sRBpI8bS0lITFw6Hzc6gQSWKoc0Yi4qKzAP4QcvLy/j+/i6tP2H/4uIi0vnc3M9xu7u70uqNWhTDr+JbGBeeI+Pj47i5uWlGhWu+/t4BuNBnu/MrdxLF7OzsmG+574faCq003N/fl0g9zqKYVCqFc3NzZjX6/f4fQvi6p6cH5+fnf803LX/9pxkn1EQiAY+Pj1BeXg40odXfd7n4/0+elgIUBfAJFX9R6wJOQlwAAAAASUVORK5CYII=">`
                 }
 
                 /* WaveTab */
@@ -585,9 +606,9 @@
 
                 distanceHtml = `<hr style="width: calc(100%*${cruise.Ratio})!important" class="LineDistance">`
 
-                PassedHtml = `<span class="TxtRouteBlock">${cruise.Passed}мл</span><span class="TxtRouteBlock">${cruise.PassedTime}</span>`
-                StayHtml = `<span class="TxtRouteBlock">${cruise.Stay}мл</span><span class="TxtRouteBlock">${cruise.StayTime}</span>`
-                for(let point of cruise.Route){
+                PassedHtml = `<span class="TxtRouteBlock">${cruise.Passed}м. миль</span><span class="TxtRouteBlock">${cruise.PassedTime}</span>`
+                StayHtml = `<span class="TxtRouteBlock">${cruise.Stay}м. миль</span><span class="TxtRouteBlock">${cruise.StayTime}</span>`
+                for (let point of cruise.Route) {
                     pointList.push([point.LAT, point.LON])
                 }
             }
@@ -601,6 +622,8 @@
 
             CourseIMG.innerHTML = CourseTabHtml;
             Course.innerHTML = mCourseHtml;
+            TempWater.innerHTML = TempWaterHtml;
+            TempWaterIMG.innerHTML = TempWaterIMGHtml;
             WindSpeedIMG.innerHTML = WindSpeedTabHtml;
             WindSpeed.innerHTML = mWindSpeedHtml;
 
