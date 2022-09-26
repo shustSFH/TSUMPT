@@ -347,7 +347,7 @@
             zoom: 6,
             coordinateControl: true
         });
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        L.tileLayer('http://{s}.tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=1bb5c15504244d83aeeb2f05eda22276', {
             minZoom: 3,
             maxZoom: 20,
         }).addTo(map);
@@ -407,7 +407,6 @@
             });
 
             dataTime = data + ' ' + hour + ':' + minute;
-            console.log(dataTime)
             clock.innerHTML = dataTime;
         }
 
@@ -601,18 +600,18 @@
                 PortArrivalImgHtml = `<img class="PortFlagIMG" src="data:image/png;base64,${imgArrival}">`
                 PortDepartureHtml = `${cruise.PortDeparture}`
 
-                spanArrivalHtml = `<span class="anotherTxt StartWayTxtBlock">Отправка</span><span class="TxtWayBlock">${dataTimeArrive}</span>`
-                spanDepartureHtml = `<span class="anotherTxt StartWayTxtBlock">Прибытие</span><span class="TxtWayBlock">${dataTimDeparture}</span>`
+                spanArrivalHtml = `<span class="anotherTxt StartWayTxtBlock">Отправка</span><span class="TxtWayBlock">${dataTimDeparture}</span>`
+                spanDepartureHtml = `<span class="anotherTxt StartWayTxtBlock">Прибытие</span><span class="TxtWayBlock">${dataTimeArrive}</span>`
 
                 distanceHtml = `<hr style="width: calc(100%*${cruise.Ratio})!important" class="LineDistance">`
 
-                PassedHtml = `<span class="TxtRouteBlock">${cruise.Passed}м. миль</span><span class="TxtRouteBlock">${cruise.PassedTime}</span>`
-                StayHtml = `<span class="TxtRouteBlock">${cruise.Stay}м. миль</span><span class="TxtRouteBlock">${cruise.StayTime}</span>`
+                PassedHtml = `<span class="TxtRouteBlock">${cruise.Passed} м. миль</span><span class="TxtRouteBlock">${cruise.PassedTime}</span>`
+                StayHtml = `<span class="TxtRouteBlock">${cruise.Stay} м. миль</span><span class="TxtRouteBlock">${cruise.StayTime}</span>`
                 for (let point of cruise.Route) {
                     pointList.push([point.LAT, point.LON])
                 }
             }
-            console.log(pointList)
+            
             SpeedIMG.innerHTML = SpeedTabHtml;
             Speed.innerHTML = mSpeedHtml;
             TempIMG.innerHTML = TemperatureTabHtml;
