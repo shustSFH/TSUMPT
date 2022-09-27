@@ -58,7 +58,7 @@
         * {
             margin: 0;
             padding: 0;
-            font-family: 'Calibri', serif;
+            font-family: 'Arial';
         }
 
         #map {
@@ -68,7 +68,7 @@
 
         #CardInfo {
             position: absolute;
-            font-family: "Calibri", serif;
+            font-family: 'Arial';
             display: flex;
             top: 0%;
             left: 70vw;
@@ -79,6 +79,11 @@
             justify-content: flex-start;
             align-items: center;
 
+        }
+
+        .AG-img {
+            padding-top: 20px;
+            padding-bottom: 20px;
         }
 
         #clock {
@@ -114,7 +119,7 @@
             flex-direction: column;
         }
 
-        .anotherTxtPort{
+        .anotherTxtPort {
             color: #7f7f7f;
         }
 
@@ -140,6 +145,12 @@
             width: 60%;
             align-items: flex-end;
             flex-direction: column;
+        }
+
+        .infowWayRouteBlocks{
+            display: flex;
+            align-items: center;
+            width: 95%;
         }
 
         .infoWayBlock {
@@ -285,10 +296,10 @@
 
         <div id="wayCSS">
             <div class="firstPortBlock">
-                <div id="spanArrival" class="infoWayBlock"></div>
+                <div id="spanArrival" class="infowWayRouteBlocks"></div>
             </div>
             <div class="secondPortBlock">
-                <div id="spanDeparture" class="infoWayBlock"></div>
+                <div id="spanDeparture" class="infowWayRouteBlocks"></div>
 
             </div>
         </div>
@@ -600,7 +611,7 @@
                 PortArrivalImgHtml = `<img class="PortFlagIMG" src="data:image/png;base64,${imgArrival}">`
                 PortDepartureHtml = `${cruise.PortDeparture}`
 
-                spanArrivalHtml = `<span class="anotherTxt StartWayTxtBlock">Отправка</span><span class="TxtWayBlock">${dataTimDeparture}</span>`
+                spanArrivalHtml = `<span class="anotherTxt StartWayTxtBlock">Отправление</span><span class="TxtWayBlock">${dataTimDeparture}</span>`
                 spanDepartureHtml = `<span class="anotherTxt StartWayTxtBlock">Прибытие</span><span class="TxtWayBlock">${dataTimeArrive}</span>`
 
                 distanceHtml = `<hr style="width: calc(100%*${cruise.Ratio})!important" class="LineDistance">`
@@ -611,7 +622,7 @@
                     pointList.push([point.LAT, point.LON])
                 }
             }
-            
+
             SpeedIMG.innerHTML = SpeedTabHtml;
             Speed.innerHTML = mSpeedHtml;
             TempIMG.innerHTML = TemperatureTabHtml;
