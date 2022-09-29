@@ -262,6 +262,51 @@
             width: 50%;
             justify-content: space-between;
         }
+
+        #nameLegend {
+            position: absolute;
+            left: 32%;
+            top: 92%;
+            z-index: 1001;
+            font-size: 0.9vw;
+            font-family: 'Calibri', 'Arial';
+            font-weight: bold;
+        }
+
+        #legend {
+            position: absolute;
+            top: 95%; 
+            width: 16%;
+            height: 2.5%; 
+            left: 27%; 
+            z-index: 1000;
+            background: linear-gradient(to right, #FF4500, #FFA500, #FFFF00, #90EE90, #00BFFF, #FF00FF, #800080);
+            -webkit-tap-highlight-color: initial;
+            transition: .3s opacity;
+            margin-bottom: 5px;
+            border-radius: 20px;
+        }
+
+        #legend span:first-child {
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .metric-legend span {
+            display: inline-block;
+            line-height: 1.5;
+            text-align: center;
+            vertical-align: middle;
+            color: white;
+        }
+
+        .metric-legend {
+            width: 100%;
+            background-color: #7c7c7c;
+            white-space: nowrap;
+            font-size: 0.87vw;
+            box-shadow: 0 0 4px 0 black;
+        }
     </style>
 </head>
 
@@ -349,6 +394,14 @@
             </div>
         </div>
 
+    </div>
+
+    <div id="nameLegend">Скорость судна, уз</div>
+    </div>
+    <div id="legend" class="metric-legend noselect">
+        <span style="width: 14.285%">0</span><span style="width: 14.285%">2</span><span
+            style="width: 14.285%">5</span><span style="width: 14.285%">9</span><span
+            style="width: 14.285%">15</span><span style="width: 14.285%">21</span><span style="width: 14.285%">30</span>
     </div>
 
     <script>
@@ -651,9 +704,9 @@
             Stay.innerHTML = StayHtml;
 
             let allRoute = new L.polyline(pointList, {
-                color: 'red', 
-                weight: '2.5', 
-                dashArray: '10, 10', 
+                color: 'red',
+                weight: '2.5',
+                dashArray: '10, 10',
                 dashOffset: '0',
                 smoothFactor: 1
             }).addTo(map);
