@@ -58,7 +58,7 @@
         * {
             margin: 0;
             padding: 0;
-            font-family: 'Calibri','Arial';
+            font-family: 'Calibri', 'Arial';
         }
 
         #map {
@@ -68,7 +68,7 @@
 
         #CardInfo {
             position: absolute;
-            font-family: 'Calibri','Arial';
+            font-family: 'Calibri', 'Arial';
             display: flex;
             top: 0%;
             left: 70vw;
@@ -147,7 +147,7 @@
             flex-direction: column;
         }
 
-        .infowWayRouteBlocks{
+        .infowWayRouteBlocks {
             display: flex;
             align-items: center;
             width: 95%;
@@ -651,11 +651,13 @@
             Stay.innerHTML = StayHtml;
 
             let allRoute = new L.polyline(pointList, {
-                color: '#37a0a8',
-                weight: 4,
-                opacity: 0.5,
+                color: 'red', 
+                weight: '2.5', 
+                dashArray: '10, 10', 
+                dashOffset: '0',
                 smoothFactor: 1
             }).addTo(map);
+
         }
 
         function startDrawGeoJsonGradient() {
