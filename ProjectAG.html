@@ -275,10 +275,10 @@
 
         #legend {
             position: absolute;
-            top: 95%; 
+            top: 95%;
             width: 16%;
-            height: 2.5%; 
-            left: 27%; 
+            height: 2.5%;
+            left: 27%;
             z-index: 1000;
             background: linear-gradient(to right, #FF4500, #FFA500, #FFFF00, #90EE90, #00BFFF, #FF00FF, #800080);
             -webkit-tap-highlight-color: initial;
@@ -419,6 +419,8 @@
         let marker;
         let markerArr = [];
         let hotlineLayer;
+        let pointList = [];
+        let allRoute;
 
         function Get(yourUrl) {
             var Httpreq = new XMLHttpRequest();
@@ -538,6 +540,10 @@
 
         function startLoadTable() {
 
+            if(allRoute){
+                map.removeLayer(allRoute)
+            }
+
             let DatePers = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/list_vessels/AG/555`), { fetcher });
             let personData = DatePers.Vessels
             let person = personData[0]
@@ -597,7 +603,6 @@
             let RouteHtml = '';
             let StayHtml = '';
             let PassedHtml = '';
-            let pointList = [];
             for (let card of cardData) {
 
                 if (card.Wave !== null) { mWaveHtml = `<span class="anotherTxt">Высота волны</span><span>${card.Wave} м</span>` } else { mWaveHtml = `N/A` }
@@ -703,7 +708,7 @@
             Passed.innerHTML = PassedHtml;
             Stay.innerHTML = StayHtml;
 
-            let allRoute = new L.polyline(pointList, {
+            allRoute = new L.polyline(pointList, {
                 color: 'red',
                 weight: '2.5',
                 dashArray: '10, 10',
@@ -761,12 +766,13 @@
             hotlineLayer.addTo(map);
 
         };
-
+       
         setInterval(function () {
             for (let i = 0; i < markerArr.length; i++) {
                 map.removeLayer(markerArr[i])
             };
             markerArr.splice(0, markerArr.length);
+            pointList.splice(0, pointList.length);
             createM(), startLoadTable(), startDrawGeoJsonGradient(), srtTime()
         }, 300000)
     </script>
