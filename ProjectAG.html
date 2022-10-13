@@ -811,9 +811,6 @@
                 console.log(ofcardData)
 
                 let person = ofpersonData[0]
-                let cardO = ofopenCardData[0]
-                let ofcardD = ofcardData[0]
-                let ofcruiseI = ofcruiseInfo[0]
 
                 const SpeedIMG = document.getElementById('SpeedIMG');
                 const Speed = document.getElementById('Speed');
@@ -866,7 +863,7 @@
                 let RouteHtml = '';
                 let StayHtml = '';
                 let PassedHtml = '';
-                for (let card of ofcardD) {
+                for (let card of ofcardData) {
 
                     if (card.Wave !== null) { mWaveHtml = `<span class="anotherTxt">Высота волны</span><span>${card.Wave} м</span>` } else { mWaveHtml = `N/A` }
                     if (card.Temp !== null) { mTempHtml = `<span class="anotherTxt">Температура</span><span>${card.Temp} °C</span>` } else { mTempHtml = `N/A` }
@@ -916,7 +913,7 @@
                     WindSpeedTabHtml = `<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAYAAADFniADAAAABmJLR0QA/wD/AP+gvaeTAAACJElEQVRYhe3Y32vNcRzH8cfWyiK/GplIa0iG4mLarSsXlKvNPTdyo5TQ5EpyrzRMQ7tQslKixg1/AC6EuxWTXxEm24Tj4n1OfW3nx+b7PeeseNa3b9/zPt/P59X78/683+/Pl/9Uh8Z6CyiwCVfxFjm8wwDW1UtQD77hPc7hKM7jA75iV60FdWAcw1gyxdaCBxjD2lmM2YT5aUS14xIWl7Avwyf0VxinBb14ju8iBN7gItanEViKfrwqY9+Ol/iBm3lxh3ABHzGJ/VmLOpGfsKGIrV148ik2FrEvxXXhuZ4sRQ0o7akhsWNby7zfiLti4yzKQtAqfBFLUYwukU4q0YFfOJhW0AY8wmesSTsYnuFa4aEpYejEtgovL8BW7BX5aw9eZCBqFMuLGW6IoKt0jeIsVmcgpsDj/Pz401PdSuekAhMioWZJG7ZgMONx/5oGsUvHlN+lNaNZJN8cDiQNyeVrxeYaienEPqzEcfSV+vNtMwv0LK5J3BJlaBrJ8rBCBFw1KfRjI6L1+U8qksvXqHKeKkdOdAWZMiR9AE/gHnanEZL01ExqXzmaROfQLTrKPlH5cynGzIx5OC3EHKuzlmkMim2/sN5CknQJb806vqp54h3J32ddaKspqi1/f13FOaZxBjvL2C+LliSTA8FMGRYHhx1Tfm/AYRFPvbUURPTUD/ETd3ASp8SBIocr6vSVphlH8ES0I+O4LxLonGDOfLv6d/gNsy6Za8uwIiIAAAAASUVORK5CYII=">`
                 }
 
-                for (let cruise of ofcruiseI) {
+                for (let cruise of ofcruiseInfo) {
 
                     let dataTimeArrive = new Date(cruise.Arrival).toLocaleString('ru', { day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' }).replace(',', '')
                     let dataTimDeparture = new Date(cruise.Departure).toLocaleString('ru', { day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' }).replace(',', '')
@@ -954,7 +951,7 @@
 
                 let imgPort = new PortLeaf({ iconUrl: `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAABQNJREFUOE9tlXlQ1HUUwD/f329/u7ALiyDoCh6oeGUhqTP+4ZF2awJ5gmkRklNhTjmWeUXjOKWGTmlZ2aHZZYqmCGlZuJXZjBVhpWnisYCI4C7uwd7HtxEn7Xp/vHnzZt5n3j/v8wT/E9+dbpFH685gPVLLT8frsV+xg4zQO91C/179mTNzOjnZvRiWJsS/x//RqP2jVR44VEPVV1bqG9txOoMInZ6o0wkiQPesLPzeGAGvl3RLEo/PLaRg8jgyU4zXOdeL2lNt8pM9n/FR5V4unm2C+GRQDOD20PvWobRevkCwpRX0XVCNiUQdbfTJ7se8gonk3TWO7KyMTlZn+vV0s3x/1xe8t/sz7DYbpHXDkJBG2BvgngmjmTFlEn6/nd2f7sNqPYYxtTtevxcCbrp30XiiuICH58xq6JWsy+wErtywTW7cuhdHqxvMRtDiISYgHOXIoQrOnz6D2aTQ4QuyZOUGGn+3QYYFwkGwNzJi5E2Uzium5P7RQnx/slUuX7kW61e1iDQLItFIzOeDGBiNRuq+2ULVrhpSUox0t/TkqaXl1J9qIHHQQDwtF9FEiKjLwV13j6d8TRli9baD8rW3P6TZ5kBN7UY02AGRMEIfh4Zk2YISpuTegSDAzt1VvPDSu0hpQFi6IZ0uVJOR6OVWEiypvLxmFWLGsrdkxfY9EFTRp/cg5HGAEkWnaES9HnQyzG+1NdTV/kxJ6VP4OlRSBwzGbmuCpEQIRlETTUTdLuaWPIToctuj0nmxDdVgRtEg7LqEIISq6DHoVPpmWFi3dhVNzTZeLH+FpmY3GExEQiFQVDAkQmcN/W8ahGBogdQnmAm1e6C9jbQBacRrkqYzjVgsFjasX8udEwYSisH2iq95e8suTp46hzEpnrCqEAoIUOMg5EefnIQQ2bOljETA5WNwziDKFj+G393Oqxtfx2wyUVT0IDnDc1A1her9X/LB9kq6dk1j+sw8zF1TeWTBUoRmRPo6EJqKyMxbLG3H/4BIlPG3j6Z89bNYkgXz55exb9uH9Mm+hbc2b8Ljc1H0aCne+os8Xb6O0gX5uH0w9t5H6PD4IRqkX1ZfxP2L35TV1QdBqiSY4sibOIb5jxVT+8MxylY8z5W2Sxz+9iANTed4YPbDZPS7mVc3biIhOYHNW7dx6LufaD9rQ0s2UzS7APFa1c/yyYVLiPokhpRkotJHSdEspk7OQ4+ges8Opk/LxeFo5vSZBrIGDkcaEtizv5oPPq5AETrCzRfIzBnKqrLliN/bpSycU8qvR0+iz0gnZG8Bk0bu5DwK8ycx4ua+pHeFQBCuuDs4We/gjfd38kXNN+D3g06g16tMzb2X55YuvHbLa7dUy83v7eTcuSaULkkgVGKeAPpEI90SNR4szMfjusSBg1YamtxEpIqIi0dRJcLvJGdgP2YVTGXR3PxrPmvxROTWj3awftM7OOx+DGm9icQMRIMhlHiVWNgLMoZQdZjizYSCfkKuNoxGQaoWZtWKZygqyL9hm6vQE7ZGWVF5gMrPj1JXdx6CGiKjJzLqhTitEyadbmh3Q8iDkmJg2JCeLJpXyOxpuYoQQl7X11/WPW93SeuRE+za9zWHj53FGwgTi/joNIVO69zSFG8is0cqtw7JYFTOAIpn3keCdsPc/1H4Vfgvl6Q8/KON2uMn2G+14nA6UBSFvj3SGTNyBGNHDWfYkAz6p6sRsxDa39/An0QtGTGwQdHEAAAAAElFTkSuQmCC` })
 
-                for (let port of ofcruiseI.Ports) {
+                for (let port of ofcruiseInfo[0].Ports) {
 
                     let markerOptions = {
                         title: [port.PORT],
@@ -1079,8 +1076,6 @@
                 let ofpersonData = JSON.parse(localStorage.getItem('ofpersonData'))
 
                 let person = ofpersonData[0]
-                let ofC = ofcoords[0]
-                let ofspeedD = ofspeedData[0]
 
                 if (hotlineLayer) {
                     map.removeLayer(hotlineLayer)
@@ -1088,7 +1083,7 @@
 
                 let cordSpeed = [];
 
-                for (let cor of ofC.features) {
+                for (let cor of ofcoords[0].features) {
 
                     if (cor.geometry.type === 'Point') {
                         cordSpeed.push([cor.geometry.coordinates[1], cor.geometry.coordinates[0], cor.properties.speed])
@@ -1096,7 +1091,7 @@
 
                 }
 
-                for (let dataS of ofspeedD) {
+                for (let dataS of ofspeedData) {
                     cordSpeed.push([person.LAT, person.LON, dataS.Speed])
                 }
 
