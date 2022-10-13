@@ -796,30 +796,16 @@
                 localStorage.setItem('ofopenCardData', JSON.stringify(ofopenCardData));
                 localStorage.setItem('ofpersonData', JSON.stringify(ofpersonData));
 
-               /*  let dataCruise = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(ofcruiseInfo));
-                dlAnchorElem.setAttribute("href", dataCruise);
-                dlAnchorElem.setAttribute("download", `Cruise by ${dataTime}.json`);
-                dlAnchorElem.click();
-
-                let datacardData = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(ofcardData));
-                dlAnchorElem.setAttribute("href", datacardData);
-                dlAnchorElem.setAttribute("download", `cardData by ${dataTime}.json`);
-                dlAnchorElem.click();
-
-                let dataopenCardData = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(ofopenCardData));
-                dlAnchorElem.setAttribute("href", dataopenCardData);
-                dlAnchorElem.setAttribute("download", `openCardData by ${dataTime}.json`);
-                dlAnchorElem.click();
-
-                let datapersonData = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(ofpersonData));
-                dlAnchorElem.setAttribute("href", datapersonData);
-                dlAnchorElem.setAttribute("download", `personData by ${dataTime}.json`);
-                dlAnchorElem.click(); */
             } else {
 
                 if (allRoute) {
                     map.removeLayer(allRoute)
                 }
+
+                let ofpersonData = JSON.parse(localStorage.getItem('ofpersonData'));
+                let ofopenCardData = JSON.parse(localStorage.getItem('ofopenCardData'));
+                let ofcardData = JSON.parse(localStorage.getItem('ofcardData'));
+                let ofcruiseInfo = JSON.parse(localStorage.getItem('ofcruiseInfo'));
 
                 let person = ofpersonData[0]
                 let cardO = ofopenCardData[0]
@@ -875,7 +861,7 @@
                 let RouteHtml = '';
                 let StayHtml = '';
                 let PassedHtml = '';
-                for (let card of ofcardData) {
+                for (let card of ofcardData[0]) {
 
                     if (card.Wave !== null) { mWaveHtml = `<span class="anotherTxt">Высота волны</span><span>${card.Wave} м</span>` } else { mWaveHtml = `N/A` }
                     if (card.Temp !== null) { mTempHtml = `<span class="anotherTxt">Температура</span><span>${card.Temp} °C</span>` } else { mTempHtml = `N/A` }
@@ -925,7 +911,7 @@
                     WindSpeedTabHtml = `<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAYAAADFniADAAAABmJLR0QA/wD/AP+gvaeTAAACJElEQVRYhe3Y32vNcRzH8cfWyiK/GplIa0iG4mLarSsXlKvNPTdyo5TQ5EpyrzRMQ7tQslKixg1/AC6EuxWTXxEm24Tj4n1OfW3nx+b7PeeseNa3b9/zPt/P59X78/683+/Pl/9Uh8Z6CyiwCVfxFjm8wwDW1UtQD77hPc7hKM7jA75iV60FdWAcw1gyxdaCBxjD2lmM2YT5aUS14xIWl7Avwyf0VxinBb14ju8iBN7gItanEViKfrwqY9+Ol/iBm3lxh3ABHzGJ/VmLOpGfsKGIrV148ik2FrEvxXXhuZ4sRQ0o7akhsWNby7zfiLti4yzKQtAqfBFLUYwukU4q0YFfOJhW0AY8wmesSTsYnuFa4aEpYejEtgovL8BW7BX5aw9eZCBqFMuLGW6IoKt0jeIsVmcgpsDj/Pz401PdSuekAhMioWZJG7ZgMONx/5oGsUvHlN+lNaNZJN8cDiQNyeVrxeYaienEPqzEcfSV+vNtMwv0LK5J3BJlaBrJ8rBCBFw1KfRjI6L1+U8qksvXqHKeKkdOdAWZMiR9AE/gHnanEZL01ExqXzmaROfQLTrKPlH5cynGzIx5OC3EHKuzlmkMim2/sN5CknQJb806vqp54h3J32ddaKspqi1/f13FOaZxBjvL2C+LliSTA8FMGRYHhx1Tfm/AYRFPvbUURPTUD/ETd3ASp8SBIocr6vSVphlH8ES0I+O4LxLonGDOfLv6d/gNsy6Za8uwIiIAAAAASUVORK5CYII=">`
                 }
 
-                for (let cruise of ofcruiseInfo) {
+                for (let cruise of ofcruiseInfo[0]) {
 
                     let dataTimeArrive = new Date(cruise.Arrival).toLocaleString('ru', { day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' }).replace(',', '')
                     let dataTimDeparture = new Date(cruise.Departure).toLocaleString('ru', { day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' }).replace(',', '')
@@ -1083,9 +1069,9 @@
 
             } else {
 
-                ofcoords = JSON.parse(localStorage.getItem('ofcoords'))
-                ofspeedData = JSON.parse(localStorage.getItem('ofspeedData'))
-                ofpersonData = JSON.parse(localStorage.getItem('ofpersonData'))
+                let ofcoords = JSON.parse(localStorage.getItem('ofcoords'))
+                let ofspeedData = JSON.parse(localStorage.getItem('ofspeedData'))
+                let ofpersonData = JSON.parse(localStorage.getItem('ofpersonData'))
 
                 let person = ofpersonData[0]
 
@@ -1103,7 +1089,7 @@
 
                 }
 
-                for (let dataS of ofspeedData) {
+                for (let dataS of ofspeedData[0]) {
                     cordSpeed.push([person.LAT, person.LON, dataS.Speed])
                 }
 
