@@ -527,10 +527,11 @@
 
                 ofpersonData.push(...personData)
 
-            } else {
                 localStorage.setItem('ofpersonData', JSON.stringify(ofpersonData));
 
-                ofpersonData = JSON.parse(localStorage.getItem('ofpersonData'))
+            } else {
+
+                let ofpersonData = JSON.parse(localStorage.getItem('ofpersonData'))
 
                 let person = ofpersonData[0]
 
