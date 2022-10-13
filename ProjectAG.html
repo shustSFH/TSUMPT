@@ -54,6 +54,7 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
+
     <style>
         * {
             margin: 0;
@@ -312,6 +313,8 @@
 
 <body style="overflow:hidden;">
 
+    <a id="downloadAnchorElem" style="display:none"></a>
+
     <div id="map"></div>
 
     <div id="CardInfo">
@@ -427,6 +430,8 @@
         let ofopenCardData = [];
         let ofspeedData = [];
         let ofcoords = [];
+        const dlAnchorElem = document.getElementById('downloadAnchorElem');
+
 
         function Get(yourUrl) {
             var Httpreq = new XMLHttpRequest();
@@ -525,7 +530,7 @@
             } else {
                 localStorage.setItem('ofpersonData', JSON.stringify(ofpersonData));
 
-                ofpersonData = JSON.parse( localStorage.getItem('ofpersonData'))
+                ofpersonData = JSON.parse(localStorage.getItem('ofpersonData'))
 
                 let person = ofpersonData[0]
 
@@ -558,6 +563,15 @@
         }
 
         function startLoadTable() {
+
+            let now = new Date(),
+                hour = now.getHours(),
+                minute = now.getMinutes(),
+                day = now.getDate(),
+                year = now.getFullYear(),
+                month = now.getMonth() + 1,
+                dataTime = '';
+            dataTime = `${day}.${month}.${year} ${hour}_${minute}`
 
             if (window.navigator.onLine) {
 
@@ -777,17 +791,31 @@
                 ofopenCardData.push(...openCardData)
                 ofpersonData.push(...personData)
 
-            } else {
-
                 localStorage.setItem('ofcruiseInfo', JSON.stringify(ofcruiseInfo));
                 localStorage.setItem('ofcardData', JSON.stringify(ofcardData));
                 localStorage.setItem('ofopenCardData', JSON.stringify(ofopenCardData));
                 localStorage.setItem('ofpersonData', JSON.stringify(ofpersonData));
 
-                ofcruiseInfo = JSON.parse( localStorage.getItem('ofcruiseInfo'))
-                ofcardData = JSON.parse( localStorage.getItem('ofcardData'))
-                ofopenCardData = JSON.parse( localStorage.getItem('ofopenCardData'))
-                ofpersonData = JSON.parse( localStorage.getItem('ofpersonData'))
+               /*  let dataCruise = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(ofcruiseInfo));
+                dlAnchorElem.setAttribute("href", dataCruise);
+                dlAnchorElem.setAttribute("download", `Cruise by ${dataTime}.json`);
+                dlAnchorElem.click();
+
+                let datacardData = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(ofcardData));
+                dlAnchorElem.setAttribute("href", datacardData);
+                dlAnchorElem.setAttribute("download", `cardData by ${dataTime}.json`);
+                dlAnchorElem.click();
+
+                let dataopenCardData = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(ofopenCardData));
+                dlAnchorElem.setAttribute("href", dataopenCardData);
+                dlAnchorElem.setAttribute("download", `openCardData by ${dataTime}.json`);
+                dlAnchorElem.click();
+
+                let datapersonData = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(ofpersonData));
+                dlAnchorElem.setAttribute("href", datapersonData);
+                dlAnchorElem.setAttribute("download", `personData by ${dataTime}.json`);
+                dlAnchorElem.click(); */
+            } else {
 
                 if (allRoute) {
                     map.removeLayer(allRoute)
@@ -1014,7 +1042,7 @@
                 let speedData = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/vessel_info/${person.IMO}`), { fetcher });
 
                 let coords = JSON.parse(Get(`http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/vessel_track/${person.IMO}`), { fetcher });
-            
+
                 for (let cor of coords.features) {
 
                     if (cor.geometry.type === 'Point') {
@@ -1049,15 +1077,15 @@
                 ofcoords.push(coords);
                 ofspeedData.push(...speedData);
 
-            } else {
-
                 localStorage.setItem('ofcoords', JSON.stringify(ofcoords));
                 localStorage.setItem('ofspeedData', JSON.stringify(ofspeedData));
                 localStorage.setItem('ofpersonData', JSON.stringify(ofpersonData));
 
-                ofcoords = JSON.parse( localStorage.getItem('ofcoords'))
-                ofspeedData = JSON.parse( localStorage.getItem('ofspeedData'))
-                ofpersonData = JSON.parse( localStorage.getItem('ofpersonData'))
+            } else {
+
+                ofcoords = JSON.parse(localStorage.getItem('ofcoords'))
+                ofspeedData = JSON.parse(localStorage.getItem('ofspeedData'))
+                ofpersonData = JSON.parse(localStorage.getItem('ofpersonData'))
 
                 let person = ofpersonData[0]
 
@@ -1108,7 +1136,7 @@
             markerArr.splice(0, markerArr.length);
             pointList.splice(0, pointList.length);
             createM(), startLoadTable(), startDrawGeoJsonGradient(), srtTime()
-        }, 8000)
+        }, 300000)
     </script>
 
 </body>
