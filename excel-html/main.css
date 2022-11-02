@@ -1,0 +1,507 @@
+/* 10 - 100% */
+* {
+    margin: 0px;
+    padding: 0px;
+    --index: calc(1vw + 1vh);
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-family: 'Calibri', serif;
+    font-size: calc(var(--index)* 0.56);
+}
+
+body {
+    overflow: hidden;
+}
+
+.tabs {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    height: 100vh;
+}
+
+.tab,
+.tab-title {
+    display: inline-block;
+    /* Выстраиваем по горизонтали */
+    width: 10%;
+    height: 5%;
+    overflow: hidden;
+    font-size: calc(var(--index) / 1.5);
+}
+
+.tab input[type="radio"] {
+    display: none;
+}
+
+.tab-title {
+    background: #fff;
+    /* Цвет фона */
+    border: 1px solid #666;
+    /* Параметры рамки */
+    margin-top: 3%;
+    width: 98%;
+    height: 30px;
+    text-align: center;
+    padding-top: 3%;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.5s;
+    transition: 0.5s;
+}
+
+.tab-title span {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: 0.5s;
+    height: 80%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.tab-title span:after {
+    content: '\00bb';
+    font-size: 15px;
+    color: black;
+    position: absolute;
+    opacity: 0;
+    top: 0px;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.tab-title:hover span {
+    padding-right: 20px;
+}
+
+.tab-title:hover span:after {
+    opacity: 1;
+    right: 5px;
+}
+
+.tab-content {
+    position: absolute;
+    /* Абсолютное позиционирование */
+    /* Параметры рамки */
+
+    left: 0;
+    /* Размещаем у левого края */
+    width: 100%;
+    /* Ширина содержимого */
+    display: none;
+    /* Прячем вкладку */
+
+}
+
+.tab :checked+.tab-title {
+    position: relative;
+    /* Относительное позиционирование */
+    background: #0070C0;
+    /* Цвет фона */
+    /* Сдвигаем вниз */
+    z-index: 1;
+    /* Отображаем поверх содержимого */
+}
+
+.tab :checked~.tab-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 0;
+}
+
+.container {
+    font-family: 'Calibri', serif;
+    font-size: calc(var(--index)* 0.56);
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.margin {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.head {
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(240, 226, 199);
+    border: 1px solid;
+}
+
+.allInfo {
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.main {
+    height: 10.6vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.mainInfo {
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.block {
+    display: flex;
+    flex-direction: row;
+}
+
+.info {
+    background-color: #BDE4FF;
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    width: 10vw;
+    height: 5vh;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    align-items: center;
+}
+
+.info-exc {
+    background-color: #BDE4FF;
+    border: 1px solid;
+    width: 10vw;
+    height: 5vh;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-align: center;
+}
+
+input {
+    width: 8vw;
+    height: 5vh;
+    text-align: center;
+    margin-left: 3px;
+    background-color: rgb(240, 226, 199);
+    border: 1px solid;
+    font-size: calc(var(--index)* 0.56);
+}
+
+.dReport {
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.katalog-info {
+    background-color: #0070BA;
+    color: white;
+    text-align: center;
+}
+
+.shipStatusInfo {
+    height: 37.4vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.name {
+    background-color: #BDE4FF;
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    align-items: center;
+    height: 5vh;
+    width: 29.965vw;
+}
+
+.shipInfo {
+    display: flex;
+    flex-direction: row;
+    height: 26.5vh;
+}
+
+.weatherInfo {
+    display: flex;
+    flex-direction: row;
+    height: 42.4vh;
+}
+
+.infos {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    justify-content: space-between;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.name-inputs {
+    width: 70vw;
+    height: 5vh;
+    text-align: center;
+    margin-left: 3px;
+}
+
+.personalInfo {
+    display: flex;
+    flex-direction: column;
+    height: 53vh;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.infoLikeTable {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.table-inputs {
+    width: 17.35vw;
+    height: 5vh;
+    text-align: center;
+    margin-left: 0px;
+}
+
+.infoTripleAll {
+    width: 52.35vw;
+    height: 5vh;
+    background-color: #BDE4FF;
+    display: flex;
+    border: 1px solid;
+}
+
+.infoQuadro {
+    background-color: #BDE4FF;
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    align-items: center;
+    width: 17.35vw;
+    height: 5vh;
+    overflow-wrap: break-word;
+    overflow: hidden;
+}
+
+.shipStoreInfo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 37.1vh;
+    justify-content: space-between;
+}
+
+.infoPenta {
+    background-color: #BDE4FF;
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    width: 7.8vw;
+    height: 5vh;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+.penta-inputs {
+    width: 7.8vw;
+    margin-left: 0px;
+}
+
+.provision-input {
+    width: 31.75vw;
+    margin-left: 0px;
+}
+
+.nameInput {
+    width: 30vw;
+    height: 5vh;
+    margin-left: 0px;
+}
+
+.Opres-exc {
+    background-color: #0070BA;
+    color: white;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    width: 7.8vw;
+    height: 5vh;
+    overflow-wrap: break-word;
+    align-items: center;
+}
+
+.summaryOfMedicalInfo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 58.3vh;
+    justify-content: space-between;
+}
+
+.info15 {
+    background-color: #BDE4FF;
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    width: 15vw;
+    height: 10vh;
+    overflow-wrap: break-word;
+    align-items: center;
+}
+
+.yesOrNo {
+    display: flex;
+    flex-direction: column;
+    width: 7.5vw;
+    height: 10vh;
+    justify-content: space-between;
+}
+
+.info7-5 {
+    background-color: #BDE4FF;
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    width: 7.3vw;
+    height: 4.8vh;
+    overflow-wrap: break-word;
+    align-items: center;
+    margin-left: 2.5px;
+}
+
+.yesNo {
+    background-color: #BDE4FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    width: 7.3vw;
+    height: 4.8vh;
+    overflow-wrap: break-word;
+    margin-left: 2.5px;
+}
+
+.info70 {
+    background-color: #BDE4FF;
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    align-items: center;
+    width: 70vw;
+    height: 4.8vh;
+    overflow-wrap: break-word;
+    margin-left: 2.5px;
+}
+
+.info70-between {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    height: 10vh;
+    justify-content: space-between;
+}
+
+.info70-input {
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    width: 70vw;
+    height: 4.8vh;
+    overflow-wrap: break-word;
+    align-items: center;
+}
+
+.full {
+    width: 100%;
+    height: 5vh;
+}
+
+table.blueTable {
+    border: 1px solid #1C6EA4;
+    background-color: #EEEEEE;
+    width: 100%;
+    height: 80vh;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+table.blueTable td,
+table.blueTable th {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+}
+
+table.blueTable tbody td {
+    height: 10%;
+    font-size: 13px;
+}
+
+table.blueTable thead {
+    height: 10%;
+    background: #0070C0;
+    background: -moz-linear-gradient(top, #0070C0 0%, #327cad 66%, #1C6EA4 100%);
+    background: -webkit-linear-gradient(top, #0070C0 0%, #327cad 66%, #1C6EA4 100%);
+    background: linear-gradient(to bottom, #0070C0 0%, #327cad 66%, #1C6EA4 100%);
+}
+
+table.blueTable thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-left: 2px solid #D0E4F5;
+    text-align: center;
+}
+
+table.blueTable thead th:first-child {
+    border-left: none;
+}
+
+.table-inp{
+    background-color: #EEEE;
+    width: 100%;
+    height: 100%;
+    margin-left: -1px;
+}
+
+@media (max-width: 900px) {
+    .container {
+        font-size: 10px;
+    }
+
+    input {
+        font-size: 10px;
+    }
+}
+
+@media (max-height: 600px) {
+    .container {
+        font-size: 10px;
+    }
+
+    input {
+        font-size: 10px;
+    }
+}
