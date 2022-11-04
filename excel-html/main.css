@@ -325,6 +325,17 @@ input {
     text-align: center;
 }
 
+.infoPentaD {
+    background-color: #BDE4FF;
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    width: 7.8vw;
+    height: 5vh;
+    overflow-wrap: break-word;
+    align-items: center;
+}
+
 .penta-inputs {
     width: 7.8vw;
     margin-left: 0px;
@@ -479,7 +490,7 @@ table.blueTable thead th:first-child {
     border-left: none;
 }
 
-.table-inp{
+.table-inp {
     background-color: #EEEE;
     width: 100%;
     height: 100%;
