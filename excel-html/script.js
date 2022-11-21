@@ -21,6 +21,9 @@ const Water = document.getElementById('Water');
 const shipS1 = document.querySelectorAll('#shipS1');
 const shipS2 = document.querySelectorAll('#shipS2');
 const shipS3 = document.querySelectorAll('#shipS3');
+const description = document.getElementById('Description');
+const noDescription = document.getElementById('NoDescription');
+
 
 let numbers1 = [];
 let numbers2 = [];
@@ -29,6 +32,14 @@ let numbersAll = [];
 let shipNumers1 = [];
 let shipNumers2 = [];
 let shipNumers3 = [];
+
+function Desc() {
+    if (description.value === '') {
+        noDescription.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="green"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>`
+    } else {
+        noDescription.innerHTML = '';
+    }
+}
 
 for (let i = 0; i < pers1.length; i++) {
     numbers1.push(Number(pers1[i].value))

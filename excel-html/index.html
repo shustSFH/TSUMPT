@@ -75,7 +75,14 @@
                             </div>
                             <div class="block">
                                 <div class="info-exc">Last port / Последняя локация</div>
-                                <input type="text" name="" id="">
+                                <select name="LastPort" id="LastPort">
+                                    <option value="AMASRA, Turkey">AMASRA, Turkey</option>
+                                    <option value="CESME, Turkey">CESME, Turkey</option>
+                                    <option value="ISTANBUL, Turkey">ISTANBUL, Turkey</option>
+                                    <option value="SINOP, Turkey">SINOP, Turkey</option>
+                                    <option value="SOCHI, Russia">SOCHI, Russia</option>
+                                    <option value="TRABZON, Turkey">TRABZON, Turkey</option>
+                                </select>
                             </div>
                         </div>
 
@@ -111,7 +118,14 @@
                                 <input type="number" class="name-inputs" name="" id="">
                                 <input type="number" class="name-inputs" name="" id="">
                                 <input type="number" class="name-inputs" name="" id="">
-                                <input type="text" class="name-inputs" name="" id="">
+                                <select name="NextPort" id="NextPort">
+                                    <option value="AMASRA, Turkey">AMASRA, Turkey</option>
+                                    <option value="CESME, Turkey">CESME, Turkey</option>
+                                    <option value="ISTANBUL, Turkey">ISTANBUL, Turkey</option>
+                                    <option value="SINOP, Turkey">SINOP, Turkey</option>
+                                    <option value="SOCHI, Russia">SOCHI, Russia</option>
+                                    <option value="TRABZON, Turkey">TRABZON, Turkey</option>
+                                </select>
                                 <input type="text" class="name-inputs" name="" id="">
                             </div>
 
@@ -379,11 +393,11 @@
                             </div>
                             <div class="yesOrNo">
                                 <div class="yesNo">No / Нет</div>
-                                <div class="info7-5"></div>
+                                <div class="info7-5" id="NoDescription"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="green"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>
                             </div>
                             <div class="info70-between">
                                 <div class="info70">Description /Описание</div>
-                                <input type="text" class="info70-input" id="" name="">
+                                <input type="text" class="info70-input" id="Description" onchange="Desc()">
                             </div>
                         </div>
                     </div>

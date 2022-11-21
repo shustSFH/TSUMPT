@@ -304,6 +304,27 @@ input {
     height: 5vh;
     overflow-wrap: break-word;
     overflow: hidden;
+    padding-right: 10px;
+}
+
+#NextPort{
+    width: 70vw;
+    height: 5vh;
+    text-align: center;
+    margin-left: 3px;
+    background-color: rgb(240, 226, 199);
+    border: 1px solid;
+    font-size: calc(var(--index)* 0.56);
+}
+
+#LastPort{
+    width: 8vw;
+    height: 5vh;
+    text-align: center;
+    margin-left: 3px;
+    background-color: rgb(240, 226, 199);
+    border: 1px solid;
+    font-size: calc(var(--index)* 0.56);
 }
 
 .shipStoreInfo {
@@ -323,6 +344,10 @@ input {
     height: 5vh;
     overflow-wrap: break-word;
     text-align: center;
+}
+
+option{
+    background: white;
 }
 
 .infoPentaD {
