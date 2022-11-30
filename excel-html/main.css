@@ -139,6 +139,7 @@ body {
     align-items: center;
     background-color: rgb(240, 226, 199);
     border: 1px solid;
+    font-weight: bold;
 }
 
 .allInfo {
@@ -449,7 +450,7 @@ option{
     width: 70vw;
     height: 4.8vh;
     overflow-wrap: break-word;
-    margin-left: 2.5px;
+    margin-left: 3px;
 }
 
 .info70-between {
@@ -520,6 +521,160 @@ table.blueTable thead th:first-child {
     width: 100%;
     height: 100%;
     margin-left: -1px;
+}
+
+.header{
+    width: 100%;
+    height: 5vh;
+    background: #317CAE;
+    color: white;
+    font-size: calc(var(--index) * 0.56);
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    justify-content: center;
+}
+
+.addPortsElem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    height: 5vh;
+}
+
+.addWindsElem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    height: 5vh;
+}
+
+.addSkyDescriptionElem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    height: 5vh;
+}
+
+.table-inpPass {
+    background-color: #EEEE;
+    width: 100%;
+    height: 100%;
+    margin-left: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portsWithDelete{
+    width: 41vw;
+    height: 8vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.inputSecurity{
+    width: 30vw;
+    height: 8vh;
+    background-color: #EEEE;
+    margin-left: 0px;
+}
+
+#deleteLastAct{
+    width: 5vw;
+    cursor: pointer;
+}
+
+#deleteLastAct:active{
+    background: #0070BA;
+}
+
+#Send{
+    /* position: relative;
+    left: 0px;
+    top: 95vh; */
+    width: 100%;
+    height: 5vh;
+    cursor: pointer;
+    z-index: 1;
+    border: 1px solid black;
+    background: #317CAE;
+    color: white;
+}
+
+#Send:active{
+    background: rgb(71, 235, 71);
+}
+
+.likeATable{
+    width: 30vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+#portsList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100vw;
+    height: 100%;
+}
+
+button{
+    width: 5vw;
+    cursor: pointer;
+}
+
+.elementConst{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 5vh;
+    flex-direction: row;
+}
+
+.elDiv{
+    border: 1px solid black;
+    background: #317CAE;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+}
+
+.elInput{
+    border: 1px solid black;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    margin-left: 0px;
+}
+
+.elAndInput{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 10vh;
+}
+
+.element1{
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 @media (max-width: 900px) {

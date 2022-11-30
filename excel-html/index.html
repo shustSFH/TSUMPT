@@ -24,23 +24,23 @@
                         <div class="mainInfo allInfo">
                             <div class="block">
                                 <div class="info">VESSEL / СУДНО</div>
-                                <input type="text" name="" id="">
+                                <input type="text" name="" id="Vessel">
                             </div>
                             <div class="block">
                                 <div class="info">IMO</div>
-                                <input type="number" name="" id="">
+                                <input type="number" name="" id="IMO">
                             </div>
                             <div class="block">
                                 <div class="info">Capitan / КАПИТАН</div>
-                                <input type="text" name="" id="">
+                                <input type="text" name="" id="Captain">
                             </div>
                             <div class="block">
                                 <div class="info">VSAT</div>
-                                <input type="number" name="" id="">
+                                <input type="number" name="" id="VSAT">
                             </div>
                             <div class="block">
                                 <div class="info">Contact number / ТЕЛЕФОН</div>
-                                <input type="number" name="" id="">
+                                <input type="number" name="" id="Telephone">
                             </div>
                         </div>
 
@@ -76,12 +76,6 @@
                             <div class="block">
                                 <div class="info-exc">Last port / Последняя локация</div>
                                 <select name="LastPort" id="LastPort">
-                                    <option value="AMASRA, Turkey">AMASRA, Turkey</option>
-                                    <option value="CESME, Turkey">CESME, Turkey</option>
-                                    <option value="ISTANBUL, Turkey">ISTANBUL, Turkey</option>
-                                    <option value="SINOP, Turkey">SINOP, Turkey</option>
-                                    <option value="SOCHI, Russia">SOCHI, Russia</option>
-                                    <option value="TRABZON, Turkey">TRABZON, Turkey</option>
                                 </select>
                             </div>
                         </div>
@@ -119,12 +113,6 @@
                                 <input type="number" class="name-inputs" name="" id="">
                                 <input type="number" class="name-inputs" name="" id="">
                                 <select name="NextPort" id="NextPort">
-                                    <option value="AMASRA, Turkey">AMASRA, Turkey</option>
-                                    <option value="CESME, Turkey">CESME, Turkey</option>
-                                    <option value="ISTANBUL, Turkey">ISTANBUL, Turkey</option>
-                                    <option value="SINOP, Turkey">SINOP, Turkey</option>
-                                    <option value="SOCHI, Russia">SOCHI, Russia</option>
-                                    <option value="TRABZON, Turkey">TRABZON, Turkey</option>
                                 </select>
                                 <input type="text" class="name-inputs" name="" id="">
                             </div>
@@ -146,12 +134,16 @@
                             <div class="name">Temp., [C] / Темп., [C]</div>
                         </div>
                         <div class="inputs">
-                            <input type="text" class="name-inputs" name="" id="">
+                            <select name="windDirection" id="windDirection" class="name-inputs"
+                                style="background-color: rgb(240, 226, 199);border: 1px solid;">
+                            </select>
                             <input type="number" class="name-inputs" name="" id="">
                             <input type="number" class="name-inputs" name="" id="">
                             <input type="number" class="name-inputs" name="" id="">
                             <input type="number" class="name-inputs" name="" id="">
-                            <input type="text" class="name-inputs" name="" id="">
+                            <select name="SkyDescription" id="SkyDescription" class="name-inputs"
+                                style="background-color: rgb(240, 226, 199);border: 1px solid;">
+                            </select>
                             <input type="number" class="name-inputs" name="" id="">
                             <input type="number" class="name-inputs" name="" id="">
                         </div>
@@ -393,7 +385,10 @@
                             </div>
                             <div class="yesOrNo">
                                 <div class="yesNo">No / Нет</div>
-                                <div class="info7-5" id="NoDescription"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="green"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>
+                                <div class="info7-5" id="NoDescription"><svg xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" viewBox="0 0 24 24" fill="green">
+                                        <path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" />
+                                    </svg></div>
                             </div>
                             <div class="info70-between">
                                 <div class="info70">Description /Описание</div>
@@ -584,6 +579,78 @@
                 </table>
             </section>
         </div>
+
+        <div class="tab">
+            <input type="radio" id="tab4" name="tab-group">
+            <label for="tab4" class="tab-title" id="Security"><span>Security</span></label>
+            <section class="tab-content">
+                <div id="portsList">
+                    <div class="element1">
+
+                        <div class="portsWithDelete">
+                            <button id="deleteLastAct">Cancel</button>
+                            <input class="inputSecurity" type="text" id="forPorts"
+                                placeholder="Впишите названия портов / Write port's names">
+                            <button onclick="AddPorts()">⇨</button>
+                        </div>
+                        <div>
+                            <div id="plusPorts" class="likeATable">
+                                <div class="header">LastPort / NextPort</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="element1">
+
+                        <div class="portsWithDelete">
+                            <button id="deleteLastwindAct">Cancel</button>
+                            <input class="inputSecurity" type="text" id="forWind"
+                                placeholder="Впишите направление ветра / Write wind direaction">
+                            <button onclick="AddWinds()">⇨</button>
+                        </div>
+                        <div>
+                            <div id="plusWind" class="likeATable">
+                                <div class="header">Wind Direaction</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="element1">
+
+                        <div class="portsWithDelete">
+                            <button id="deleteLastSkyAct">Cancel</button>
+                            <input class="inputSecurity" type="text" id="ForSky"
+                                placeholder="Впишите облачность / Write sky description">
+                            <button onclick="AddSky()">⇨</button>
+                        </div>
+                        <div>
+                            <div id="plusSky" class="likeATable">
+                                <div class="header">Sky Description</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="elAndInput">
+                        <div class="elementConst">
+                            <div class="elDiv">Vessel / Судно</div>
+                            <div class="elDiv">IMO</div>
+                            <div class="elDiv">Captain / Капитан</div>
+                            <div class="elDiv">VSAT</div>
+                            <div class="elDiv">Phone number / Телефон</div>
+                        </div>
+                        <div class="elementConst">
+                            <input type="text" id="VesselInp" class="elInput">
+                            <input type="text" id="IMOInp" class="elInput">
+                            <input type="text" id="CaptainInp" class="elInput">
+                            <input type="text" id="VSATInp" class="elInput">
+                            <input type="text" id="PhoneInp" class="elInput">
+                        </div>
+                    </div>
+                    <button id="Send">Save form / Сохранить форму</button>
+                </div>
+            </section>
+        </div>
+
     </div>
 </body>
 
