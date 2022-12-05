@@ -176,7 +176,6 @@ function generateNextLastPorts() {
     portArr = JSON.parse(localStorage.getItem('portList'));
     if (lastPort) {
         for (let i = 0; i < lastPort.length; i++) {
-            console.log(lastPort[i])
             lastPort[i].remove()
         }
     }
@@ -190,7 +189,6 @@ generateNextLastPorts();
 
 deleteLastAct.addEventListener('click', function () {
     if (portListArr) {
-        console.log(addPortsElem)
         addPortsElem[addPortsElem.length - 1].remove();
         if (localStorage.getItem('portList')) portListArr = JSON.parse(localStorage.getItem('portList'));
         portListArr.splice(portListArr.length - 1, 1);
@@ -211,7 +209,6 @@ function AddPorts() {
 
 function drawStartArr() {
     if (localStorage.getItem('portList').length !== 0) {
-        console.log('0')
         let portArr = [];
         if (portArr !== []) {
             portArr = JSON.parse(localStorage.getItem('portList'));
@@ -225,7 +222,6 @@ function drawStartArr() {
     if (localStorage.getItem('windsList').length !== 0) {
         let windsArr = [];
         if (windsArr !== []) {
-            console.log(windsArr)
             windsArr = JSON.parse(localStorage.getItem('windsList'));
             for (let winds of windsArr) {
                 plusWind.innerHTML += `<div class="addWindsElem">${winds}</div>`;
@@ -237,7 +233,6 @@ function drawStartArr() {
     if (localStorage.getItem('skyList').length !== 0) {
         let skyArr = [];
         if (skyArr !== []) {
-            console.log(skyArr)
             skyArr = JSON.parse(localStorage.getItem('skyList'));
             for (let sky of skyArr) {
                 plusSky.innerHTML += `<div class="addSkyDescriptionElem">${sky}</div>`;
@@ -270,7 +265,6 @@ generateWindsDirection();
 
 deleteLastwindAct.addEventListener('click', function () {
     if (windsListArr) {
-        console.log(addWindsElem)
         addWindsElem[addWindsElem.length - 1].remove();
         if (localStorage.getItem('windsList')) windsListArr = JSON.parse(localStorage.getItem('windsList'));
         windsListArr.splice(windsListArr.length - 1, 1);
@@ -285,7 +279,6 @@ function AddWinds() {
         plusWind.innerHTML += `<div class="addWindsElem">${forWind.value}</div>`;
         if (localStorage.getItem('windsList')) windsListArr = JSON.parse(localStorage.getItem('windsList'));
         windsListArr.push(forWind.value);
-        console.log(windsListArr)
         localStorage.setItem('windsList', JSON.stringify(windsListArr));
     }
 }
@@ -351,3 +344,100 @@ SendForm.addEventListener('click', function () {
     location.reload();
     return false;
 })
+
+const sendData = async (url, data) => {
+    const response = await fetch(url, {
+        method: 'POST',
+        body: data,
+    });
+
+    if (!response.ok) {
+        throw new Error(`Ошибка по адресу ${url}, код ошибки №${response.status}`)
+    }
+}
+
+function sendOnServer() {
+    const sendBtn = document.getElementById('sendBtn');
+    const infoforSort = document.getElementsByClassName('infoforSort');
+    const infoforSort2 = document.getElementsByClassName('infoforSort2');
+    const inputforSort2 = document.getElementsByClassName('inputforSort2');
+    const tableInputs = document.getElementsByClassName('tableInputs');
+    let arrOfTableName = ['PassengersYesterday', 'PassengersOn', 'PassengersOff', 'PassengersToday',
+        'OwnerRepsYesterday', 'OwnerRepsOn', 'OwnerRepsOff', 'OwnerRepsToday',
+        'TechManagerYesterday', 'TechManagerOn', 'TechManagerOff', 'TechManagerToday',
+        'HotelManagerYesterday', 'HotelManagerOn', 'HotelManagerOff', 'HotelManagerToday',
+        'MedicalYesterday', 'MedicalOn', 'MedicalOff', 'MedicalToday',
+        'TheatreYesterday', 'TheatreOn', 'TheatreOff', 'TheatreToday',
+        'OtherStaffYesterday', 'OtherStaffOn', 'OtherStaffOff', 'OtherStaffToday',
+        'POBTotalYesterday', 'POBTotalOn', 'POBTotalOff', 'POBTotalToday',
+        'NextCrewChangeDateYesterday',
+        'HSFOStartOfDay', 'HSFOConsumption', 'HSFOForLaterDay', 'HSFOBunkering', 'HSFODensityOnLastBunkering', 'HSFOExpectedSupply',
+        'LSFOStartOfDay', 'LSFOConsumption', 'LSFOForLaterDay', 'LSFOBunkering', 'LSFODensityOnLastBunkering', 'LSFOExpectedSupply',
+        'MGOStartOfDay', 'MGOConsumption', 'MGOForLaterDay', 'MGOBunkering', 'MGODensityOnLastBunkering', 'MGOExpectedSupply',
+        'LubeStartOfDay', 'LubeConsumption', 'LubeForLaterDay', 'LubeBunkering', 'LubeDensityOnLastBunkering', 'LubeExpectedSupply',
+        'WaterStartOfDay', 'WaterConsumption', 'WaterForLaterDay', 'WaterBunkering', 'WaterExpectedSupply',
+        'ProvisionEnoughBeforeDate', 'ProvisionEnoughBeforeDensityOnLastBunkering', 'ProvisionEnoughBeforeExpectedSupply',
+        'TotalNumberOfConsultationsPassenger', 'TotalNumberOfConsultationsCrew',
+        'AdmissionsToShipHospitalPassenger', 'AdmissionsToShipHospitalCrew',
+        'LeftShipForMedicalReasonsPassenger', 'LeftShipForMedicalReasonsCrew',
+        'AccidentsSeriousPassenger', 'AccidentsSeriousCrew',
+        'AccidentsMinorPassenger', 'AccidentsMinorCrew',
+        'Gastro_EnteritisPassenger', 'Gastro_EnteritisCrew',
+        'SexuallyTransmittedDiseasePassenger', 'SexuallyTransmittedDiseaseCrew',
+        'DeathsOnBoardPassenger', 'DeathsOnBoardCrew',
+        'IzolatedPassenger', 'IzolatedCrew',
+        'AlcoholPassenger', 'AlcoholCrew',
+        'IncidentDescription',
+        'RemarksOfCaptain',
+
+    ]
+
+    console.log(infoforSort[1].nextElementSibling.value)
+    sendBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        if (document.getElementById('Vessel').value === '') {
+            alert('Please choose the correct VESSEL! / Пожалуйста выберите правлиньное СУДНО!')
+        } else if(document.getElementById('IMO').value === ''){
+            alert('Please choose the correct IMO! / Пожалуйста выберите правлиньное ИМО!')
+        } else if(document.getElementById('DateImportant').value === ''){
+            alert('Please choose the correct DATE! / Пожалуйста выберите правлиньную ДАТУ!')
+        } else{
+            const data = new Object();
+            let infoforSort2Arr = [];
+            let inputforSort2Arr = [];
+            let tableInputsArr = [];
+
+            for (let info of infoforSort) {
+                data[info.title] = info.nextElementSibling.value;
+            }
+
+            for (let info2 of infoforSort2) {
+                infoforSort2Arr.push(info2.title)
+            }
+
+            for (let input2 of inputforSort2) {
+                inputforSort2Arr.push(input2.value)
+            }
+
+            for (let i = 0; i < infoforSort2Arr.length; i++) {
+                data[infoforSort2Arr[i]] = inputforSort2Arr[i];
+            }
+
+            for (let tableInp of tableInputs) {
+                if (tableInp.localName === 'input') tableInputsArr.push(tableInp.value);
+                if (tableInp.localName === 'div') tableInputsArr.push(tableInp.innerHTML);
+            }
+
+            for (let i = 0; i < arrOfTableName.length; i++) {
+                data[arrOfTableName[i]] = tableInputsArr[i];
+            }
+
+            const userData = JSON.stringify(data)
+
+            sendData('http://web.sovfracht.ru/marine_monitor_sfh/hs/DataExchange/dpr', userData);
+            console.log(data);
+        }
+    })
+}
+sendOnServer();

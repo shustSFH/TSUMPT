@@ -19,42 +19,44 @@
 
 
                 <div class="container">
-                    <div class="head">DAILY DISPATCH REPORT / СУТОЧНЫЙ ОТЧЕТ</div>
+                    <div class="head"><span>DAILY DISPATCH REPORT / СУТОЧНЫЙ ОТЧЕТ</span>
+                        <button id="sendBtn" type="submit" class="Submit-button">Send data / Отправить данные</button>
+                    </div>
                     <div class="main margin">
                         <div class="mainInfo allInfo">
                             <div class="block">
-                                <div class="info">VESSEL / СУДНО</div>
+                                <div class="info infoforSort" title="Vessel">VESSEL / СУДНО</div>
                                 <input type="text" name="" id="Vessel">
                             </div>
                             <div class="block">
-                                <div class="info">IMO</div>
+                                <div class="info infoforSort" title="IMO">IMO</div>
                                 <input type="number" name="" id="IMO">
                             </div>
                             <div class="block">
-                                <div class="info">Capitan / КАПИТАН</div>
+                                <div class="info infoforSort" title="Capitan">Capitan / КАПИТАН</div>
                                 <input type="text" name="" id="Captain">
                             </div>
                             <div class="block">
-                                <div class="info">VSAT</div>
+                                <div class="info infoforSort" title="VSAT">VSAT</div>
                                 <input type="number" name="" id="VSAT">
                             </div>
                             <div class="block">
-                                <div class="info">Contact number / ТЕЛЕФОН</div>
+                                <div class="info infoforSort" title="ContactNumber">Contact number / ТЕЛЕФОН</div>
                                 <input type="number" name="" id="Telephone">
                             </div>
                         </div>
 
                         <div class="dReport allInfo">
                             <div class="block">
-                                <div class="info">DAILY PROGRESS REPORT No / СУТОЧНЫЙ ОТЧЕТ No</div>
+                                <div class="info infoforSort" title="Report">DAILY PROGRESS REPORT No / СУТОЧНЫЙ ОТЧЕТ No</div>
                                 <input type="number" name="" id="">
                             </div>
                             <div class="block">
-                                <div class="info">Date / Дата</div>
-                                <input type="date" name="" id="">
+                                <div class="info infoforSort" title="Date">Date / Дата</div>
+                                <input type="date" name="" id="DateImportant">
                             </div>
                             <div class="block">
-                                <div class="info">Time / Время</div>
+                                <div class="info infoforSort" title="Time">Time / Время</div>
                                 <input type="time" name="" id="">
                             </div>
                         </div>
@@ -66,15 +68,15 @@
                         <div class="gps allInfo">
                             <div class="gps-name name">GPS positioning / GPS позиция</div>
                             <div class="block">
-                                <div class="info">Latitude / Широта</div>
+                                <div class="info infoforSort" title="Lat">Latitude / Широта</div>
                                 <input type="text" name="" id="">
                             </div>
                             <div class="block">
-                                <div class="info">Longitude / Долгота</div>
+                                <div class="info infoforSort" title="Lng">Longitude / Долгота</div>
                                 <input type="text" name="" id="">
                             </div>
                             <div class="block">
-                                <div class="info-exc">Last port / Последняя локация</div>
+                                <div class="info-exc infoforSort" title="LastPort">Last port / Последняя локация</div>
                                 <select name="LastPort" id="LastPort">
                                 </select>
                             </div>
@@ -83,38 +85,38 @@
                         <div class="distance allInfo">
                             <div class="distance-name name">Distance [Mls] / Расстояние [мл]</div>
                             <div class="block">
-                                <div class="info-exc">Passed distance / Пройденное расстояние</div>
+                                <div class="info-exc infoforSort" title="PassedDistance">Passed distance / Пройденное расстояние</div>
                                 <input type="number" name="" id="">
                             </div>
                             <div class="block">
-                                <div class="info-exc">Reminded distance / Оставшееся расстояние</div>
+                                <div class="info-exc infoforSort" title="RemindedDistance">Reminded distance / Оставшееся расстояние</div>
                                 <input type="number" name="" id="">
                             </div>
                             <div class="block">
-                                <div class="info-exc">Current activity / Текущая активность</div>
+                                <div class="info-exc infoforSort" title="CurrentActivity">Current activity / Текущая активность</div>
                                 <input type="text" name="" id="">
                             </div>
                         </div>
 
                         <div class="shipInfo">
                             <div class="infos">
-                                <div class="name">Speed (last 6 hrs average) (knots) / Средняя скорость (за последние 6
+                                <div class="name infoforSort2" title="Speed">Speed (last 6 hrs average) (knots) / Средняя скорость (за последние 6
                                     часов)
                                     (узлы)
                                 </div>
-                                <div class="name">Course / Курс (°)</div>
-                                <div class="name">DTG / Оставшееся расстояние до порта назначения, м.мили</div>
-                                <div class="name">Next port / Следующая локация</div>
-                                <div class="name">ETA next port / Ожидаемое время прибытия судна в следующую локацию
+                                <div class="name infoforSort2" title="Course">Course / Курс (°)</div>
+                                <div class="name infoforSort2" title="DTG">DTG / Оставшееся расстояние до порта назначения, м.мили</div>
+                                <div class="name infoforSort2" title="NextPort">Next port / Следующая локация</div>
+                                <div class="name infoforSort2" title="ETA_NextPort">ETA next port / Ожидаемое время прибытия судна в следующую локацию
                                 </div>
                             </div>
                             <div class="inputs">
-                                <input type="number" class="name-inputs" name="" id="">
-                                <input type="number" class="name-inputs" name="" id="">
-                                <input type="number" class="name-inputs" name="" id="">
-                                <select name="NextPort" id="NextPort">
+                                <input type="number" class="name-inputs inputforSort2" name="" id="">
+                                <input type="number" class="name-inputs inputforSort2" name="" id="">
+                                <input type="number" class="name-inputs inputforSort2" name="" id="">
+                                <select name="NextPort" class="inputforSort2" id="NextPort">
                                 </select>
-                                <input type="text" class="name-inputs" name="" id="">
+                                <input type="text" class="name-inputs inputforSort2" name="" id="">
                             </div>
 
                         </div>
@@ -124,28 +126,28 @@
 
                     <div class="weatherInfo margin">
                         <div class="infos">
-                            <div class="name">Wind, Direction / Ветер, направление</div>
-                            <div class="name">Wind, Speed, [m/sec] / Ветер, скорость, [м/сек]</div>
-                            <div class="name">Sea State, [Mtr] / Волнение моря, [баллы]</div>
-                            <div class="name">Wave height, [Mtr] / Высота волны, [м]</div>
-                            <div class="name">Visibility, [Mls] / Видимость, [мл]</div>
-                            <div class="name">SKY Description / Облачность</div>
-                            <div class="name">Pressure, [bar] / Давление, [бар]</div>
-                            <div class="name">Temp., [C] / Темп., [C]</div>
+                            <div class="name infoforSort2" title="WindDirection">Wind, Direction / Ветер, направление</div>
+                            <div class="name infoforSort2" title="WindSpeed">Wind, Speed, [m/sec] / Ветер, скорость, [м/сек]</div>
+                            <div class="name infoforSort2" title="SeaState">Sea State, [Mtr] / Волнение моря, [баллы]</div>
+                            <div class="name infoforSort2" title="WaveHeight">Wave height, [Mtr] / Высота волны, [м]</div>
+                            <div class="name infoforSort2" title="Visibility">Visibility, [Mls] / Видимость, [мл]</div>
+                            <div class="name infoforSort2" title="SkyDescription">SKY Description / Облачность</div>
+                            <div class="name infoforSort2" title="Pressure">Pressure, [bar] / Давление, [бар]</div>
+                            <div class="name infoforSort2" title="Temperature">Temp., [C] / Темп., [C]</div>
                         </div>
                         <div class="inputs">
-                            <select name="windDirection" id="windDirection" class="name-inputs"
+                            <select name="windDirection" id="windDirection" class="name-inputs inputforSort2"
                                 style="background-color: rgb(240, 226, 199);border: 1px solid;">
                             </select>
-                            <input type="number" class="name-inputs" name="" id="">
-                            <input type="number" class="name-inputs" name="" id="">
-                            <input type="number" class="name-inputs" name="" id="">
-                            <input type="number" class="name-inputs" name="" id="">
-                            <select name="SkyDescription" id="SkyDescription" class="name-inputs"
+                            <input type="number" class="name-inputs inputforSort2" name="" id="">
+                            <input type="number" class="name-inputs inputforSort2" name="" id="">
+                            <input type="number" class="name-inputs inputforSort2" name="" id="">
+                            <input type="number" class="name-inputs inputforSort2" name="" id="">
+                            <select name="SkyDescription" id="SkyDescription" class="name-inputs inputforSort2"
                                 style="background-color: rgb(240, 226, 199);border: 1px solid;">
                             </select>
-                            <input type="number" class="name-inputs" name="" id="">
-                            <input type="number" class="name-inputs" name="" id="">
+                            <input type="number" class="name-inputs inputforSort2" name="" id="">
+                            <input type="number" class="name-inputs inputforSort2" name="" id="">
                         </div>
 
                     </div>
@@ -162,63 +164,63 @@
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Passengers / Пассажиры</div>
-                            <input type="number" class="table-inputs" name="" id="pers1">
-                            <input type="number" class="table-inputs" name="" id="pers2">
-                            <input type="number" class="table-inputs" name="" id="pers3">
-                            <div class="infoQuadro sum" id="pas"></div>
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers1">
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers2">
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers3">
+                            <div class="infoQuadro sum tableInputs" id="pas"></div>
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Owner reps / Представители заказчика</div>
-                            <input type="number" class="table-inputs" name="" id="pers1">
-                            <input type="number" class="table-inputs" name="" id="pers2">
-                            <input type="number" class="table-inputs" name="" id="pers3">
-                            <div class="infoQuadro sum" id="own"></div>
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers1">
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers2">
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers3">
+                            <div class="infoQuadro sum tableInputs" id="own"></div>
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Tech manager / Технический менеджмент</div>
-                            <input type="number" class="table-inputs" name="" id="pers1">
-                            <input type="number" class="table-inputs" name="" id="pers2">
-                            <input type="number" class="table-inputs" name="" id="pers3">
-                            <div class="infoQuadro sum" id="techM"></div>
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers1">
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers2">
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers3">
+                            <div class="infoQuadro sum tableInputs" id="techM"></div>
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Hotel manager / Отельный менеджмент</div>
-                            <input type="number" class="table-inputs" name="" id="pers1">
-                            <input type="number" class="table-inputs" name="" id="pers2">
-                            <input type="number" class="table-inputs" name="" id="pers3">
-                            <div class="infoQuadro sum" id="hotelM"></div>
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers1">
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers2">
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers3">
+                            <div class="infoQuadro sum tableInputs" id="hotelM"></div>
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Medical / Медицинский персонал</div>
-                            <input type="number" class="table-inputs" name="" id="pers1">
-                            <input type="number" class="table-inputs" name="" id="pers2">
-                            <input type="number" class="table-inputs" name="" id="pers3">
-                            <div class="infoQuadro sum" id="med"></div>
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers1">
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers2">
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers3">
+                            <div class="infoQuadro sum tableInputs" id="med"></div>
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Theatre / Артисты</div>
-                            <input type="number" class="table-inputs" name="" id="pers1">
-                            <input type="number" class="table-inputs" name="" id="pers2">
-                            <input type="number" class="table-inputs" name="" id="pers3">
-                            <div class="infoQuadro sum" id="theatre"></div>
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers1">
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers2">
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers3">
+                            <div class="infoQuadro sum tableInputs" id="theatre"></div>
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Other staff / Прочий персонал</div>
-                            <input type="number" class="table-inputs" name="" id="pers1">
-                            <input type="number" class="table-inputs" name="" id="pers2">
-                            <input type="number" class="table-inputs" name="" id="pers3">
-                            <div class="infoQuadro sum" id="otherS"></div>
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers1">
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers2">
+                            <input type="number" class="table-inputs tableInputs" name="" id="pers3">
+                            <div class="infoQuadro sum tableInputs" id="otherS"></div>
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">POB total / Всего :</div>
-                            <div class="infoQuadro" id="POByesterday"></div>
-                            <div class="infoQuadro" id="POBon"></div>
-                            <div class="infoQuadro" id="POBoff"></div>
-                            <div class="infoQuadro" id="POBtoday"></div>
+                            <div class="infoQuadro tableInputs" id="POByesterday"></div>
+                            <div class="infoQuadro tableInputs" id="POBon"></div>
+                            <div class="infoQuadro tableInputs" id="POBoff"></div>
+                            <div class="infoQuadro tableInputs" id="POBtoday"></div>
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">NEXT CREWCHANGE DATE / ДАТА СМЕНЫ ЭКИПАЖА:</div>
-                            <input type="number" class="table-inputs" name="" id="">
+                            <input type="date" class="table-inputs tableInputs" name="" id="">
                             <div class="infoTripleAll"></div>
                         </div>
                     </div>
@@ -239,54 +241,54 @@
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">HSFO, (mt) / Высокосернистое топливо, (тн)</div>
-                            <input type="number" class="penta-inputs" name="" id="shipS1">
-                            <div class="infoPentaD" id="HSFO"></div>
-                            <input type="number" class="penta-inputs" name="" id="shipS2">
-                            <input type="number" class="penta-inputs" name="" id="shipS3">
-                            <input type="number" class="penta-inputs" name="" id="">
-                            <input type="text" class="nameInput" name="" id="">
+                            <input type="number" class="penta-inputs tableInputs" name="" id="shipS1">
+                            <div class="infoPentaD tableInputs" id="HSFO"></div>
+                            <input type="number" class="penta-inputs tableInputs" name="" id="shipS2">
+                            <input type="number" class="penta-inputs tableInputs" name="" id="shipS3">
+                            <input type="number" class="penta-inputs tableInputs" name="" id="">
+                            <input type="text" class="nameInput tableInputs" name="" id="">
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">LSFO, (mt) / Низкосернистое топливо, (тн)</div>
-                            <input type="number" class="penta-inputs" name="" id="shipS1">
-                            <div class="infoPentaD" id="LSFO"></div>
-                            <input type="number" class="penta-inputs" name="" id="shipS2">
-                            <input type="number" class="penta-inputs" name="" id="shipS3">
-                            <input type="number" class="penta-inputs" name="" id="">
-                            <input type="text" class="nameInput" name="" id="">
+                            <input type="number" class="penta-inputs tableInputs" name="" id="shipS1">
+                            <div class="infoPentaD tableInputs" id="LSFO"></div>
+                            <input type="number" class="penta-inputs tableInputs" name="" id="shipS2">
+                            <input type="number" class="penta-inputs tableInputs" name="" id="shipS3">
+                            <input type="number" class="penta-inputs tableInputs" name="" id="">
+                            <input type="text" class="nameInput tableInputs" name="" id="">
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">MGO, (mt) / Дизельное топливо, (тн)</div>
-                            <input type="number" class="penta-inputs" name="" id="shipS1">
-                            <div class="infoPentaD" id="MGO"></div>
-                            <input type="number" class="penta-inputs" name="" id="shipS2">
-                            <input type="number" class="penta-inputs" name="" id="shipS3">
-                            <input type="number" class="penta-inputs" name="" id="">
-                            <input type="text" class="nameInput" name="" id="">
+                            <input type="number" class="penta-inputs tableInputs" name="" id="shipS1">
+                            <div class="infoPentaD tableInputs" id="MGO"></div>
+                            <input type="number" class="penta-inputs tableInputs" name="" id="shipS2">
+                            <input type="number" class="penta-inputs tableInputs" name="" id="shipS3">
+                            <input type="number" class="penta-inputs tableInputs" name="" id="">
+                            <input type="text" class="nameInput tableInputs" name="" id="">
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Lube, (kg) / Машинное масло, (кг)</div>
-                            <input type="number" class="penta-inputs" name="" id="shipS1">
-                            <div class="infoPentaD" id="Lube"></div>
-                            <input type="number" class="penta-inputs" name="" id="shipS2">
-                            <input type="number" class="penta-inputs" name="" id="shipS3">
-                            <input type="number" class="penta-inputs" name="" id="">
-                            <input type="text" class="nameInput" name="" id="">
+                            <input type="number" class="penta-inputs tableInputs" name="" id="shipS1">
+                            <div class="infoPentaD tableInputs" id="Lube"></div>
+                            <input type="number" class="penta-inputs tableInputs" name="" id="shipS2">
+                            <input type="number" class="penta-inputs tableInputs" name="" id="shipS3">
+                            <input type="number" class="penta-inputs tableInputs" name="" id="">
+                            <input type="text" class="nameInput tableInputs" name="" id="">
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Water, (m3) / Вода, (м3)</div>
-                            <input type="number" class="penta-inputs" name="" id="shipS1">
-                            <div class="infoPentaD" id="Water"></div>
-                            <input type="number" class="penta-inputs" name="" id="shipS2">
-                            <input type="number" class="penta-inputs" name="" id="shipS3">
+                            <input type="number" class="penta-inputs tableInputs" name="" id="shipS1">
+                            <div class="infoPentaD tableInputs" id="Water"></div>
+                            <input type="number" class="penta-inputs tableInputs" name="" id="shipS2">
+                            <input type="number" class="penta-inputs tableInputs" name="" id="shipS3">
                             <div class="Opres-exc">Опреснитель:</div>
-                            <input type="text" class="nameInput" name="" id="">
+                            <input type="text" class="nameInput tableInputs" name="" id="">
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Provision enough before (date) / Остаток провизии до (дата)</div>
-                            <input type="date" class="provision-input" name="" id="">
-                            <input type="number" class="penta-inputs" name="" id="">
-                            <input type="text" class="nameInput" name="" id="">
+                            <input type="date" class="provision-input tableInputs" name="" id="">
+                            <input type="number" class="penta-inputs tableInputs" name="" id="">
+                            <input type="text" class="nameInput tableInputs" name="" id="">
                         </div>
                     </div>
 
@@ -305,71 +307,71 @@
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Total number of consultations</div>
-                            <input type="number" class="table-inputs" name="" id="">
-                            <input type="number" class="table-inputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Admissions to Ship's Hospital</div>
-                            <input type="number" class="table-inputs" name="" id="">
-                            <input type="number" class="table-inputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Left ship for Medical Reasons</div>
-                            <input type="number" class="table-inputs" name="" id="">
-                            <input type="number" class="table-inputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Accidents Serious</div>
-                            <input type="number" class="table-inputs" name="" id="">
-                            <input type="number" class="table-inputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Accidents Minor</div>
-                            <input type="number" class="table-inputs" name="" id="">
-                            <input type="number" class="table-inputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Gastro-enteritis</div>
-                            <input type="number" class="table-inputs" name="" id="">
-                            <input type="number" class="table-inputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Sexually Transmitted Disease</div>
-                            <input type="number" class="table-inputs" name="" id="">
-                            <input type="number" class="table-inputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Deaths on board</div>
-                            <input type="number" class="table-inputs" name="" id="">
-                            <input type="number" class="table-inputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Izolated</div>
-                            <input type="number" class="table-inputs" name="" id="">
-                            <input type="number" class="table-inputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                         </div>
                         <div class="infoLikeTable">
                             <div class="name">Alcohol</div>
-                            <input type="number" class="table-inputs" name="" id="">
-                            <input type="number" class="table-inputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
+                            <input type="number" class="table-inputs tableInputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                             <input type="number" class="table-inputs" name="" id="">
                         </div>
@@ -392,14 +394,14 @@
                             </div>
                             <div class="info70-between">
                                 <div class="info70">Description /Описание</div>
-                                <input type="text" class="info70-input" id="Description" onchange="Desc()">
+                                <input type="text" class="info70-input tableInputs" id="Description" onchange="Desc()">
                             </div>
                         </div>
                     </div>
 
                     <div class="remarksOfCaptain katalog-info">REMARKS OF CAPTAIN / ПРИМЕЧАНИЯ КАПИТАНА</div>
                     <div class="remarksOfCaptainInfo margin">
-                        <input type="text" class="full" id="" name="">
+                        <input type="text" class="full tableInputs" id="" name="">
                     </div>
 
 
